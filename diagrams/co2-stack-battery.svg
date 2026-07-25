@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1190" height="680" viewBox="0 0 1190 680" font-family="DejaVu Sans, Verdana, sans-serif">
+<title>CO2 stack and battery (X9/X10/P17)</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#46525e"/></marker><marker id="arrd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a94a0"/></marker></defs>
+<rect x="0" y="0" width="1190" height="680" fill="#ffffff"/>
+<text x="30" y="32" font-size="17" fill="#26303a" text-anchor="start" font-weight="bold">Air quality is engineered, not assumed — the four-layer CO₂ stack and the battery</text>
+<text x="30" y="52" font-size="12" fill="#5a646e" text-anchor="start">doc 00 §5 · spec P17: &lt;1,000 ppm at all times, every mode including sealed</text>
+<rect x="40" y="96" width="470" height="112" rx="7" fill="#fdf3e2" stroke="#b07a1e" stroke-width="1.4"/>
+<text x="54" y="127.46" font-size="12" fill="#1a232c" text-anchor="start" font-weight="bold">LAYER 0 · ELIMINATE (X9)</text>
+<text x="54" y="146.45999999999998" font-size="11" fill="#26303a" text-anchor="start">All-electric galley — no combustion in the envelope.</text>
+<text x="54" y="165.45999999999998" font-size="11" fill="#26303a" text-anchor="start">One 2 kW burner = 3.6× the crew's CO₂ + 0.25 kg/h latent;</text>
+<text x="54" y="184.45999999999998" font-size="11" fill="#26303a" text-anchor="start">induction deletes both for ~2 kWh_e/day.</text>
+<rect x="40" y="224" width="470" height="112" rx="7" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.4"/>
+<text x="54" y="255.46" font-size="12" fill="#1a232c" text-anchor="start" font-weight="bold">LAYER 1 · VENTILATE EFFICIENTLY</text>
+<text x="54" y="274.46000000000004" font-size="11" fill="#26303a" text-anchor="start">48 m³/h CO₂-governed floor (12 m³/h·person) through an</text>
+<text x="54" y="293.46000000000004" font-size="11" fill="#26303a" text-anchor="start">ε_lat ≥ 0.8 ERV (crossover &lt;5%, test E) · DCV · displacement</text>
+<text x="54" y="312.46000000000004" font-size="11" fill="#26303a" text-anchor="start">ducting · per-room NDIR, interlock keyed to the maximum.</text>
+<rect x="40" y="352" width="470" height="112" rx="7" fill="#f5eefb" stroke="#7a4fa3" stroke-width="1.4"/>
+<text x="54" y="383.46" font-size="12" fill="#1a232c" text-anchor="start" font-weight="bold">LAYER 2 · SCRUB THE INCREMENT (X10)</text>
+<text x="54" y="402.46" font-size="11" fill="#26303a" text-anchor="start">Two-bed solid-amine TSA in the recirc branch,</text>
+<text x="54" y="421.46" font-size="11" fill="#26303a" text-anchor="start">post-dehumidification (45–55% RH) — the only path holding</text>
+<text x="54" y="440.46" font-size="11" fill="#26303a" text-anchor="start">&lt;1,000 ppm sealed. Required-PENDING test J (slip assay).</text>
+<rect x="40" y="480" width="470" height="112" rx="7" fill="#fdecec" stroke="#b03a3a" stroke-width="1.4"/>
+<text x="54" y="511.46" font-size="12" fill="#1a232c" text-anchor="start" font-weight="bold">LAYER 3 · INTERLOCK (safety-critical)</text>
+<text x="54" y="530.46" font-size="11" fill="#26303a" text-anchor="start">&lt;1,000 ppm target · 2,000 alarm + forced boost ·</text>
+<text x="54" y="549.46" font-size="11" fill="#26303a" text-anchor="start">MECHANICAL minimum stop on the fresh damper —</text>
+<text x="54" y="568.46" font-size="11" fill="#26303a" text-anchor="start">no controller fault or economy setting can close ventilation.</text>
+<text x="825" y="104" font-size="13" fill="#26303a" text-anchor="middle" font-weight="bold">The CO₂ battery — two-bed thermal swing</text>
+<rect x="570" y="132" width="214" height="64" rx="7" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.4"/>
+<text x="677.0" y="152.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">Recirc air ~91 m³/h</text>
+<text x="677.0" y="167.96" font-size="11" fill="#26303a" text-anchor="middle">1,000–1,500 ppm CO₂</text>
+<text x="677.0" y="182.96" font-size="11" fill="#26303a" text-anchor="middle">45–55% RH (post-absorber)</text>
+<rect x="862" y="132" width="218" height="64" rx="7" fill="#f5eefb" stroke="#7a4fa3" stroke-width="1.4"/>
+<text x="971.0" y="152.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">BED A — ADSORB</text>
+<text x="971.0" y="167.96" font-size="11" fill="#26303a" text-anchor="middle">~3 kg sorbent · ~90 min</text>
+<text x="971.0" y="182.96" font-size="11" fill="#26303a" text-anchor="middle">~50% single-pass capture</text>
+<path d="M784,164 L862,164" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M1080,164 L1126,164" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<text x="1088" y="152" font-size="11" fill="#5a646e" text-anchor="start">scrubbed</text>
+<text x="1088" y="186" font-size="11" fill="#5a646e" text-anchor="start">→ cabin</text>
+<rect x="862" y="268" width="218" height="64" rx="7" fill="#fdf3e2" stroke="#b07a1e" stroke-width="1.4"/>
+<text x="971.0" y="288.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">BED B — REGENERATE</text>
+<text x="971.0" y="303.96" font-size="11" fill="#26303a" text-anchor="middle">85–95 °C off the heat bus</text>
+<text x="971.0" y="318.96" font-size="11" fill="#26303a" text-anchor="middle">~1.0–1.3 kWh/kg CO₂</text>
+<path d="M936,196 L936,268" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M1006,268 L1006,196" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<text x="971" y="236.0" font-size="11" fill="#5a646e" text-anchor="middle">swap each</text>
+<text x="971" y="251.0" font-size="11" fill="#5a646e" text-anchor="middle">half-cycle</text>
+<rect x="570" y="268" width="214" height="64" rx="7" fill="#fdf3e2" stroke="#b07a1e" stroke-width="1.4"/>
+<text x="677.0" y="288.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">Heat bus 85–95 °C</text>
+<text x="677.0" y="303.96" font-size="11" fill="#26303a" text-anchor="middle">~1.6–2.5 kWh/day total</text>
+<text x="677.0" y="318.96" font-size="11" fill="#26303a" text-anchor="middle">solar-window schedulable</text>
+<path d="M784,300 L862,300" fill="none" stroke="#b07a1e" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M1080,300 L1126,300" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<text x="1088" y="288" font-size="11" fill="#5a646e" text-anchor="start">CO₂-rich</text>
+<text x="1088" y="322" font-size="11" fill="#5a646e" text-anchor="start">purge out</text>
+<rect x="570" y="372" width="510" height="74" rx="7" fill="#f6f6f2" stroke="#8a8a80" stroke-width="1.4"/>
+<text x="584" y="395.96" font-size="12" fill="#1a232c" text-anchor="start" font-weight="bold">Battery behavior</text>
+<text x="584" y="412.96" font-size="11" fill="#26303a" text-anchor="start">Loaded beds store the overnight obligation (~0.3 kg CO₂) —</text>
+<text x="584" y="429.96" font-size="11" fill="#26303a" text-anchor="start">regeneration is schedulable into the solar window; duty ~1.6 kg/day.</text>
+<rect x="570" y="462" width="510" height="96" rx="7" fill="#f6f6f2" stroke="#8a8a80" stroke-width="1.4"/>
+<text x="584" y="479.96" font-size="12" fill="#1a232c" text-anchor="start" font-weight="bold">Bed chemistry follows the heat grade (X11)</text>
+<text x="584" y="496.96" font-size="11" fill="#26303a" text-anchor="start">≥ ~130 °C tap (waste-heat platform): K₂CO₃-on-apolar-carbon TSA</text>
+<text x="584" y="513.96" font-size="11" fill="#26303a" text-anchor="start">(alumina/MgO supports prohibited) · PENDING test J-K.</text>
+<text x="584" y="530.96" font-size="11" fill="#26303a" text-anchor="start">Solar grade 60–95 °C: the amine resin — potash is equilibrium-</text>
+<text x="584" y="547.96" font-size="11" fill="#26303a" text-anchor="start">dead below ~120 °C. Keep a small amine bed as outage fallback.</text>
+<rect x="570" y="574" width="510" height="60" rx="7" fill="#fdecec" stroke="#b03a3a" stroke-width="1.4"/>
+<text x="584" y="591.96" font-size="12" fill="#1a232c" text-anchor="start" font-weight="bold">Fallback if test J fails</text>
+<text x="584" y="607.96" font-size="11" fill="#26303a" text-anchor="start">oversized ERV + DCV at 120–190 m³/h → ~800–1,000 ppm —</text>
+<text x="584" y="623.96" font-size="11" fill="#26303a" text-anchor="start">open conditions only, no sealed-mode guarantee.</text>
+<text x="30" y="628" font-size="11" fill="#5a646e" text-anchor="start">Breathing-air gates (safety register item 4): amine/ammonia slip assay</text>
+<text x="30" y="644" font-size="11" fill="#5a646e" text-anchor="start">(test J) or alkaline-carryover assay (test J-K) before any bed connects</text>
+<text x="30" y="660" font-size="11" fill="#5a646e" text-anchor="start">to cabin air. Scrubbing never substitutes for the ventilation floor.</text>
+</svg>

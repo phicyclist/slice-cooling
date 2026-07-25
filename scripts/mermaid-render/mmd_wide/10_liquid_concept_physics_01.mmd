@@ -1,0 +1,15 @@
+flowchart TD
+    OA["Fresh air DP-A<br/>32C/80% · 24.2 g/kg"] --> DMP["CO2-governed damper<br/>min stop · 10-48 m3/h"]
+    DMP --> ERV["ERV core e>=0.8<br/>pre-dry 24.2 -> ~15.9"]
+    ERV --> MIX((mix)) --> AB["ABSORBER<br/>film cells, 40 wt% CaCl2<br/>raw-water-cooled sump"]
+    AB --> DRY["Dry air ~11.9 g/kg<br/>(7.5-9 heat-rich)"] --> CAB["CABIN 13.8 g/kg<br/>55% @ 29C · <1,000 ppm CO2"]
+    DRY -.-> MCY["M-cycle berth cascade<br/>~22.6C supply"] -.-> CAB
+    CAB -- "recirc ~75 m3/h" --> TSA["TSA CO2 bed (X10)<br/>regen 85-95C · PENDING J"] --> MIX
+    CAB -- "ducted exhaust" --> ERV
+    ERV -- "re-humidified ~20-21 g/kg" --> OVB["overboard / outdoors"]
+    AB -- "dilute 35 wt%" --> RG["REGENERATOR<br/>sealed still 60-93C"]
+    RG -- "concentrate 40-44 wt%" --> RES[("Reserve 25-55 kg<br/>MOISTURE BATTERY")] --> AB
+    RG --> DW[("Distillate 8-18 L/day")] -.-> MCY
+    HEAT["Solar / engine / waste heat<br/>via buffer bus"] --> RG
+    SINK["Raw-water sink ~29C<br/>(sea / lake / well / fluid cooler)"] --> AB
+    SINK --> RG

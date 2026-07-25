@@ -1,0 +1,22 @@
+{
+  "title": "Heat-Driven Desiccant Comfort and Water Platform for Humid Climates (Land and Marine): CaCl2 Liquid-Desiccant and Aluminum-Fumarate MOF Coated-Exchanger Tracks",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "license": "cc-by-4.0",
+  "creators": [{ "name": "Pla, Ramon", "orcid": "0009-0005-3789-6212" }],
+  "keywords": [
+    "liquid desiccant air conditioning", "LDAC", "calcium chloride brine",
+    "dehumidification", "aluminum fumarate", "MIL-53(Al)-FA", "Basolite A520",
+    "metal-organic framework", "desiccant-coated heat exchanger", "DCHX",
+    "Maisotsenko cycle", "dew-point indirect evaporative cooling",
+    "atmospheric water harvesting", "humidification-dehumidification desalination",
+    "thermal swing adsorption", "solid amine CO2 scrubbing",
+    "solar thermal regeneration", "waste heat recovery", "marine HVAC",
+    "enthalpy recovery ventilator", "defensive publication", "prior art"
+  ],
+  "notes": "Defensive publication. No patents sought or held. Hardware: CERN-OHL-P v2; documentation: CC-BY-4.0; scripts: MIT.",
+  "related_identifiers": [
+    { "identifier": "https://github.com/phicyclist/slice-cooling",
+      "relation": "isSupplementTo", "resource_type": "software" }
+  ]
+}

@@ -1,0 +1,22 @@
+%%{init: {"flowchart": {"nodeSpacing": 25, "rankSpacing": 35}}}%%
+flowchart TB
+    subgraph LIQ["Liquid track (~$485–755 gates everything)"]
+        TA["A jar equilibrium"] --> TI["I film cell — THE GATE"]
+        TB2["B aerosol drift (also arbitrates X3)"] --> TI
+        TE["E ERV core (heat budget)"] -.-> LBUILD
+        TJ["J CO2 sorbent (gates X10)"] -.-> LBUILD
+        TI --> LBUILD["bank build: mixed-mode,<br/>interlock + ERV + bed fitted"]
+        TI --> TD["D regen COP"] --> TG["G still rate + TDS"] --> LP2["Phase 2 berth cascade"]
+        TI --> TH["H M-cycle + closed-loop point"] --> LP2
+    end
+    subgraph SOL["Solid track"]
+        T1["T1 mill-zero M&P batch (F4 pre-loaded)"] --> T4["T4 outsourced PXRD + DVS"] --> T6
+        T9["T9 commercial A520 lot"] --> T5["T5 coating SOP: PVA locked, anneal mandatory"] --> T6
+        T3["T3 RH/DAQ channel budget"] --> T6["T6 bench M1–M4<br/>M2 vs ~24 g/kg purge → effective Δq"]
+        T2["T2 full airflow–moisture model<br/>(doc 00 §4 steady state = interim)"] --> T8["T8 silica-wheel benchmark quote"]
+        T2 -.->|sets charge| SBUILD["module-pair build (X8 valving in)"]
+        T6 -.->|gates heat source + Δq| SBUILD
+    end
+    TH -. shared experiment .- T6
+    LP2 ~~~ T1
+    LBUILD ~~~ T2

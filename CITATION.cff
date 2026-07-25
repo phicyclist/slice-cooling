@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use or build on this work, please cite it as below."
+title: "Heat-Driven Desiccant Comfort and Water Platform for Humid Climates (Land and Marine)"
+type: dataset
+authors:
+  - family-names: "Pla"
+    given-names: "Ramon"
+    orcid: "https://orcid.org/0009-0005-3789-6212"
+date-released: "2026-07-25"
+version: "v1.0"
+license: CC-BY-4.0
+doi: "10.5281/zenodo.XXXXXXX"   # replace with the CONCEPT DOI after the Zenodo deposit
+repository-code: "https://github.com/phicyclist/slice-cooling"
+keywords:
+  - liquid desiccant air conditioning
+  - aluminum fumarate MOF
+  - defensive publication
+  - prior art

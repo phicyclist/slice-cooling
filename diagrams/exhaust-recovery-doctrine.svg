@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="640" viewBox="0 0 1080 640" font-family="DejaVu Sans, Verdana, sans-serif">
+<title>Exhaust-vapor recovery doctrine (X8)</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#46525e"/></marker><marker id="arrd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a94a0"/></marker></defs>
+<rect x="0" y="0" width="1080" height="640" fill="#ffffff"/>
+<text x="30" y="32" font-size="17" fill="#26303a" text-anchor="start" font-weight="bold">Exhaust-vapor recovery doctrine (X8) — every stream classified once</text>
+<text x="30" y="52" font-size="12" fill="#5a646e" text-anchor="start">doc 00 §7 · a stream is a rejection sink OR a recovery source, never both</text>
+<text x="190" y="96" font-size="12" fill="#5a646e" text-anchor="middle" font-weight="bold">SATURATED STREAM</text>
+<text x="560" y="96" font-size="12" fill="#5a646e" text-anchor="middle" font-weight="bold">DISPOSITION</text>
+<text x="925" y="96" font-size="12" fill="#5a646e" text-anchor="middle" font-weight="bold">PRODUCT</text>
+<rect x="40" y="118" width="300" height="84" rx="7" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.4"/>
+<text x="190.0" y="147.32" font-size="13" fill="#1a232c" text-anchor="middle" font-weight="bold">M-cycle working exhaust</text>
+<text x="190.0" y="164.32" font-size="12" fill="#26303a" text-anchor="middle">saturated ~29 °C</text>
+<text x="190.0" y="181.32" font-size="12" fill="#26303a" text-anchor="middle">(both tracks)</text>
+<rect x="420" y="118" width="300" height="84" rx="7" fill="#f5eefb" stroke="#7a4fa3" stroke-width="1.4"/>
+<text x="570.0" y="147.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">Close the loop — re-dry</text>
+<text x="570.0" y="163.96" font-size="11" fill="#26303a" text-anchor="middle">through the desiccant (X8)</text>
+<text x="570.0" y="179.96" font-size="11" fill="#26303a" text-anchor="middle">solid: design intent · liquid: option</text>
+<rect x="800" y="118" width="250" height="84" rx="7" fill="#e9f6ee" stroke="#2e7d4f" stroke-width="1.4"/>
+<text x="925.0" y="147.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">Water-neutral M-cycle</text>
+<text x="925.0" y="163.96" font-size="11" fill="#26303a" text-anchor="middle">in every ambient ·</text>
+<text x="925.0" y="179.96" font-size="11" fill="#26303a" text-anchor="middle">sealed envelope (storm/salt)</text>
+<rect x="40" y="232" width="300" height="84" rx="7" fill="#fdf3e2" stroke="#b07a1e" stroke-width="1.4"/>
+<text x="190.0" y="261.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">Air-swept regen exhaust</text>
+<text x="190.0" y="277.96" font-size="11" fill="#26303a" text-anchor="middle">(degraded mode) ~98 g/kg</text>
+<text x="190.0" y="293.96" font-size="11" fill="#26303a" text-anchor="middle">dew point 53 °C — rains salt</text>
+<rect x="420" y="232" width="300" height="84" rx="7" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.4"/>
+<text x="570.0" y="261.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">Raw-water condenser</text>
+<text x="570.0" y="277.96" font-size="11" fill="#26303a" text-anchor="middle">DHW-preheat first stage ·</text>
+<text x="570.0" y="293.96" font-size="11" fill="#26303a" text-anchor="middle">recovers ~64 g/kg at 34 °C approach</text>
+<rect x="800" y="232" width="250" height="84" rx="7" fill="#fdecec" stroke="#b03a3a" stroke-width="1.4"/>
+<text x="925.0" y="261.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">Technical-grade water</text>
+<text x="925.0" y="277.96" font-size="11" fill="#26303a" text-anchor="middle">PENDING TDS assay —</text>
+<text x="925.0" y="293.96" font-size="11" fill="#26303a" text-anchor="middle">never potable / M-cycle feed</text>
+<rect x="40" y="346" width="300" height="84" rx="7" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.4"/>
+<text x="190.0" y="375.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">ERV room exhaust</text>
+<text x="190.0" y="391.96" font-size="11" fill="#26303a" text-anchor="middle">re-humidified ~20–21 g/kg</text>
+<text x="190.0" y="407.96" font-size="11" fill="#26303a" text-anchor="middle">near-saturated BY DESIGN</text>
+<rect x="420" y="346" width="300" height="84" rx="7" fill="#f6f6f2" stroke="#8a8a80" stroke-width="1.4"/>
+<text x="570.0" y="375.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">Discharge un-recaptured</text>
+<text x="570.0" y="391.96" font-size="11" fill="#26303a" text-anchor="middle">the ERV is already the</text>
+<text x="570.0" y="407.96" font-size="11" fill="#26303a" text-anchor="middle">recovery device (rule 2)</text>
+<rect x="800" y="346" width="250" height="84" rx="7" fill="#f6f6f2" stroke="#8a8a80" stroke-width="1.4"/>
+<text x="925.0" y="375.96" font-size="12" fill="#1a232c" text-anchor="middle" font-weight="bold">Overboard / outdoors</text>
+<text x="925.0" y="391.96" font-size="11" fill="#26303a" text-anchor="middle">recapturing it would re-import</text>
+<text x="925.0" y="407.96" font-size="11" fill="#26303a" text-anchor="middle">the load just rejected (rule 1)</text>
+<path d="M340,160.0 L420,160.0" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M720,160.0 L800,160.0" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M340,274.0 L420,274.0" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M720,274.0 L800,274.0" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M340,388.0 L420,388.0" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<path d="M720,388.0 L800,388.0" fill="none" stroke="#46525e" stroke-width="1.7" marker-end="url(#arr)"/>
+<rect x="40" y="462" width="490" height="132" rx="7" fill="#f6f6f2" stroke="#8a8a80" stroke-width="1.4"/>
+<text x="54" y="495.96" font-size="12" fill="#1a232c" text-anchor="start" font-weight="bold">The doctrine in three rules</text>
+<text x="54" y="513.96" font-size="11" fill="#26303a" text-anchor="start">1 · No double duty — rejection sink OR recovery source</text>
+<text x="54" y="531.96" font-size="11" fill="#26303a" text-anchor="start">2 · The ducted room exhaust is reserved as the ERV sink</text>
+<text x="54" y="549.96" font-size="11" fill="#26303a" text-anchor="start">3 · Saturated process exhausts end in distillation recovery</text>
+<text x="54" y="567.96" font-size="11" fill="#26303a" text-anchor="start">     when marginal regeneration heat is available</text>
+<rect x="560" y="462" width="490" height="132" rx="7" fill="#fdf3e2" stroke="#b07a1e" stroke-width="1.4"/>
+<text x="574" y="495.96" font-size="12" fill="#1a232c" text-anchor="start" font-weight="bold">Heat-recapture order (rule 4)</text>
+<text x="574" y="513.96" font-size="11" fill="#26303a" text-anchor="start">1 · DHW tank first — demand-capped ~1–3 kWh/day</text>
+<text x="574" y="531.96" font-size="11" fill="#26303a" text-anchor="start">2 · bed-to-bed / brine-to-brine recuperation</text>
+<text x="574" y="549.96" font-size="11" fill="#26303a" text-anchor="start">3 · raw-water sink last — adsorption heat sits only a few</text>
+<text x="574" y="567.96" font-size="11" fill="#26303a" text-anchor="start">     kelvin above the sink: reject it, don't chase it</text>
+<text x="30" y="624" font-size="11" fill="#5a646e" text-anchor="start">The sealed still is the doctrine's logical endpoint: full duty leaves as distillate with no air stream, no demister, no salty exhaust (doc 11 §4).</text>
+</svg>

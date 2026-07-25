@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="560" viewBox="0 0 1000 560" font-family="DejaVu Sans, Verdana, sans-serif">
+<title>DP-A volume-threshold ladder, liquid track</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#46525e"/></marker><marker id="arrd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a94a0"/></marker></defs>
+<rect x="0" y="0" width="1000" height="560" fill="#ffffff"/>
+<text x="30" y="32" font-size="17" fill="#26303a" text-anchor="start" font-weight="bold">Volume-threshold ladder at DP-A — liquid track service classes</text>
+<text x="30" y="52" font-size="12" fill="#5a646e" text-anchor="start">doc 00 §6 · serviceable occupied/unattended volume per mode (solid track is full-AC class at ~100 m³)</text>
+<line x1="300.0" y1="106" x2="300.0" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="300.0" y="476" font-size="11" fill="#5a646e" text-anchor="middle">1</text>
+<line x1="365.2" y1="106" x2="365.2" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="365.2231657271959" y="476" font-size="11" fill="#5a646e" text-anchor="middle">2</text>
+<line x1="451.4" y1="106" x2="451.4" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="451.44350093947077" y="476" font-size="11" fill="#5a646e" text-anchor="middle">5</text>
+<line x1="516.7" y1="106" x2="516.7" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="516.6666666666666" y="476" font-size="11" fill="#5a646e" text-anchor="middle">10</text>
+<line x1="581.9" y1="106" x2="581.9" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="581.8898323938627" y="476" font-size="11" fill="#5a646e" text-anchor="middle">20</text>
+<line x1="668.1" y1="106" x2="668.1" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="668.1101676061373" y="476" font-size="11" fill="#5a646e" text-anchor="middle">50</text>
+<line x1="733.3" y1="106" x2="733.3" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="733.3333333333333" y="476" font-size="11" fill="#5a646e" text-anchor="middle">100</text>
+<line x1="798.6" y1="106" x2="798.6" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="798.5564990605293" y="476" font-size="11" fill="#5a646e" text-anchor="middle">200</text>
+<line x1="884.8" y1="106" x2="884.8" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="884.7768342728041" y="476" font-size="11" fill="#5a646e" text-anchor="middle">500</text>
+<line x1="950.0" y1="106" x2="950.0" y2="456" stroke="#e2e6ea" stroke-width="1"/>
+<text x="950.0" y="476" font-size="11" fill="#5a646e" text-anchor="middle">1,000</text>
+<text x="625.0" y="500" font-size="12" fill="#26303a" text-anchor="middle">conditioned volume (m³, log scale)</text>
+<line x1="733.3" y1="106" x2="733.3" y2="456" stroke="#b07a1e" stroke-width="1.6" stroke-dasharray="6,4"/>
+<text x="733.3333333333333" y="98" font-size="11" fill="#b07a1e" text-anchor="middle" font-weight="bold">~100 m³ reference envelope</text>
+<text x="288" y="134" font-size="12" fill="#26303a" text-anchor="end" font-weight="bold">Berth cascade M-cycle (per outlet)</text>
+<text x="288" y="150" font-size="11" fill="#5a646e" text-anchor="end">dew point of working air</text>
+<rect x="365.2" y="127" width="86.2" height="22" rx="5" fill="#e9f6ee" stroke="#2e7d4f" stroke-width="1.6"/>
+<text x="359.2231657271959" y="142" font-size="11" fill="#2e7d4f" text-anchor="end" font-weight="bold">2</text>
+<text x="457.44350093947077" y="142" font-size="11" fill="#2e7d4f" text-anchor="start" font-weight="bold">5</text>
+<text x="288" y="190" font-size="12" fill="#26303a" text-anchor="end" font-weight="bold">Unattended · holds 13 g/kg</text>
+<text x="288" y="206" font-size="11" fill="#5a646e" text-anchor="end">1 contactor vs 0.1 ACH (×2 per contactor)</text>
+<line x1="723.4" y1="182" x2="723.4" y2="206" stroke="#3a5f85" stroke-width="4.5"/>
+<text x="715.4192103785203" y="198" font-size="11" fill="#3a5f85" text-anchor="end" font-weight="bold">~90 m³</text>
+<text x="288" y="246" font-size="12" fill="#26303a" text-anchor="end" font-weight="bold">Once-through occupied</text>
+<text x="288" y="262" font-size="11" fill="#5a646e" text-anchor="end">supply ≥ 2–3× infiltration</text>
+<rect x="742.3" y="239" width="73.4" height="22" rx="5" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.6"/>
+<text x="736.3017484509487" y="254" font-size="11" fill="#3a5f85" text-anchor="end" font-weight="bold">110</text>
+<text x="821.7124357041813" y="254" font-size="11" fill="#3a5f85" text-anchor="start" font-weight="bold">240</text>
+<text x="288" y="302" font-size="12" fill="#26303a" text-anchor="end" font-weight="bold">Unattended · mold-safe 60–65% RH</text>
+<text x="288" y="318" font-size="11" fill="#5a646e" text-anchor="end">1 contactor · capacity vs 0.1 ACH</text>
+<rect x="777.6" y="295" width="27.8" height="22" rx="5" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.6"/>
+<text x="771.5593295754504" y="310" font-size="11" fill="#3a5f85" text-anchor="end" font-weight="bold">160</text>
+<text x="811.3616663150478" y="310" font-size="11" fill="#3a5f85" text-anchor="start" font-weight="bold">215</text>
+<text x="288" y="358" font-size="12" fill="#26303a" text-anchor="end" font-weight="bold">Mixed-mode occupied — BASELINE</text>
+<text x="288" y="374" font-size="11" fill="#5a646e" text-anchor="end">3-cell bank · capacity + heat budget (X6)</text>
+<rect x="836.7" y="351" width="48.1" height="22" rx="5" fill="#f5eefb" stroke="#7a4fa3" stroke-width="1.6"/>
+<text x="830.7096051892602" y="366" font-size="11" fill="#7a4fa3" text-anchor="end" font-weight="bold">300</text>
+<text x="890.7768342728041" y="366" font-size="11" fill="#7a4fa3" text-anchor="start" font-weight="bold">500</text>
+<text x="288" y="414" font-size="12" fill="#26303a" text-anchor="end" font-weight="bold">Whole-cabin AC (deferred, X1)</text>
+<text x="288" y="430" font-size="11" fill="#5a646e" text-anchor="end">→ solid-track class: ~10.6 kg/h · ~11 kW</text>
+<line x1="733.3" y1="406" x2="733.3" y2="430" stroke="#26303a" stroke-width="4.5" stroke-dasharray="4,3"/>
+<text x="725.3333333333333" y="422" font-size="11" fill="#26303a" text-anchor="end" font-weight="bold">~100 m³</text>
+<text x="30" y="512" font-size="11" fill="#5a646e" text-anchor="start">All rows at DP-A (32 °C / 80% RH), sizing-grade. Milder ambients widen every band monotonically; excursions above DP-A</text>
+<text x="30" y="528" font-size="11" fill="#5a646e" text-anchor="start">are transient (moisture-battery draw-down, setpoint relaxation, boost), never a sizing case.</text>
+</svg>

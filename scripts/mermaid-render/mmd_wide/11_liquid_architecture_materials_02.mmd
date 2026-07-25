@@ -1,0 +1,18 @@
+stateDiagram-v2
+    direction LR
+    [*] --> Mixed
+    Mixed: MIXED-MODE (occupied baseline) - fresh min + recirc + ERV + CO2 bed
+    Once: ONCE-THROUGH - unattended / mothball / low occupancy
+    Flooded: FLOODED (storm, marine) - +20-40 W, pool-class tilt
+    Battery: RESERVE ONLY - absorb from concentrate, no regen
+    Degraded: DEGRADED REGEN - PVC tray 60 C / air-swept + condenser
+    Columns: COLUMN ANNEX - sustained heel underway
+    Mixed --> Flooded: forecast / roll alarm
+    Flooded --> Mixed: conditions ease
+    Mixed --> Battery: heat outage (moisture + CO2 beds carry the night)
+    Battery --> Mixed: heat returns
+    Mixed --> Degraded: CPVC/PP loss, PVC stock only
+    Degraded --> Mixed: proper vessel restored
+    Mixed --> Columns: vessel option
+    Mixed --> Once: crew leaves / 1-2 occupants
+    Once --> Mixed: full occupancy

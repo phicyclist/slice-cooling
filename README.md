@@ -1,5 +1,7 @@
 # Heat-Driven Comfort & Water — Land and Marine
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21544099.svg)](https://doi.org/10.5281/zenodo.21544099)
+
 ### Two desiccant tracks, one physics, one platform
 
 **Sun or waste heat in — dry cool air, safe air quality, hot water, and drinking
@@ -114,7 +116,9 @@ design.
 > the authors for any subject matter disclosed herein, and the authors intend
 > this dated public record to preclude the patenting of the disclosed subject
 > matter by any party. First published: 2026-07-25. Archived with DOI:
-> [concept DOI — insert after Zenodo deposit].
+> [10.5281/zenodo.21544100](https://doi.org/10.5281/zenodo.21544100) (version DOI, 
+> this exact record) · concept DOI 
+> [10.5281/zenodo.21544099](https://doi.org/10.5281/zenodo.21544099) (all versions).
 
 Licensing: hardware CERN-OHL-P v2 · documentation & diagrams CC-BY-4.0 ·
 scripts MIT — see `LICENSE.md` for the scope map.

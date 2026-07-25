@@ -9,7 +9,7 @@ authors:
 date-released: "2026-07-25"
 version: "v1.0"
 license: CC-BY-4.0
-doi: "10.5281/zenodo.XXXXXXX"   # replace with the CONCEPT DOI after the Zenodo deposit
+doi: "10.5281/zenodo.21544099"   # replace with the CONCEPT DOI after the Zenodo deposit
 repository-code: "https://github.com/phicyclist/slice-cooling"
 keywords:
   - liquid desiccant air conditioning

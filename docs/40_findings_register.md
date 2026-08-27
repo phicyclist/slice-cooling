@@ -1,6 +1,6 @@
 # 40 — Findings Register, Risks & Task List
 
-### v1.3 — the honest state of the program, both tracks
+### v1.4 — the honest state of the program, both tracks
 
 **Function:** The consolidated register of every finding that materially changed
 the numbers or the architecture — solid-track F1–F5 and cross-track X1–X12 — plus
@@ -86,7 +86,7 @@ Full register: doc 00 §8.
 
 ```mermaid
 flowchart TB
-    subgraph LIQ["Liquid track (~$485–755 gates everything)"]
+    subgraph LIQ["Liquid track (bench-cheap — costs in doc 12 §4)"]
         TA["A jar equilibrium"] --> TI["I film cell — THE GATE"]
         TB2["B aerosol drift (also arbitrates X3)"] --> TI
         TE["E ERV core (heat budget)"] -.-> LBUILD
@@ -149,6 +149,18 @@ recorded rejected (doc 31 §1).
       where §2 specifies 0.18 kg/m² planform (one-side vs two-side convention
       unstated). Settled empirically by M1 on a known geometry; size from 0.18
       until then (doc 22 §4)
+- [ ] **CO₂-battery duty basis** — the ~1.6 kg/day figure is a 16 h/8 h daily
+      average; the all-awake peak at the 48 m³/h floor is ~2.05 kg/day, and the
+      published 91 m³/h at 50% capture independently implies ~2.16 kg/day. P17
+      is an at-all-times spec, so bed mass and regen heat want the peak (test J)
+- [ ] **One envelope-leakage assumption for both tracks** — liquid sizes on
+      280 g/h (occupants only), solid on 1.8–2.8 kg/h (envelope + occupant),
+      implying ~0.95 ACH where doc 12 §3 uses 0.05–0.15 for the unattended case.
+      Bounded: duty moves 8.8→10.3 kg/h across that range, so F1 holds either way
+- [ ] **Contactor rating stated with its approach and flow** — the 0.4–0.8 kg/h
+      rating reproduces at the ~0.19 m/s DP-A baseline, not at the stated
+      0.6–1.0 m/s band; the NTU-1.9/85% approach used for depth does not hold at
+      the higher velocity (test I)
 - [ ] **Real ε_lat behind the ERV'd duty line** — doc 10 §3 and doc 12 §1 carry
       17.4 and 15.9 g/kg for the same pre-dried state, i.e. ε ≈ 0.65 vs the
       specified ≥0.8; the published ERV'd removal tracks 17.4. Settled by test E
@@ -186,6 +198,10 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   upgrade-path family added to the deferred notes with tests L/A3 pointers
   and the prime-mover heat-pump rejection; X-range extended in the function
   statement.
+- **v1.4** — Dependency-chart label follows doc 12 v1.4 in dropping the retired
+  aggregate cost headline; four verification findings added to §4 (CO₂-battery
+  duty basis, the X2 crossover, the cross-track latent-gains basis, and the
+  contactor rating/velocity/approach triangle).
 - **v1.3** — First parameter-register reconciliation pass (doc 50 §3.5): two open
   items added to the make-or-break list — the doc 22 coated-area denominator
   (gated on M1) and the ε_lat inconsistency behind the ERV'd duty line (gated on

@@ -16,8 +16,8 @@ raw-water sink ~29 °C** — the continuous-duty maximum for every mode. Milder
 ambients are margin; excursions above DP-A are handled transiently, never by
 sizing.
 
-**Status:** paper designs. Liquid track gated by a few hundred dollars of bench tests
-(the ~$485–755 headline is under reconciliation — doc 12 §4 budget note);
+**Status:** paper designs. Liquid track gated by bench tests costing of order a few
+hundred dollars (per-test estimates in doc 12 §4);
 solid track by the T1/T2/M1–M4 program. Nothing built. Every quantitative claim
 carries a confidence grade (doc 00 §9).
 
@@ -127,6 +127,14 @@ design.
   labels aligned with their layout override, caught by the new gate) and the executive
   summary → v1.1 (provenance restated to docs 00–50). `CITATION.cff`, `.zenodo.json`,
   `LICENSE.md` and this file's lineage table brought back into sync.
+- **v1.2.2** — Independent verification pass: 29 of 31 published figures re-derived
+  from first principles reproduce within tolerance. Four findings recorded (doc 40
+  v1.4, register `Checks` sheet) — the CO₂-battery duty basis (average vs
+  at-all-times peak, the one with a safety-spec consequence), the X2 crossover
+  temperature as a function of brine concentration, the cross-track latent-gains
+  basis, and the contactor rating/velocity/approach triangle. The aggregate
+  bench-cost headline is retired (doc 12 v1.4); per-test estimates stay, scoped as
+  2026 order-of-magnitude figures. No design figure changed.
 
 ---
 

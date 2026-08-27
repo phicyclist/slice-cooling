@@ -1,6 +1,6 @@
 # 12 — Liquid Track: Validated Numbers, Errata, and the Gating Test Plan
 
-### v1.3 — the quantitative record at DP-A
+### v1.4 — the quantitative record at DP-A
 
 Two independent first-principles validation passes plus a cross-track resolution
 pass were run. Everything below is the surviving, corrected set — with the error
@@ -91,7 +91,7 @@ trail kept deliberately visible.
 | Drift-eliminator + demister effectiveness | unquantified for brine | gates cabin connection (test B) |
 | Fan/pump efficiencies | factor ~2 at small scale | measure real amps |
 
-## 4. Test plan — cheapest decisive experiment first (~$485–755 gates everything)
+## 4. Test plan — cheapest decisive experiment first
 
 | Test | Cost | Decides |
 |---|---|---|
@@ -110,14 +110,17 @@ trail kept deliberately visible.
 | F — endurance (months, passive) | ~$0 | Locker/closet-dryer duty: salt creep, fouling, crystallization events, ΔP trend |
 | C — bubble column (optional) | ~$150 | Only if the annex is ordered; sparger DWP shootout |
 
-**Budget note (open).** The `~$485–755` headline in this section's title covers the
-original baseline gating set and predates the platform-conditional entries added since
-(A2, A3, C, J-K, L), which join only when their trigger exists. It does not decompose
-cleanly from the current table — the in-baseline rows above now sum to roughly
-$565–885. The headline is left standing rather than quietly restated; reconcile it
-against the live sum in the parameter register (doc 50 §3.5) and either scope it
-explicitly or supersede it at the next release. The ranking it expresses — that the
-decisive experiments are bench-cheap — is unaffected either way.
+**On cost figures.** The per-test estimates above are kept because they carry the
+argument that matters — these are jar-and-coupon experiments, not instrumented
+lab campaigns — and because they let a reader sequence the program by cost. A
+single aggregate headline has been **retired**: the former `~$485–755` did not
+decompose from this table, its span implied a costing exercise that was never
+done, and a currency-and-date-specific total is the first thing to rot in a
+record meant to be read decades from now. Read the column as **2026 order-of-
+magnitude, one currency, one region**. The claim the program actually rests on
+is scale, not precision: **the decisive liquid-track experiments together cost
+of order a few hundred dollars**, and test A alone — the one that moves the
+largest single unknown — is about $30.
 
 ```mermaid
 flowchart TD
@@ -209,6 +212,9 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
 - **v1.2** — Upgrade-path tests L (AHT hot-film absorption, X12) and A3
   (crystallizer jar extension) added to §4 as platform-conditional entries
   outside the baseline gating budget; doc 31 watch items added to §6.
+- **v1.4** — Aggregate cost headline retired from the §4 title (it did not
+  decompose from the table and dates badly in a prior-art record); per-test
+  estimates retained and explicitly scoped as 2026 order-of-magnitude figures.
 - **v1.3** — Clarifying pass from the parameter register (doc 50 §3.5), no design
   figure changed: §1's absorber-flow row restated as one quantity in two units
   (~123 m³/h ≈ 147 kg/h) rather than a range, and the COP behind the 0.92 kW peak

@@ -30,7 +30,7 @@ from openpyxl.formatting.rule import CellIsRule, FormulaRule
 from openpyxl.workbook.defined_name import DefinedName
 
 REV = "1.1"
-DOCSET = "lineage v1.2 (docs 00 v1.2 · 10 v1.1 · 11 v1.1 · 12 v1.3 · 20 v1.1 · 21 v1.0 · 22 v1.1 · 30 v1.2 · 31 v1.0 · 40 v1.3 · 50 v1.2)"
+DOCSET = "lineage v1.2 (docs 00 v1.2 · 10 v1.1 · 11 v1.1 · 12 v1.4 · 20 v1.1 · 21 v1.0 · 22 v1.1 · 30 v1.2 · 31 v1.0 · 40 v1.4 · 50 v1.2)"
 REPO = "github.com/phicyclist/slice-cooling"
 CONCEPT_DOI = "10.5281/zenodo.21544099"
 VERSION_DOI = "10.5281/zenodo.21544100"
@@ -566,7 +566,7 @@ CHECKS = [
   "Low — presentational","RESOLVED v1.1 — doc 10 §3 now names the flow"),
  ("CHK-005","Budget arithmetic","README; 12 §4","The '~$485–755 gates everything' headline does not decompose from the doc 12 §4 cost column",
   "The plausible baseline set {A,B,D,E,F,G,H,I,J} sums to $565–885; dropping J gives $415–585. No subset reproduces 485–755 exactly (the range span, 270, matches no combination of the listed spans)",
-  "Medium — traceability","OPEN — doc 12 §4 carries a budget note; reconcile or supersede at the next release"),
+  "Medium — traceability","RESOLVED v1.4 — the aggregate headline is retired; per-test estimates retained and scoped as 2026 order-of-magnitude figures (doc 12 §4)"),
  ("CHK-006","Model reproduction","00 §4; 20 §5","Independent re-solve of the doc 00 §4 steady state",
   "Reproduces the published band on both topologies (see the Model 00§4 sheet): cabin-draw gives T_sup 18.2 °C, S 0.508 kg/s, ω_cab 9.09 g/kg, M 0.142 kg/s, duty 9.8 kg/h; dry-draw gives T_sup 16.8 °C, S 0.425 kg/s, duty 9.6 kg/h. Both sit inside the published 9–11 kg/h, and regeneration heat lands at 8.2 / 8.3 kW against the published 7.5–9 kW",
   "Informational — model confirmed","The published supply-temperature band 16.8–18.1 °C is exactly the span between the two topologies, which is worth stating explicitly in doc 20 §5"),
@@ -597,19 +597,31 @@ CHECKS = [
  ("CHK-015","Basis mismatch","20 §3","Heat-recovery fraction quoted two ways in one sentence",
   "'Only ~10–15% is recoverable as useful energy' sits beside 'capped by DHW demand (~1–3 kWh/day against 35+ kWh/day liberated)'. The DHW cap is ~3–8% of 35 kWh/day, and only ~1% of the ~200 kWh/day of regeneration input the corrected F1 duty actually implies. The 35 kWh/day figure also predates the F1 correction",
   "Low — no design consequence","RESOLVED v1.1 — doc 20 §3 restated against the corrected F1 duty"),
+ ("CHK-016","Sizing basis","00 §5","CO₂-battery duty of ~1.6 kg/day is a daily average, not the peak",
+  "Steady-state balance at the 48 m³/h floor: crew 3.42 kg/day all-awake, ventilation removes 1.37 kg/day at 1,000 ppm, so the bed must take 2.05 kg/day — 28% above the published 1.6. The 1.6 figure reproduces only on a 16 h awake / 8 h asleep average. The doc's own 91 m³/h at 50% single-pass capture independently implies 2.16 kg/day, agreeing with the peak rather than with 1.6",
+  "HIGH — safety-critical spec","OPEN — P17 requires <1,000 ppm AT ALL TIMES, so bed mass and regeneration heat should be sized on the all-awake peak: restate as ~2.05 kg/day peak (1.6 average), scale the bed ~28%, and have test J measure working capacity at the peak rate"),
+ ("CHK-017","Stated threshold","00 §3","X2's '~40 °C' still-crossover is the dilute-end figure only",
+  "aw·Psat(T_pool) > Psat(29 °C) gives a crossover of 39.8 °C at aw 0.55 (35 wt%, where regeneration starts), 43.6 °C at aw 0.45 (40 wt%), and 49.1 °C at aw 0.34 (43–44 wt% hot-regen). The single '~40 °C' figure holds only at the start of the concentration swing",
+  "Low — no design consequence","OPEN — the design pool is 60–93 °C, far above all three, so X2's conclusion is untouched. State the crossover as a function of target concentration, since it sets the minimum useful pool temperature in degraded mode"),
+ ("CHK-018","Cross-track basis","12 §1 vs 20 §1","The two tracks assume latent gains differing ~7× for the same platform",
+  "Liquid uses 280 g/h (4 × 70 g/h occupants only); solid uses 1.8–2.8 kg/h 'envelope + occupant'. The 1.72 kg/h non-occupant remainder implies ~0.95 ACH on the solid cabin (~1.37 ACH on the liquid one), against the 0.05–0.15 ACH doc 12 §3 uses for the unattended liquid case and the 0.48 ACH mechanical ventilation floor. Neither track states an ACH",
+  "Medium — traceability","OPEN — bounded, not architecture-breaking: re-solving doc 00 §4 across gains of 0.64–2.8 kg/h moves duty only 8.8→10.3 kg/h, so F1 and the 9–11 kg/h band both survive. State one envelope-leakage assumption in doc 00 and let both tracks inherit it"),
+ ("CHK-019","Internal consistency","11 §2","Cell rating, face-velocity band and NTU approach share no operating point",
+  "A 600×300×150 mm cell has a ~0.09 m² face. At the DP-A baseline (123 m³/h over a 2-cell bank) face velocity is ~0.19 m/s — well under the stated 0.6–1.0 m/s — while the 0.4–0.8 kg/h rating reproduces exactly at that baseline. At 0.6 m/s the same cell passes ~194 m³/h and, at the NTU-1.9 / 85% approach used to size contactor depth, would remove ~2.9 kg/h, far above its own rating",
+  "Medium — gated by test I","OPEN — reconcilable only at an approach efficiency that falls with face velocity, which is never stated. Test I already measures exactly this (outlet RH vs irrigation and face velocity, staged NTU/m). Publish the rating with its approach and flow, not as a bare kg/h"),
 ]
 
 DOCS = [
  ("00_platform_basis.md","v1.2","Scope, DP-A, shared physics, airflow–moisture model, CO₂ stack, X8 doctrine, safety register"),
  ("10_liquid_concept_physics.md","v1.1","Brine principle, mixed-mode baseline, moisture battery, berth cascade, performance envelope"),
  ("11_liquid_architecture_materials.md","v1.1","Two-worlds law, film-cell bank, aerosol control, sealed still, ERV/CO₂ hardware, thermal bus"),
- ("12_liquid_numbers_test_plan.md","v1.3","Validated quantities at DP-A, errata trail, sensitivities, tests A–L, rejected CO₂ alternatives"),
+ ("12_liquid_numbers_test_plan.md","v1.4","Validated quantities at DP-A, errata trail, sensitivities, tests A–L, rejected CO₂ alternatives"),
  ("20_solid_concept_system.md","v1.1","Architecture, corrected F1 balance, regeneration-vs-purge physics, X8 closed loop, energy verdicts"),
  ("21_solid_sorbent_synthesis.md","v1.0","Isotherm-step selection, candidates, aqueous + LAG routes, F4 branch, QC gates"),
  ("22_solid_module_validation.md","v1.1","DCHX design, coating rules, F5 mitigations, bench rig, M1–M4, staged pipeline"),
  ("30_integration_energy_water.md","v1.2","Heat cascade, HDH, source roles, all-electric galley, water ladder, degraded operation"),
  ("31_upgrade_paths_sorption_cycles.md","v1.0","X12 AHT, coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer"),
- ("40_findings_register.md","v1.3","F1–F5, X1–X12, spec P17, tasks, make-or-break bench list"),
+ ("40_findings_register.md","v1.4","F1–F5, X1–X12, spec P17, tasks, make-or-break bench list"),
  ("50_defensive_disclosure_plan.md","v1.2","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
  ("executive_summary.md","v1.1","Standalone abstract for examiner-channel deposit"),
 ]
@@ -1851,8 +1863,10 @@ def sheet_tests(wb):
     put(ws, 3, 4, f'=SUMIF($G${first}:$G${last},"yes",D{first}:D{last})', "s_calc", "$#,##0")
     put(ws, 3, 5, f'=SUMIF($G${first}:$G${last},"yes",E{first}:E{last})', "s_calc", "$#,##0")
     put(ws, 3, 6, "USD", "s_txt")
-    put(ws, 3, 8, "The README quotes '~$485–755 gates everything'. This live sum covers the tests "
-                  "flagged in-baseline above; see Checks CHK-005 on the decomposition.", "s_note")
+    put(ws, 3, 8, "Live sum of the tests flagged in-baseline above. The former '~$485–755' "
+                  "aggregate headline was retired in doc 12 v1.4 — it did not decompose from the "
+                  "table and a currency-and-date-specific total dates badly in a prior-art record. "
+                  "Read every cost here as 2026 order-of-magnitude, one currency, one region.", "s_note")
     ws.merge_cells(start_row=3, start_column=8, end_row=3, end_column=9)
     put(ws, 4, 1, "All listed tests", "s_lbl")
     put(ws, 4, 4, f"=SUM(D{first}:D{last})", "s_calc", "$#,##0")

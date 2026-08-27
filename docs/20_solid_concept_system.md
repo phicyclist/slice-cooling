@@ -1,6 +1,6 @@
 # 20 — Solid Track: System Concept, Physics, and the Corrected Balance
 
-### v1.0 — full air conditioning from a coated-sorbent thermal swing
+### v1.1 — full air conditioning from a coated-sorbent thermal swing
 
 **Function:** Deliver genuine comfort (cooling **and** dehumidification) plus
 byproduct freshwater and hot water at DP-A, from a solid-desiccant front end
@@ -54,7 +54,7 @@ flowchart TB
         IC["Sink intercool<br/>sensible only, toward ~31 °C"]
         MC["M-cycle IEC on dry air<br/>product gains no humidity"]
         SUP["Supply ~17-18 °C, low RH"]
-        CAB["Cabin ~25 °C · ~9 g/kg · ~40% RH<br/>CO₂ per doc 00 §5 spec"]
+        CAB["Cabin ~25 °C · ~9 g/kg · ~46% RH<br/>CO₂ per doc 00 §5 spec"]
         MIXN --> DES --> IC --> MC --> SUP --> CAB --> MIXN
     end
     subgraph WORK["Working-air loop (X8 closed)"]
@@ -86,7 +86,7 @@ flowchart TB
 | 1 Post-desiccant | ~50–55 | ~8 | adsorption heat partly removed by sink fluid |
 | 2 Post-intercool | ~30–32 | ~8 | sensible only, to raw water |
 | 3 M-cycle product (supply) | ~16.8–18 | ~8 | ε_dp ~0.7 toward ~10.8 °C dew point |
-| 4 Cabin | ~25 | ~9.1 | ~40% RH — steady state, gains ÷ supply flow |
+| 4 Cabin | ~25 | ~9.1 | ~46% RH — steady state, gains ÷ supply flow |
 | W Working exhaust (recycled) | ~29 | saturated 25.6 | re-dried and returned; never vented in X8 mode |
 
 Without the desiccant the same M-cycle supplies ~31 °C air — the difference
@@ -104,10 +104,13 @@ heat regardless of what held it.
 | Sensible bed cycling | +0.03–0.10 kWh/L | thin coatings minimize; partly recoverable bed-to-bed |
 | **Total** | **~0.8–1.0 kWh/L** | latent floor is 70–85% |
 
-Of the input, only ~10–15% is recoverable as useful energy: condenser latent is
-downhill and capped by DHW demand (~1–3 kWh/day against 35+ kWh/day liberated —
-most is rejected to the sink); only the sensible bed-to-bed clawback reduces
-input. Recapture order per doc 00 §7 rule 4.
+Of the input, only ~10–15% is recoverable **in principle**; what is recoverable *in
+practice* is far less, and the two figures are on different bases. Condenser latent is
+downhill and capped by DHW demand — ~1–3 kWh/day, which is only a few percent of the
+~200 kWh/day of regeneration input the corrected §5 duty implies (the 35+ kWh/day figure
+this sentence formerly compared against predates the F1 correction). Most of the heat is
+rejected to the sink, and **only the sensible bed-to-bed clawback actually reduces
+input.** Recapture order per doc 00 §7 rule 4.
 
 ## 4. Ten-minute cycling — the sensible-heat caveat
 
@@ -134,7 +137,7 @@ gains 2.0 kg/h, ε_dp 0.7):
 |---|---|---|
 | Supply airflow | ~0.43–0.51 kg/s (~1,350–1,590 m³/h) | topology-dependent (dry-draw vs cabin-draw) |
 | Supply temperature | 16.8–18.1 °C | working-air dew point |
-| Cabin steady state | **~9.1 g/kg / ~40% RH** | gains ÷ supply flow — drier than target, headroom exists |
+| Cabin steady state | **~9.1 g/kg / ~46% RH** | gains ÷ supply flow — drier than target, headroom exists. (Corrected from ~40%: 9.1 g/kg at 25 °C is 46% RH. Still inside the 40–55% band, so the headroom conclusion is unchanged) |
 | Working airflow | ~0.13–0.16 kg/s (400–500 m³/h) | Q_wet ÷ Δh |
 | **Total peak sorbent duty** | **~9–11 kg/h** | working term + fresh import + gains |
 | Regen heat, continuous | **~7.5–9 kW** | ~0.85 kWh/L × duty |
@@ -143,11 +146,17 @@ gains 2.0 kg/h, ε_dp 0.7):
 **Closure — why this is coherent:** the moisture pushed through the desiccant
 returns at the regeneration condenser as ~150–220 L/day of condensate, covering
 the M-cycle wet-channel feed with a **~50–70 L/day potable-grade surplus** (the
-gains + ventilation terms). The system resolves into a **heat-driven chiller that
-pumps cabin heat to the sink as vapor**, with water as the internal working
-medium. Comfort margin note: the cabin settles drier (~40% RH) than the target,
-so a warmer supply setpoint can trade comfort headroom back into duty — a T2
-optimization, with the steady-state model to run it in.
+gains + ventilation terms). Note the three quantities are distinct and only the
+middle one is the condensate: at 9–11 kg/h the desiccant passes **216–264 L/day
+desorbed**, of which ~150–220 L/day reaches the condenser train as **recovered**
+condensate and the balance **leaves with the ventilation exhaust**. Sizing the
+condenser off the desorbed figure rather than the recovered one is the safe error.
+
+The system resolves into a **heat-driven chiller that pumps cabin heat to the sink as
+vapor**, with water as the internal working medium. Comfort margin note: the cabin
+settles drier (~46% RH) than the 55% ceiling, so a warmer supply setpoint can trade
+comfort headroom back into duty — a T2 optimization, with the steady-state model to
+run it in.
 
 **Softening conditions:** milder ambient, warmer setpoint, or cabin >~31 °C
 (partial sink-side sensible rejection) all shrink the duty; DP-A is the
@@ -172,6 +181,12 @@ valid only for a *dry* purge:
 | 50 °C | ~29% | on the step — marginal |
 | 60 °C | ~17% | below — works |
 | 65 °C | ~13% | below — comfortable |
+
+The RH column above is computed at **~23 g/kg**, which is the condensing purge state
+this table was built on; the design basis is stated as ~25 g/kg and M2 is specified
+against a logged ~24 g/kg purge. The spread moves the 50 °C row between 29% (on the
+step) and 32% (above it) — i.e. exactly across the F2 boundary, which is why M2 logs
+the purge humidity rather than assuming it.
 
 Design basis: **60–65 °C** open-cycle regeneration, PENDING M2 for completeness
 and kinetics within the 10-min half-cycle. Contrast with the liquid track's
@@ -244,6 +259,13 @@ off-the-shelf benchmark and electrical backup.
 CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
 
 *Version history*
+- **v1.1** — Clarifying pass from the parameter register (doc 50 §3.5), no design
+  figure changed: cabin steady-state RH corrected from ~40% to ~46% (9.1 g/kg at
+  25 °C — arithmetic label only; still inside the 40–55% band and the headroom
+  conclusion stands); §5 closure now separates desorbed / recovered / exhausted
+  water, which were previously conflated; §3's recoverable-fraction sentence
+  restated against the corrected F1 duty; §6 records the purge humidity its RH
+  column was actually computed at.
 - **v1.0** — New lineage from archived 01: self-consistent §5 balance adopted
   (duty 9–11 kg/h, regen 7.5–9 kW, parasitic 0.6–1.0 kW); X8 closed working loop
   as design intent with the CO₂ correction; DP-A sole; land/marine per doc 00;

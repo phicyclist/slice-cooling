@@ -36,6 +36,7 @@ carries a confidence grade (doc 00 §9).
 | `30_integration_energy_water.md` | Heat cascade, HDH, source roles, all-electric galley, water redundancy ladder, degraded operation |
 | `31_upgrade_paths_sorption_cycles.md` | **Boost modes & upgrade paths (additions, never core):** the CaCl₂ absorption heat transformer (X12, primary — 60–65 °C tail → 85–90 °C at COP ~0.45–0.48), coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer pot; gates = tests L/A3 |
 | `40_findings_register.md` | **Read before trusting any sizing figure.** F1–F5, X1–X10, spec P17, tasks, make-or-break bench list |
+| `parameter_register.xlsx` | **The quantitative register.** Every published figure with its unit, confidence grade, gating test, derivation and source section, plus live sheets that re-derive the headline numbers from the design point (doc 50 §3.5). Generated, not hand-edited |
 | `diagrams/` | SVG set: mixed-mode air path · CO₂/ventilation trade-off · volume-threshold ladder · exhaust-recovery doctrine · CO₂ stack & battery |
 
 Archived predecessors (superseded, retained for the record): the two original
@@ -107,6 +108,15 @@ design.
 - **v1.1** — Doc 31 (upgrade paths: sorption cycles & heat pumps) added to the
   lineage; X12 recorded in doc 40 (v1.2); tests L and A3 registered in doc 12
   (v1.2) as platform-conditional entries outside the baseline gating budget.
+- **v1.2** — `docs/parameter_register.xlsx` added: the cross-document
+  quantitative register with live re-derivations of the headline numbers, plus
+  its generator in `scripts/` (MIT); doc 50 (v1.1) records it as machine-readable
+  enablement (§3.5) and makes release-time reconciliation of its `Checks` sheet a
+  publication gate. Its first reconciliation pass produced basis-labelling
+  clarifications across docs 00 (v1.2), 10 (v1.1), 12 (v1.3), 20 (v1.1) and 22
+  (v1.1) — **no design figure changed** — plus two recorded open items in doc 40
+  (v1.3): the coated-area denominator (gated on M1) and the ε_lat behind the ERV'd
+  duty line (doc 12 §2 erratum 10, gated on test E).
 
 ---
 

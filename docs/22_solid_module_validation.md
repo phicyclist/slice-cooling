@@ -1,6 +1,6 @@
 # 22 — Solid Track: DCHX Module & Bench Validation
 
-### v1.0 — coated-exchanger design, sizing, rig, and the M1–M4 measurement set
+### v1.1 — coated-exchanger design, sizing, rig, and the M1–M4 measurement set
 
 **Function:** Turn the doc 21 sorbent into a working thermal-swing module, and
 define the bench program that converts sizing-grade assumptions into measured
@@ -77,8 +77,18 @@ Baseline at 10-min half-cycles, two alternating modules, ~0.18 kg/m²:
 | **Self-consistent peak (doc 20 §5, PENDING T2)** | **~9–11 kg/h** | 0.2–0.3 g/g | ~3–5× the above | scales accordingly |
 | + F3 compounded (PENDING M2) | ~9–11 kg/h | effective ~0.15–0.2 g/g | +25–50% again | " |
 
+**Open item — the coated-area denominator.** The table above pairs ~3–4 kg of sorbent
+with ~10–13 m², which implies **~0.3 kg/m²**, while §2 specifies **~0.18 kg/m² planform**.
+At 0.18 kg/m² the same inventory needs ~19 m². The likely explanation is a
+one-side-versus-two-side convention — a plate coated on both faces carries ~0.36 kg per
+m² of *plate* — but the documents do not say which denominator the area column counts,
+and the ambiguity scales into every derived area figure. Left flagged rather than
+resolved on paper: **M1 measures coated-face capacity and pressure drop on a known
+geometry** and fixes the denominator empirically. Until then, size area from the stated
+0.18 kg/m² planform loading, which is the conservative reading.
+
 The correction path — faster cycling vs more coated area vs architecture revision
-(warmer supply setpoint uses the ~15-point RH comfort headroom; hybrid brine
+(warmer supply setpoint uses the comfort headroom to the 55% ceiling; hybrid brine
 pre-stage per doc 40 X-register) — is **open** and is exactly what the full T2
 model decides. Any independent rebuild should treat T2 as the first modeling
 task, before hardware; the doc 00 §4 steady state is the interim basis.
@@ -188,6 +198,11 @@ flowchart TB
 CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
 
 *Version history*
+- **v1.1** — Clarifying pass from the parameter register (doc 50 §3.5), no design
+  figure changed: §4 records the open coated-area denominator — the §4 sizing table
+  implies ~0.3 kg/m² where §2 specifies 0.18 kg/m² planform — flagged against M1
+  rather than reconciled on paper, with the conservative reading named; the comfort
+  headroom phrasing follows doc 20 v1.1's corrected 46% RH cabin state.
 - **v1.0** — New lineage from archived 03: F5 chloride-exposure section and
   imported materials law added (§3); ΔP measurement added to M1; salt-air edge
   behavior added to M4; sizing table restated to the self-consistent duty; X8

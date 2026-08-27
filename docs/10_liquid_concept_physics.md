@@ -1,6 +1,6 @@
 # 10 — Liquid Track: Concept and Physics
 
-### v1.0 — CaCl₂ brine dehumidification with mixed-mode ventilation
+### v1.1 — CaCl₂ brine dehumidification with mixed-mode ventilation
 
 **Function:** The low-energy, solar-grade comfort layer: hold a ~100 m³ occupied
 space at ~55% RH for four adults at DP-A on 25–80 W of electricity and ~9–11 kWh/day
@@ -93,12 +93,20 @@ converges to solid-track-class duty (~10.6 kg/h, ~11 kW heat; doc 00 §6).
 | CO₂ battery heat (doc 00 §5) | 1.6 kg/day × 1.0–1.3 kWh/kg | ~1.6–2.5 kWh/day |
 | Crystallization liquidus | CaCl₂ solubility curve | 40 wt% ≈ **12–13 °C**; 44 wt% ≈ 22 °C |
 
+**Open item (doc 12 §2, erratum 10):** the ERV pre-dried figure of 17.4 g/kg in the
+removal row above corresponds to ε_lat ≈ 0.65, while doc 12 §1 states 15.9 g/kg at the
+specified ε ≥0.8. The two are not reconcilable at one effectiveness, and the published
+ERV'd duty follows the 17.4 value. Left standing and flagged rather than silently
+corrected; **test E measures the real ε_lat and settles it.**
+
 Two facts dominate system character:
 
 - **Absorber cooling is required, not optional.** 0.66 kW enters the sump; the air
-  stream removes only ~35 W/K, so an uncooled contactor self-limits by warming
-  +5–8 K and doing less work (floor 12–14+ g/kg). ~300 L/h of raw water through a
-  titanium coil (5–15 W pump) holds the design floor.
+  stream removes only ~35 W/K **at the ~123 m³/h mixed-mode flow** (~16 W/K on the
+  48 m³/h fresh stream alone — always state which flow a W/K figure is on), so an
+  uncooled contactor self-limits by warming +5–8 K and doing less work (floor
+  12–14+ g/kg). ~300 L/h of raw water through a titanium coil (5–15 W pump) holds
+  the design floor.
 - **COP stops mattering when heat is generous.** With engine-jacket, waste, or
   oversized solar heat, the binding constraints become materials temperature
   ceilings, contactor area, and heat rejection — not energy. At 85–93 °C
@@ -157,6 +165,11 @@ Detailed air-path diagram: `diagrams/dpa-mixed-mode-airpath.svg`.
 CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
 
 *Version history*
+- **v1.1** — Clarifying pass from the parameter register (doc 50 §3.5), no design
+  figure changed: the §3 air-side W/K figure now names the flow it is taken on, since
+  doc 12 §1 quotes the same quantity on the fresh stream alone and the two differ ~2.5×;
+  the ε_lat inconsistency behind the 17.4 g/kg ERV figure recorded as an open item
+  against test E (doc 12 §2 erratum 10).
 - **v1.0** — New lineage from archived core-01: restated at DP-A (sole point);
   mixed-mode baseline (X6) and ERV (X7) integrated; berth cascade adopted and
   whole-cabin AC deferred (X1/X5); moisture battery resized; land/marine sink

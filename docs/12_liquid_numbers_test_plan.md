@@ -1,6 +1,6 @@
 # 12 — Liquid Track: Validated Numbers, Errata, and the Gating Test Plan
 
-### v1.2 — the quantitative record at DP-A
+### v1.3 — the quantitative record at DP-A
 
 Two independent first-principles validation passes plus a cross-track resolution
 pass were run. Everything below is the surviving, corrected set — with the error
@@ -18,9 +18,9 @@ trail kept deliberately visible.
 | Brine floor, hot-regen 43–44 wt% (aw 0.34) | **9.0 g/kg at 30 °C** (7.5 @27) | " |
 | Fresh-air floor (4 occupants) | **48 m³/h ≈ 58 kg/h** | 12 m³/h·person, CO₂-interlocked |
 | ERV pre-dry (ε 0.8) | fresh 24.2 → **15.9 g/kg** | ω_amb − ε(ω_amb − ω_cab) |
-| Mixed-mode total absorber flow | **~123–147 m³/h** | hold 13.8: gains 280 g/h ÷ (13.8 − 11.9) g/kg |
+| Mixed-mode total absorber flow | **~123 m³/h (≈147 kg/h)** | hold 13.8: gains 280 g/h ÷ (13.8 − 11.9) g/kg. One quantity in two units at ρ 1.2 (doc 00 §2), not a range |
 | **Peak removal, 4 adults mixed-mode** | **0.88 kg/h** (0.49 with ε 0.8 ERV... see note) | CV: fresh import + occupant/envelope gains. Bare-fresh 0.88; ERV'd steady removal ~0.5–0.6 |
-| **Peak regeneration heat** | **~0.92 kW bare / ~0.6 kW ERV'd** | removal × 2.44 MJ/kg ÷ COP 0.55–0.75 |
+| **Peak regeneration heat** | **~0.92 kW bare / ~0.6 kW ERV'd** | removal × 2.44 MJ/kg ÷ COP. The 0.92 kW figure is at **COP 0.65** — the with-recovery-HX value two rows down, not the 0.59 no-recovery build-up |
 | **Daily heat, occupied DP-A duty** | **17–20 kWh bare → ~9–11 kWh with ERV(ε 0.8) + DCV** | duty-scheduled |
 | CO₂-battery heat (doc 00 §5) | **~1.6–2.5 kWh/day** for 1.6 kg CO₂ | 1.0–1.3 kWh/kg incl. water co-adsorption + sensible |
 | COP build-up (no recovery HX) | **≈0.59** | latent 0.678 + brine sensible 0.184 + air sensible 0.131 kWh/kg, ×1.15 losses; recovery HX → ~0.65 |
@@ -64,6 +64,18 @@ trail kept deliberately visible.
 9. **The self-consistent steady state, not the hand chain, sizes the system** —
    cabin humidity, supply state, and duty must be solved together (doc 00 §4);
    hand-chained state tables drifted 15–30% on duty.
+10. **OPEN — the ERV effectiveness behind the ERV'd duty line.** Doc 10 §3 carries
+    an ERV pre-dried fresh state of 17.4 g/kg; §1 above carries 15.9 g/kg. Only
+    15.9 follows from the specified ε ≥0.8 (24.2 − 0.8 × 10.4); 17.4 implies
+    ε ≈ 0.65. The published ERV'd figures — 0.49 kg/h removal and ~0.6 kW — track
+    17.4, so they are effectively the ε 0.65 case wearing an ε 0.8 label; at a true
+    ε 0.8 the removal falls to ~0.40 kg/h. Both values are left standing and flagged
+    rather than reconciled on paper, because **test E measures the real ε_lat**
+    (and its salt-aerosol fouling trend) and will settle which case the design
+    actually operates in. Nothing downstream is load-bearing on the difference: the
+    bare-fresh 0.88 kg/h peak governs the sizing. *Lesson: an effectiveness quoted
+    beside a duty is a claim about both — check that the duty was computed at the
+    effectiveness printed next to it.*
 
 ## 3. Dominant sensitivities
 
@@ -97,6 +109,15 @@ trail kept deliberately visible.
 | H — M-cycle wetting/heel (days) | ~$60 | Supply temp vs feed humidity; 5/10/15° tilt; **closed-loop feed point (X8: recycled dried exhaust)** — shared verbatim with the solid track |
 | F — endurance (months, passive) | ~$0 | Locker/closet-dryer duty: salt creep, fouling, crystallization events, ΔP trend |
 | C — bubble column (optional) | ~$150 | Only if the annex is ordered; sparger DWP shootout |
+
+**Budget note (open).** The `~$485–755` headline in this section's title covers the
+original baseline gating set and predates the platform-conditional entries added since
+(A2, A3, C, J-K, L), which join only when their trigger exists. It does not decompose
+cleanly from the current table — the in-baseline rows above now sum to roughly
+$565–885. The headline is left standing rather than quietly restated; reconcile it
+against the live sum in the parameter register (doc 50 §3.5) and either scope it
+explicitly or supersede it at the next release. The ranking it expresses — that the
+decisive experiments are bench-cheap — is unaffected either way.
 
 ```mermaid
 flowchart TD
@@ -188,3 +209,10 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
 - **v1.2** — Upgrade-path tests L (AHT hot-film absorption, X12) and A3
   (crystallizer jar extension) added to §4 as platform-conditional entries
   outside the baseline gating budget; doc 31 watch items added to §6.
+- **v1.3** — Clarifying pass from the parameter register (doc 50 §3.5), no design
+  figure changed: §1's absorber-flow row restated as one quantity in two units
+  (~123 m³/h ≈ 147 kg/h) rather than a range, and the COP behind the 0.92 kW peak
+  named as the with-recovery 0.65; **erratum 10 opened** — the ε_lat inconsistency
+  behind the ERV'd duty line, left standing and gated on test E; §4 gains a budget
+  note recording that the ~$485–755 headline no longer decomposes from the table
+  beneath it.

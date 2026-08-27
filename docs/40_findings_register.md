@@ -1,6 +1,6 @@
 # 40 — Findings Register, Risks & Task List
 
-### v1.2 — the honest state of the program, both tracks
+### v1.3 — the honest state of the program, both tracks
 
 **Function:** The consolidated register of every finding that materially changed
 the numbers or the architecture — solid-track F1–F5 and cross-track X1–X12 — plus
@@ -145,6 +145,15 @@ recorded rejected (doc 31 §1).
 - [ ] Distillate potability lab test before regular drinking
 - [ ] T2 outputs: charge, coated area, condenser duty, fan power at the
       self-consistent peak; correction path (cycling vs area vs setpoint)
+- [ ] **Coated-area denominator** — doc 22 §4's sizing table implies ~0.3 kg/m²
+      where §2 specifies 0.18 kg/m² planform (one-side vs two-side convention
+      unstated). Settled empirically by M1 on a known geometry; size from 0.18
+      until then (doc 22 §4)
+- [ ] **Real ε_lat behind the ERV'd duty line** — doc 10 §3 and doc 12 §1 carry
+      17.4 and 15.9 g/kg for the same pre-dried state, i.e. ε ≈ 0.65 vs the
+      specified ≥0.8; the published ERV'd removal tracks 17.4. Settled by test E
+      (doc 12 §2 erratum 10). The bare-fresh 0.88 kg/h peak governs sizing either
+      way
 
 ## 5. Correction-trail principle
 
@@ -153,6 +162,15 @@ from 7–8 to 9–11 kg/h is recorded above). The correction trail is part of th
 design's credibility: *never cite a margin as a computed value; re-run every
 comfort claim when the design point moves; solve steady states simultaneously,
 never as hand chains.*
+
+The parameter register (doc 50 §3.5) is the standing mechanism for this: it
+re-derives every headline figure from its stated basis, so a number that has
+drifted from the basis printed beside it surfaces on its `Checks` sheet rather
+than surviving unexamined. Reconciling that sheet is a release gate (doc 50 §8).
+Its first pass produced the two open items above, erratum 10, and a set of
+basis-labelling clarifications across docs 00/10/12/20/22 — no design figure moved.
+*Added lesson: a quantity is only as good as the basis printed next to it; state
+the basis, or the number will eventually be read on the wrong one.*
 
 ---
 *Part of an open defensive-publication release: hardware CERN-OHL-P v2, text
@@ -168,3 +186,9 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   upgrade-path family added to the deferred notes with tests L/A3 pointers
   and the prime-mover heat-pump rejection; X-range extended in the function
   statement.
+- **v1.3** — First parameter-register reconciliation pass (doc 50 §3.5): two open
+  items added to the make-or-break list — the doc 22 coated-area denominator
+  (gated on M1) and the ε_lat inconsistency behind the ERV'd duty line (gated on
+  test E, doc 12 §2 erratum 10) — and §5 records the register as the standing
+  mechanism for catching basis drift. No finding ID renumbered; no design figure
+  changed.

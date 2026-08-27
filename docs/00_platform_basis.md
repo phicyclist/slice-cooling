@@ -1,6 +1,6 @@
 # 00 — Platform Basis: Scope, Design Point, Shared Physics & Doctrines
 
-### v1.1 — foundation document for both tracks
+### v1.2 — foundation document for both tracks
 
 **Function:** Everything both tracks share: deployment scope, the governing design
 point, the shared psychrometric argument, the generalized airflow–moisture model,
@@ -39,6 +39,12 @@ historical records.
 
 Saturation humidity ratios used throughout (Magnus, 101.325 kPa): 26 °C → 21.3,
 27 °C → 22.6, 28 °C → 24.1, 29 °C → 25.6, 30 °C → 27.1 g/kg.
+
+**Air-density basis:** volumetric-to-mass air conversions throughout the lineage use
+**ρ = 1.2 kg/m³** (standard air), not the ~1.15 kg/m³ of moist air at DP-A itself. Every
+mass flow — and every duty derived from one — therefore runs ~5% high. The direction is
+deliberate: it oversizes rather than undersizes. Stated here so it is an assumption on
+the record rather than one implied by the arithmetic.
 
 ## 3. The shared physics — why a desiccant is non-negotiable
 
@@ -90,7 +96,7 @@ this steady state; it does not replace it.
 
 **Specification (safety-critical): cabin CO₂ <1,000 ppm at all times, in every
 mode including sealed; alarm + forced boost at 2,000 ppm.** Four occupants generate
-~3.4 kg CO₂/day (0.072 m³/h awake / 0.047 asleep); CO₂ leaves only with air
+~3.4 kg CO₂/day (**crew total**, not per person: 0.072 m³/h awake / 0.047 asleep); CO₂ leaves only with air
 exchanged, so recirculation, cascades, and ERVs move moisture, never CO₂.
 
 - **Layer 0 — eliminate (X9): all-electric galley, no gas or combustion appliances
@@ -103,7 +109,8 @@ exchanged, so recirculation, cascades, and ERVs move moisture, never CO₂.
   first, exhaust pickups high in every closable room (closed doors otherwise run
   +2,000–2,900 ppm over the main space); **per-room NDIR sensors, interlock keyed
   to the maximum reading**. Marginal cost of fresh air at DP-A: (1−ε_lat) ×
-  10.4 g/kg ≈ 0.06 kWh_heat/day per m³/h at ε 0.8.
+  10.4 g/kg ≈ 0.06 kWh_heat/day per m³/h at ε 0.8 (**ERV'd basis** — the bare-fresh
+  equivalent is ~5× higher, and the two are quoted separately below).
 - **Layer 2 — scrub the increment (X10): the CO₂ battery, required-PENDING
   test J.** Two-bed solid-amine thermal-swing sorbent (Lewatit VP OC 1065-class,
   or DIY PEI-on-silica) in the recirculation branch, post-dehumidification
@@ -146,7 +153,9 @@ sealed, the bed holds <1,000 at the floor.
 CO₂ dose–response at the floor and below (4 occupants; why the interlock exists):
 48 m³/h → 1,920 ppm awake; 36 → 2,420; 24 → 3,420; 12 → 6,420; sealed
 (infiltration only) → ~7,600. Each 12 m³/h of fresh air cut saves ~3.8 kWh/day of
-heat at DP-A — a standing economic temptation the interlock forecloses.
+**bare-fresh** heat at DP-A (≈0.32 kWh/day per m³/h un-recovered; with the ε 0.8 ERV
+fitted, the same cut saves only ~0.7 kWh/day) — a standing economic temptation the
+interlock forecloses.
 
 ## 6. Volume-threshold ladder at DP-A (liquid track; solid track is full-AC class)
 
@@ -222,3 +231,8 @@ LICENSE for the safety disclaimer.*
   prohibition; amine bed retained at solar grade and as outage fallback);
   safety-register item 4 generalized to cover the carbonate alkaline-carryover
   assay.
+- **v1.2** — Clarifying pass from the parameter register (doc 50 §3.5), no design
+  figure changed: the ρ = 1.2 kg/m³ air-density basis stated explicitly in §2; the
+  CO₂ generation rate in §5 labelled *crew total* to foreclose a 4× misreading;
+  the §5 marginal-ventilation costs labelled ERV'd vs bare-fresh, which are on
+  different bases and were previously quoted side by side without distinction.

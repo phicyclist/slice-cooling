@@ -1,6 +1,6 @@
 # 50 — Defensive Disclosure Strategy & Publication Procedure
 
-### v1.0 — making the lineage function as prior art
+### v1.1 — making the lineage function as prior art
 
 **Function:** Turn the v1.0 document lineage into a legally useful, dated,
 examiner-discoverable public record, and set up the repository and archival
@@ -58,11 +58,12 @@ slice-cooling/          # pick a descriptive, searchable name
 ├── README.md                        # existing, + DOI badge + disclosure statement (§3.4)
 ├── docs/
 │   ├── 00_platform_basis.md … 40_findings_register.md
-│   └── 50_defensive_disclosure_plan.md
+│   ├── 50_defensive_disclosure_plan.md
+│   └── parameter_register.xlsx      # the quantitative register (§3.5)
 ├── diagrams/                        # the SVG set
 ├── rendered/                        # PDF renders of every doc (§3.3)
 │   └── executive_summary.pdf
-├── scripts/                         # matplotlib/reportlab pipeline etc. (MIT)
+├── scripts/                         # render pipeline + register generator (MIT)
 ├── LICENSES/
 │   ├── CERN-OHL-P-2.0.txt
 │   ├── CC-BY-4.0.txt
@@ -106,7 +107,37 @@ This also protects against markdown-flavor drift over decades.
 > this dated public record to preclude the patenting of the disclosed subject
 > matter by any party. First published: [date]. Archived with DOI: [concept DOI].
 
-### 3.5 Initialization commands
+### 3.5 The parameter register (enablement, machine-readable)
+
+Prose carries an argument; a table carries a *check*. `docs/parameter_register.xlsx`
+collects every quantitative claim in the lineage into one filterable register — value,
+unit, confidence grade, gating test, derivation, and the source document section — and
+adds live calculation sheets that re-derive the headline numbers from named constants
+(the shared psychrometrics, the doc 00 §4 airflow–moisture model, both sizing chains, the
+CO₂ ladder, the X12 lift ceiling).
+
+Why this matters for a defensive publication, beyond convenience:
+
+- **Enablement.** A person of ordinary skill can re-solve the design at their own
+  conditions rather than accept ours. Changing the design point on one sheet propagates
+  through every derived figure, which is the difference between a disclosure that can be
+  *practiced* and one that can only be *read*.
+- **Verifiability.** Every row names its source section, so any figure can be traced back
+  to the document that asserts it. A register row with no source does not belong in the
+  file.
+- **Self-audit.** Re-deriving each published number surfaces the places where a figure and
+  its stated basis have drifted apart. Those observations belong on the register's own
+  `Checks` sheet and, where they touch a published number, in the errata trail — never as
+  a silent correction (§8).
+
+Rules that keep it honest: it is a **derived** artifact and the documents remain
+authoritative — where the two disagree, the document wins and the discrepancy is recorded.
+It is **generated, never hand-edited** (`scripts/build_parameter_workbook.py`, MIT), so it
+is reproducible from source. It carries **no ungraded number**, exactly as doc 00 §9
+requires of the prose. And it is regenerated with the PDF set at release time, so a stale
+register is a release blocker on the same footing as a stale `rendered/`.
+
+### 3.6 Initialization commands
 
 ```bash
 git init slice-cooling && cd slice-cooling
@@ -272,11 +303,18 @@ activity appears in this space.
 - Bench results, when they arrive, upgrade claims from sizing-grade to measured
   — publish those versions promptly; measured data is the strongest possible
   enablement.
+- The parameter register (§3.5) is regenerated with the PDF set on every release,
+  and any figure it cannot reproduce from its stated basis is resolved before the
+  tag — either as a clarifying edit, or, where a published number moves, as an
+  erratum. The register's `Checks` sheet is the working list; the errata trail is
+  where the resolution lands.
 
 ## 9. Publication-day checklist
 
 - [ ] ORCID obtained; GitHub repo public with §3.1 structure
 - [ ] `rendered/` PDF set generated and spot-checked (Unicode, diagrams)
+- [ ] `docs/parameter_register.xlsx` regenerated (§3.5); formulas recalculate
+      clean and every open item on its `Checks` sheet is resolved or recorded
 - [ ] `LICENSE.md` scope map + three texts in `LICENSES/`
 - [ ] `.zenodo.json` + `CITATION.cff` committed
 - [ ] Disclosure statement in README (date + DOI placeholders)
@@ -297,3 +335,9 @@ CC-BY-4.0, scripts MIT. No patents sought or held.*
 - **v1.0** — Initial disclosure-strategy document: venue stack, repo formation,
   Zenodo manual + webhook procedures, metadata discipline, snapshot and
   examiner-channel procedures, ongoing version discipline.
+- **v1.1** — §3.5 added: the generated parameter register
+  (`docs/parameter_register.xlsx`) recorded as machine-readable enablement, with
+  its derived-artifact and no-ungraded-number rules; §3.1 structure block and the
+  §9 checklist updated to carry it; §8 gains the release-time reconciliation rule
+  (a figure the register cannot reproduce is resolved before the tag — clarifying
+  edit or erratum, never silently); former §3.5 renumbered to §3.6.

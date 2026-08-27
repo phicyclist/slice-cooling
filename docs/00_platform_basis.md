@@ -1,6 +1,6 @@
 # 00 — Platform Basis: Scope, Design Point, Shared Physics & Doctrines
 
-### v1.2 — foundation document for both tracks
+### v1.3 — foundation document for both tracks
 
 **Function:** Everything both tracks share: deployment scope, the governing design
 point, the shared psychrometric argument, the generalized airflow–moisture model,
@@ -59,6 +59,14 @@ water ~29 °C, outside air — sits **at or above the 28 °C dew point**, so:
 - the desiccant breaks the floor because its surface vapor pressure is set by
   loading/concentration, not by a cold sink. The hard problem is **regeneration
   against near-saturated surroundings**, never capture.
+
+**Terminology (equivalence).** The *dew-point indirect evaporative stage* —
+short form *dew-point IEC* — is the cycle published as the **Maisotsenko cycle**
+and written **M-cycle** throughout this lineage and in the HVAC literature. All
+four terms denote the same stage. The generic forms are recorded so the
+disclosure does not depend on an eponym or a trademark; the eponymous forms are
+retained in the text so the record stays discoverable under the terms an
+examiner or searcher will actually use.
 
 Two sorbent families implement this: a CaCl₂ brine (liquid track, docs 10–12) and
 an AlFu MOF coated exchanger (solid track, docs 20–22). Their regeneration physics
@@ -122,7 +130,7 @@ exchanged, so recirculation, cascades, and ERVs move moisture, never CO₂.
   regeneration is solar-window schedulable. **Bed chemistry follows the heat
   grade (X11):** the scrubbing duty is chemistry-agnostic; select the sorbent
   by the highest heat grade reliably available, top down. **≥ ~130 °C tap
-  (waste-heat / reactor platforms): K₂CO₃-on-apolar-carbon TSA** — same bed
+  (waste-heat platforms): K₂CO₃-on-apolar-carbon TSA** — same bed
   envelope (~4–5 kg/bed at ~0.5–0.65 mmol/g working), carbonation *wants* the
   45–55% RH placement (water is a reagent), regeneration 130–150 °C, food-grade
   chemistry with no amine-slip or oxidative-fade pathway (the breathing-air
@@ -236,3 +244,8 @@ LICENSE for the safety disclaimer.*
   CO₂ generation rate in §5 labelled *crew total* to foreclose a 4× misreading;
   the §5 marginal-ventilation costs labelled ERV'd vs bare-fresh, which are on
   different bases and were previously quoted side by side without distinction.
+- **v1.3** — Terminology equivalence note added (§3): *dew-point indirect
+  evaporative stage* / *dew-point IEC* recorded as equivalent to the *Maisotsenko
+  cycle* / *M-cycle*, both forms retained so the disclosure depends on neither an
+  eponym nor a trademark. Prime-mover reference in the X11 heat-grade ladder (§5)
+  genericised to waste-heat platforms. No figure changed.

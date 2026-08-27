@@ -15,3 +15,11 @@ bulk of the work), set explicitly in `.zenodo.json`; the tripartite scheme is
 restated in the record description.
 
 No patents are sought or held for any subject matter disclosed herein.
+
+**Scope of that declaration.** It covers the desiccant comfort, water, and
+air-quality subject matter developed in `docs/` — the scope of the CERN-OHL-P v2
+and CC-BY-4.0 rows above. Upstream energy sources are referenced only generically
+and only as interface requirements (a cascade tap at a stated grade, doc 30,
+function statement); they are not subject matter disclosed here. This is
+descriptive of intent and is **not a retraction** — nothing already published is
+withdrawn by it (doc 50 §3.4).

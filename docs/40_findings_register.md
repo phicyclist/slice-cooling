@@ -1,13 +1,17 @@
 # 40 — Findings Register, Risks & Task List
 
-### v1.4 — the honest state of the program, both tracks
+### v1.5 — the honest state of the program, both tracks
 
 **Function:** The consolidated register of every finding that materially changed
-the numbers or the architecture — solid-track F1–F5 and cross-track X1–X12 — plus
+the numbers or the architecture — solid-track F1–F6 and cross-track X1–X12, X14 — plus
 the correction trail, the task list, and the make-or-break bench questions.
 **Anyone reconstructing this concept should read this document before trusting
 any sizing figure.** The physics backbone holds on multiple independent passes;
 quantitative closure is bench-gated exactly where marked.
+
+**Terminology.** *Dew-point indirect evaporative stage* / *dew-point IEC* is the
+same stage as the *Maisotsenko cycle* / *M-cycle* used in the finding statements
+below (doc 00 §3). The finding statements are unchanged.
 
 ---
 
@@ -54,12 +58,29 @@ edge/defect behavior in M4's scope, materials law imported from the liquid track
 — and **X8 closure as the primary mitigation** (the working path ingests no
 ambient aerosol). Corrosion *rate* is M4's.
 
+### F6 — The DCHX sensible-cycling bucket is unverified
+
+The sensible bed-cycling allowance in doc 20 §3 is a sizing-grade assumption, not
+a measurement. It is bounded by the total swung heat capacity — coated-plate
+metal, binder, sorbent, and the fluid inventory resident in the module at swap —
+divided by the water swung per half-cycle. No plate thickness, channel pitch, or
+per-module fluid inventory is specified anywhere in the lineage, so the ratio
+cannot be evaluated and **the magnitude is OPEN**.
+
+If the allowance proves optimistic, the specific-energy line and the continuous
+regeneration line in doc 20 §3/§5 both move upward, and bed-to-bed heat recovery
+moves from a design response to a hard requirement. Gated on **M3** (blank run,
+geometry fixed) and on **M1**'s resolution of the coated-area denominator, which
+changes sorbent-per-unit-metal depending on one-side vs two-side coating and so
+gates this entry as well as the area bookkeeping it is currently filed under.
+General mechanism: **X14**. **No headline figure is altered by this entry.**
+
 ### Minor notes
 - **PVA anneal:** the 120–150 °C activation doubles as the mandatory anneal
   (doc 22 §2) — a re-coat never skips it.
 - **Ten-minute cycling** thermally cycles the fluid inventory and manifolds; the
   sensible bucket may be optimistic for the plumbing (doc 20 §4; M3 blank
-  measures it).
+  measures it) — now recorded as **F6**, with the general mechanism at **X14**.
 
 ## 2. Cross-track findings (X-series)
 
@@ -77,6 +98,9 @@ ambient aerosol). Corrosion *rate* is M4's.
 | **X10** | The CO₂ battery: two-bed solid-amine TSA, 85–95 °C regen, ~1.6 kg/day for ~1.6–2.5 kWh/day — the only path holding <1,000 ppm sealed. **Required-PENDING test J** (slip assay gates cabin connection); fallback = oversized ERV+DCV, open-cycle only | doc 00 §5; doc 11 §5; doc 12 §4 |
 | **X11** | Sealed-mode CO₂-bed chemistry is heat-grade-dependent: K₂CO₃/apolar-carbon TSA (regen ~130–150 °C; alumina/MgO supports prohibited — double-salt deactivation; breathing-air gate = alkaline-carryover assay, **required-PENDING test J-K**) is the waste-heat-platform primary; the solid-amine resin (85–95 °C) is the solar-grade bed. The ladder runs ventilation-first from the top of heat availability down; a small amine bed is retained as outage fallback where potash is primary (the ETC's ≤93 °C cannot regenerate carbonate) | doc 00 §5; doc 12 §4–6; doc 30 §2/§6 |
 | **X12** | The brine's activity depression is a **temperature lift**, not only a humidity floor (the dual of X2): a single-stage CaCl₂ absorption heat transformer — with the sealed still unchanged as its generator + condenser — upgrades a 60–65 °C waste tail to 85–90 °C at COP ~0.45–0.48 with no electricity beyond transfer pumps, reaching amine-bed and hot-regen grade. Lift ceiling aw(x)·Psat(T_abs) < Psat(T_evap) → ≲91 °C single-stage (potash grade out of reach). **Upgrade path only, never load-bearing; PENDING test L** | doc 31 §2; doc 12 §4 |
+| **X14** | Thermal-swing sensible penalty is set by the inert-mass ratio, not by cycle time. For any thermal-swing bed on the platform — the solid-track DCHX, the amine CO₂ bed (X10), the potash bed (X11) — the sensible heat spent per unit of sorbate swung is the total swung heat capacity times the swing ΔT, divided by sorbent mass times working capacity. Half-cycle duration cancels: shortening the cycle raises throughput per unit of coated area without changing the specific penalty. The design levers are therefore the inert-mass-to-sorbent ratio (plate metal, binder, resident fluid) and bed-to-bed recovery effectiveness, **never cycle speed**. Magnitudes OPEN pending geometry (F6; M3) | doc 20 §3–4; doc 22 §1 |
+
+*X13 is reserved for the solubility-swing class-ceiling finding, drafted and pending. The gap is deliberate: X-numbers are assigned in the order findings enter the queue, and that order is part of the register's audit trail.*
 
 **Specification P17 (safety-critical):** CO₂ <1,000 ppm at all times, all modes;
 alarm + forced boost 2,000 ppm; per-room max sensing; mechanical minimum stop.
@@ -121,6 +145,17 @@ the passive baseline, never core; tests **L** and **A3** (doc 12 §4) join the
 cheap parallel set only when their platform trigger exists (waste-heat tail /
 mass-limited reserve respectively), and the prime-mover heat-pump variant is
 recorded rejected (doc 31 §1).
+
+**Tooling task — the register-freshness gate does not gate what doc 50 §3.5
+specifies.** `scripts/check_release.py`'s `check_register()` compares modification
+times only: it fails when any `docs/*.md` is newer than
+`docs/parameter_register.xlsx`, and passes otherwise. It never compares the
+register's *contents* against the documents. A bare regeneration therefore turns
+it green whether or not the register still reproduces what the documents say. Doc
+50 §3.5/§8 makes release-time reconciliation of the register's `Checks` sheet a
+publication gate, so the gate as implemented enforces staleness, not agreement —
+the reconciliation itself remains a human judgement item under doc 50 §9. Fixing
+it is its own change, not part of this lineage pass.
 
 ## 4. Make-or-break bench questions (consolidated)
 
@@ -207,4 +242,13 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   (gated on M1) and the ε_lat inconsistency behind the ERV'd duty line (gated on
   test E, doc 12 §2 erratum 10) — and §5 records the register as the standing
   mechanism for catching basis drift. No finding ID renumbered; no design figure
+  changed.
+- **v1.5** — **F6** recorded (the DCHX sensible-cycling bucket is unverified;
+  magnitude OPEN, gated on M3 and on M1's coated-area denominator) and **X14**
+  recorded (thermal-swing sensible penalty is set by the inert-mass ratio, not by
+  cycle time — half-cycle duration cancels). **X13 is reserved** for the
+  solubility-swing class-ceiling finding, drafted and pending; the gap is
+  deliberate and is part of the queue's audit trail. Dew-point IEC / M-cycle
+  equivalence pointer added; F/X ranges extended in the function statement. §3
+  gains the `check_register()` task. No finding ID renumbered; no design figure
   changed.

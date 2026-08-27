@@ -23,7 +23,7 @@ carries a confidence grade (doc 00 §9).
 
 ---
 
-## Document lineage (v1.2 — this set supersedes all archived documents)
+## Document lineage (v1.3 — this set supersedes all archived documents)
 
 | File | Contents |
 |---|---|
@@ -36,7 +36,7 @@ carries a confidence grade (doc 00 §9).
 | `22_solid_module_validation.md` | DCHX design, coating rules, F5 chloride mitigations, bench rig, M1–M4, staged pipeline |
 | `30_integration_energy_water.md` | Heat cascade, HDH, source roles, all-electric galley, water redundancy ladder, degraded operation |
 | `31_upgrade_paths_sorption_cycles.md` | **Boost modes & upgrade paths (additions, never core):** the CaCl₂ absorption heat transformer (X12, primary — 60–65 °C tail → 85–90 °C at COP ~0.45–0.48), coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer pot; gates = tests L/A3 |
-| `40_findings_register.md` | **Read before trusting any sizing figure.** F1–F5, X1–X12, spec P17, tasks, make-or-break bench list |
+| `40_findings_register.md` | **Read before trusting any sizing figure.** F1–F6, X1–X12, X14, spec P17, tasks, make-or-break bench list |
 | `parameter_register.xlsx` | **The quantitative register.** Every published figure with its unit, confidence grade, gating test, derivation and source section, plus live sheets that re-derive the headline numbers from the design point (doc 50 §3.5). Generated, not hand-edited |
 | `diagrams/` | SVG set: mixed-mode air path · CO₂/ventilation trade-off · volume-threshold ladder · exhaust-recovery doctrine · CO₂ stack & battery |
 
@@ -135,6 +135,26 @@ design.
   basis, and the contactor rating/velocity/approach triangle. The aggregate
   bench-cost headline is retired (doc 12 v1.4); per-test estimates stay, scoped as
   2026 order-of-magnitude figures. No design figure changed.
+- **v1.3** — Genericisation and register pass. Doc 30 (v1.3) drops every
+  prime-mover-specific reference in favour of the heat **grade** the comfort
+  systems actually depend on, and states that dependence explicitly as a
+  cascade-tap interface requirement (60–93 °C · 60–65 °C · ≥ ~130 °C); the peak
+  temperature figure is removed as unused by any derivation in this lineage. Doc
+  50 (v1.3) and `LICENSE.md` bound the no-patent declaration to this lineage's own
+  subject matter — descriptive, **not a retraction**. Doc 40 (v1.5) records **F6**
+  (the DCHX sensible-cycling bucket is unverified, magnitude OPEN) and **X14**
+  (the thermal-swing sensible penalty is set by the inert-mass ratio, not by cycle
+  time), with **X13 reserved** for a pending finding; docs 20 (v1.2) and 22 (v1.2)
+  carry the matching PENDING marker, scope correction, and sizing qualifier. Doc
+  22 (v1.2) also specifies the marine intake train by equipment class with its
+  positive-pressure envelope condition, and doc 11 (v1.2) separates that
+  intake-side duty from the outlet-side aerosol chain. Doc 00 (v1.3) records the
+  dew-point IEC / M-cycle terminology equivalence, both forms retained. The
+  parameter register was regenerated. **No design figure changed.** Versions
+  v1.2, v1.2.1 and v1.2.2 were development increments that were never separately
+  tagged or archived; their content is first deposited as part of this release,
+  which is why the version history above carries entries the Zenodo version list
+  does not.
 
 ---
 
@@ -144,7 +164,7 @@ design.
 > the authors for any subject matter disclosed herein, and the authors intend
 > this dated public record to preclude the patenting of the disclosed subject
 > matter by any party. First published: 2026-07-25. Archived with DOI:
-> [10.5281/zenodo.21544100](https://doi.org/10.5281/zenodo.21544100) (version DOI, 
+> [10.5281/zenodo.22134961](https://doi.org/10.5281/zenodo.22134961) (version DOI, 
 > this exact record) · concept DOI 
 > [10.5281/zenodo.21544099](https://doi.org/10.5281/zenodo.21544099) (all versions).
 

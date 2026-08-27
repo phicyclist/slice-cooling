@@ -1,6 +1,6 @@
 # 50 — Defensive Disclosure Strategy & Publication Procedure
 
-### v1.2 — making the lineage function as prior art
+### v1.3 — making the lineage function as prior art
 
 **Function:** Turn the v1.0 document lineage into a legally useful, dated,
 examiner-discoverable public record, and set up the repository and archival
@@ -109,6 +109,16 @@ This also protects against markdown-flavor drift over decades.
 > the authors for any subject matter disclosed herein, and the authors intend
 > this dated public record to preclude the patenting of the disclosed subject
 > matter by any party. First published: [date]. Archived with DOI: [concept DOI].
+
+**Scope of the declaration.** The declaration covers the desiccant comfort,
+water, and air-quality subject matter developed in this lineage. Upstream energy
+sources are referenced only generically and only as **interface requirements** —
+a cascade tap at a stated grade (doc 30, function statement) — and are not subject matter
+disclosed here. This clarification is descriptive of intent and is **not a
+retraction**: earlier deposits stand as published and nothing already disclosed
+is withdrawn by it. Whether a given deposit does or does not bar particular
+subject matter is a question for counsel, not for this document — see the
+standing caveat above.
 
 ### 3.5 The parameter register (enablement, machine-readable)
 
@@ -356,3 +366,8 @@ CC-BY-4.0, scripts MIT. No patents sought or held.*
   §9 checklist updated to carry it; §8 gains the release-time reconciliation rule
   (a figure the register cannot reproduce is resolved before the tag — clarifying
   edit or erratum, never silently); former §3.5 renumbered to §3.6.
+- **v1.3** — §3.4 gains the scope note bounding the declaration to the desiccant
+  comfort, water, and air-quality subject matter this lineage develops; upstream
+  energy sources are referenced only generically, as interface requirements. The
+  note is descriptive of intent and is **not a retraction** — earlier deposits
+  stand as published. The same sentence is carried in `LICENSE.md`'s scope map.

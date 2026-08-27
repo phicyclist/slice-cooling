@@ -1,14 +1,22 @@
 # 30 — Platform Energy & Water Integration
 
-### v1.2 — heat cascade, multi-source strategy, redundancy ladder, degraded operation
+### v1.3 — heat cascade, multi-source strategy, redundancy ladder, degraded operation
 
 **Function:** Place the comfort systems (docs 10–12, 20–22) inside the platform's
-full energy and water architecture — vessel or land site: an omnifuel
-high-temperature reactor (900–1,100 °C) or equivalent process-heat source at the
-top of a heat cascade, two-stage HDH desalination as the primary water engine
+full energy and water architecture — vessel or land site: a high-grade
+process-heat source (waste-to-energy class) at the top of a heat cascade,
+two-stage HDH desalination as the primary water engine
 (where a saline/raw-water feed exists), solar thermal/electric, and a
 redundancy-first water ladder. **Governing reframe: redundancy outranks
 efficiency in the field.**
+
+**What the comfort systems actually require.** Nothing in docs 10–12 or 20–22
+depends on the peak grade or the identity of the upstream source. The platform's
+requirement is a **cascade tap at a stated grade**: 60–93 °C for the liquid
+track's sealed still, 60–65 °C for the solid track's regeneration (F2), and
+≥ ~130 °C where a potash CO₂ bed is primary (X11). Any source that can deliver
+those taps continuously satisfies the integration; the prime mover is out of
+scope for this lineage.
 
 ---
 
@@ -33,7 +41,7 @@ CO₂ battery and X8 recovery modes essentially free to run.
 
 ```mermaid
 flowchart TB
-    RX["Omnifuel reactor / process heat<br/>900–1,100 °C · continuous"]
+    RX["High-grade process heat<br/>continuous"]
     ELEC["Electricity generation (cascade top)"]
     HDH_H["Two-stage HDH humidifier ~75–85 °C"]
     CO2R["amine CO₂-battery + still regen 85–95 °C"]
@@ -46,8 +54,8 @@ flowchart TB
     PTC["Resistive PTC · COP 1"] -.->|surplus-solar dump / emergency| HDH_H
 ```
 
-Notes: PVT cannot reach HDH grade, so **solar serves comfort; the reactor serves
-water** — different subsystems. With F2, PVT-*direct* solid-bed regeneration is
+Notes: PVT cannot reach HDH grade, so **solar serves comfort; the high-grade
+source serves water** — different subsystems. With F2, PVT-*direct* solid-bed regeneration is
 dead at the peak point; **the liquid track (docs 10–12) is the natural solar
 comfort island** because its sealed still keeps a positive driving force at any
 solar-grade pool temperature (X2) — this supersedes the heat-pump lift as the
@@ -61,14 +69,14 @@ grade the amine bed serves (X11).
 ```mermaid
 flowchart TB
     subgraph SRC["Energy sources"]
-        REACTOR["Omnifuel reactor / process heat"]
+        HEATSRC["High-grade process heat"]
         PVT["PVT ×2 (~50 °C + elec)"]
         PV["PV panels (elec bulk)"]
         RES["Resistive PTC (surplus/emergency)"]
     end
-    REACTOR -->|electricity| HOUSE["House loads + parasitics<br/>incl. induction galley ~2 kWh_e/day (X9)"]
-    REACTOR -->|high-grade tail| HDH["Two-stage HDH desalinator<br/>(raw-water feed · GOR ~2.2–2.8 ·<br/>~90 L/day per kW heat)"]
-    REACTOR -->|low-grade tail| DES["Solid-track comfort (docs 20–22)<br/>full AC · X8 closed loop"]
+    HEATSRC -->|electricity| HOUSE["House loads + parasitics<br/>incl. induction galley ~2 kWh_e/day (X9)"]
+    HEATSRC -->|high-grade tail| HDH["Two-stage HDH desalinator<br/>(raw-water feed · GOR ~2.2–2.8 ·<br/>~90 L/day per kW heat)"]
+    HEATSRC -->|low-grade tail| DES["Solid-track comfort (docs 20–22)<br/>full AC · X8 closed loop"]
     ETC["Solar thermal"] -->|60–93 °C| LIQ["Liquid-track comfort (docs 10–12)<br/>dehumidify + berth cascade + batteries"]
     PVT -->|"shoulder / HP-lifted"| DES
     PVT -->|electricity| HOUSE
@@ -107,7 +115,7 @@ air** — floor #1.
 
 | Source | Grade | Primary role | Note |
 |---|---|---|---|
-| Reactor / process heat | high, continuous | electricity + HDH water + regen tail | central engine; **single point of failure for water and power simultaneously** |
+| High-grade process heat | high, continuous | electricity + HDH water + regen tail | central engine; **single point of failure for water and power simultaneously** |
 | Solar thermal (ETC 2.5–4.5 m²) | 60–93 °C | **liquid-track comfort + batteries** (moisture + CO₂) | the solar comfort island, per X2 |
 | PVT ×2 | ~50 °C + elec | solid-track shoulder backup + parasitics | beyond two panels marginal thermal has no user (~36 kg each); optimal array = 2 PVT + rest PV |
 | PV | elec | house/electrical bulk incl. induction galley | lighter per watt |
@@ -115,8 +123,8 @@ air** — floor #1.
 
 **All-electric galley (X9, safety register item 2):** no gas or combustion
 appliances in the conditioned envelope — a single burner emitted 3.6× the crew's
-CO₂ and ~0.25 kg/h of latent load. Induction adds ~2 kWh_e/day (trivial on the
-reactor platform; a battery/inverter sizing line on the solar-only island). Gas
+CO₂ and ~0.25 kg/h of latent load. Induction adds ~2 kWh_e/day (trivial on a
+waste-heat platform; a battery/inverter sizing line on the solar-only island). Gas
 lockers, lines, and flame-failure devices leave the safety story entirely; the
 galley hood ducts into the ERV exhaust with boost-on-hood interlock.
 
@@ -124,7 +132,7 @@ galley hood ducts into the ERV exhaust with boost-on-hood interlock.
 
 | Path | Source class | Independent of HDH hardware? | Rate | Role |
 |---|---|---|---|---|
-| Reactor-HDH | raw water + free heat | — (is the HDH) | high | **primary** (saline-feed sites) |
+| Process-heat HDH | raw water + free heat | — (is the HDH) | high | **primary** (saline-feed sites) |
 | Resistive-HDH | raw water + battery elec | **No — common-mode** | high | heat-source backup only |
 | Solid-track condensate (X8 custody) | humid air + low-grade heat | **Yes** | ~50–70 L/day surplus at duty | comfort byproduct; water-neutral M-cycle in every ambient |
 | Liquid-track still distillate | humid air + solar-grade heat | **Yes** | 8–18+ L/day | the solar-independent path; also the M-cycle feed |
@@ -132,41 +140,41 @@ galley hood ducts into the ERV exhaust with boost-on-hood interlock.
 | Emergency RO (smallest unit, pickled) | raw water + small power | **Yes** | drinking + essentials | dormant; few cycles → minimal fouling; the only path robust *outside* the humid tropics |
 | Fresh-water tanks | — | **Yes** | buffer | autonomy; bridges any outage |
 
-**Common-mode warning:** reactor-HDH and resistive-HDH share columns, raw-water
+**Common-mode warning:** process-heat HDH and resistive-HDH share columns, raw-water
 loop, and air loop — resistive backs up *heat-source* loss only. Real security
 lives in the mechanically independent paths; **over-invest in the cheapest of
 these (tankage + rain)**. RO is retained dormant rather than primary: the
 maintenance objection applies to *running* RO; a pickled emergency unit inverts
 that calculus while preserving the one path independent of sink temperature, air
-humidity, weather, and the entire reactor/HDH stack.
+humidity, weather, and the entire process-heat/HDH stack.
 
 ## 6. Failure philosophy & degraded operation
 
-Goal on reactor loss is **maintained operation above survival at a degraded
+Goal on heat-source loss is **maintained operation above survival at a degraded
 level**. Essential loads: refrigeration, navigation/site comms, water production.
 
 ```mermaid
 stateDiagram-v2
     [*] --> Normal
-    Normal: NORMAL (reactor up)
-    Normal: water = reactor-HDH + condensate · comfort = solid track full AC (X8 closed)
+    Normal: NORMAL (heat source up)
+    Normal: water = process-heat HDH + condensate · comfort = solid track full AC (X8 closed)
     Normal: liquid track = solar layer + batteries charged · CO2 < 1,000 everywhere
-    Degraded: REACTOR OUTAGE (above survival)
+    Degraded: HEAT-SOURCE OUTAGE (above survival)
     Degraded: power = PV/PVT + battery, essentials first
     Degraded: water = still distillate + rain + tanks · emergency RO for drinking
     Degraded: comfort = LIQUID TRACK on solar (dehumidify + berth cascade)
     Degraded: moisture + CO2 batteries bridge nights · AC only if power allows
     Survival: SURVIVAL FLOOR
     Survival: refrigeration · nav/comms · drinking water · ventilation floor (mechanical stop)
-    Normal --> Degraded: reactor fault
-    Degraded --> Normal: reactor restored
+    Normal --> Degraded: heat-source fault
+    Degraded --> Normal: heat-source restored
     Degraded --> Survival: prolonged outage / low battery
     Survival --> Degraded: partial restore
 ```
 
 **Recorded redundancy facts:** peak-day *full AC* is waste-heat-coupled (F1/F2) —
 but with the liquid track as the solar layer, **dehumidified comfort and <1,000
-ppm air quality survive a total reactor outage** on 2.5–4.5 m² of collector, the
+ppm air quality survive a total heat-source outage** on 2.5–4.5 m² of collector, the
 moisture battery (~35–40 kg/night), and the CO₂ battery (solar-window regen).
 Where a potash bed is primary (X11), outage sealed operation requires the
 small amine fallback bed — the ETC's ≤93 °C cannot regenerate carbonate —
@@ -176,7 +184,7 @@ dampers **with the ventilation minimum stop**) so a controller fault cannot
 disable routing or close ventilation.
 
 **Common-mode risks:** shared raw-water loop (redundant pump + passive
-ram-scoop/gravity feed + cross-connects + strainers); reactor (battery autonomy +
+ram-scoop/gravity feed + cross-connects + strainers); heat source (battery autonomy +
 independent water paths + solar comfort island); controls (manual modes, hard
 interlock stops); HDH mechanicals (drops both HDH paths at once — hence the
 independent ladder).
@@ -192,8 +200,8 @@ independent ladder).
    thermosyphons, wicked heat pipes, trapped siphons, check-valved backups — rated
    ~30° heel for marine).
 6. Over-invest in the cheap independent paths (tanks, rain).
-7. Solar for the comfort layer; PV for the electrical bulk; the reactor for
-   high-grade water duty.
+7. Solar for the comfort layer; PV for the electrical bulk; the high-grade
+   source for water duty.
 8. Saturated exhausts end in recovery (X8); no combustion in the envelope (X9);
    the ventilation floor is mechanical, not software.
 
@@ -213,3 +221,10 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   rest of the diagram and bringing the source into agreement with its `mmd_wide`
   layout override, which had drifted from it in punctuation. No content or claim
   changed; caught by `scripts/check_release.py`.
+- **v1.3** — Prime-mover references genericised throughout to high-grade process
+  heat (waste-to-energy class); the peak-temperature figure removed as unused by
+  any SLICE derivation; the function statement gains the explicit cascade-tap
+  interface requirement (60–93 °C liquid still · 60–65 °C solid regeneration ·
+  ≥ ~130 °C potash bed), which is what the comfort systems actually depend on.
+  The two `mmd_wide` layout overrides were amended in step with their in-doc
+  blocks. No figure changed.

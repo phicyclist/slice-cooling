@@ -1,6 +1,6 @@
 # 20 — Solid Track: System Concept, Physics, and the Corrected Balance
 
-### v1.1 — full air conditioning from a coated-sorbent thermal swing
+### v1.2 — full air conditioning from a coated-sorbent thermal swing
 
 **Function:** Deliver genuine comfort (cooling **and** dehumidification) plus
 byproduct freshwater and hot water at DP-A, from a solid-desiccant front end
@@ -101,7 +101,7 @@ heat regardless of what held it.
 |---|---|---|
 | Latent floor | ~0.67 kWh/L | heat of vaporization (fixed) |
 | Binding excess | +0.05–0.30 kWh/L | sorbent-dependent (MOF low) |
-| Sensible bed cycling | +0.03–0.10 kWh/L | thin coatings minimize; partly recoverable bed-to-bed |
+| Sensible bed cycling | +0.03–0.10 kWh/L **PENDING (F6)** | thin coatings minimize; partly recoverable bed-to-bed — magnitude unverified, see doc 40 F6 / X14 |
 | **Total** | **~0.8–1.0 kWh/L** | latent floor is 70–85% |
 
 Of the input, only ~10–15% is recoverable **in principle**; what is recoverable *in
@@ -119,6 +119,19 @@ the hot/cold fluid inventory and manifolds every swap; the sensible-cycling buck
 above may be optimistic for the *plumbing*, not just the bed. Bed-to-bed heat-pipe
 recovery and manifold thermal mass minimization are design responses; M3's blank
 run measures the real overhead.
+
+**Scope correction (F6 / X14).** The swung inventory is not only the plumbing.
+It is the coated-plate metal, the binder, the sorbent itself, and whatever fluid
+is resident in the module at swap. Per X14 the specific penalty is set by the
+ratio of that swung heat capacity to the water swung per half-cycle, and
+**half-cycle duration cancels** — shortening the cycle raises throughput per unit
+of coated area without changing the penalty per litre. The design levers are
+therefore the inert-mass-to-sorbent ratio and bed-to-bed recovery effectiveness,
+never cycle speed. No plate thickness, channel pitch, or per-module fluid
+inventory is yet specified, so the ratio cannot be evaluated: **magnitude OPEN**,
+gated on M3 with geometry fixed and on M1's resolution of the coated-area
+denominator (one-side vs two-side coating moves sorbent-per-unit-metal
+materially). No figure in this document is altered by this note.
 
 ## 5. The corrected peak balance (F1, self-consistent)
 
@@ -169,7 +182,7 @@ continuous-duty maximum by definition.
 | Electric resistance | full price | Loses to vapor-compression AC; justified only by silence / no-refrigerant / self-sufficiency |
 | Solar-thermal PVT direct (~45–50 °C) | free, low-grade | **Equilibrium-dead at the peak point (F2):** against a condensing purge (~25 g/kg) a 45–50 °C bed faces ~29–38% RH at its face — at/above AlFu's step. Zero driving force; no kinetic result rescues it. Shoulder conditions only |
 | PVT + small heat-pump lift (to 60–65 °C) | mostly free + COP-leveraged electric | Fallback path; preserves a waste-heat-independent comfort island |
-| Low-grade waste heat (reactor/process tail, used at 60–65 °C) | free | **Primary path.** Comfort + water at parasitic electrical cost |
+| Low-grade waste heat (process tail, used at 60–65 °C) | free | **Primary path.** Comfort + water at parasitic electrical cost |
 
 **Regeneration temperature is purge-humidity-dependent** — the most-misquoted
 figure in the sorbent literature for this duty. AlFu's "~50 °C regeneration" is
@@ -270,3 +283,7 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   (duty 9–11 kg/h, regen 7.5–9 kW, parasitic 0.6–1.0 kW); X8 closed working loop
   as design intent with the CO₂ correction; DP-A sole; land/marine per doc 00;
   ten-minute-cycling caveat recorded.
+- **v1.2** — §3 sensible-cycling bucket marked pending against **F6**; §4 caveat
+  scope-corrected to the full swung inventory per X14, with the magnitude left
+  OPEN. Waste-heat energy-source row genericised (process tail). No figure
+  changed.

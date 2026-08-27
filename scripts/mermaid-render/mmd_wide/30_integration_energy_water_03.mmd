@@ -1,16 +1,16 @@
 stateDiagram-v2
     [*] --> Normal
-    Normal: NORMAL (reactor up)
-    Normal: water = reactor-HDH + condensate · comfort = solid track full AC (X8 closed)
+    Normal: NORMAL (heat source up)
+    Normal: water = process-heat HDH + condensate · comfort = solid track full AC (X8 closed)
     Normal: liquid track = solar layer + batteries charged · CO2 < 1,000 everywhere
-    Degraded: REACTOR OUTAGE (above survival)
+    Degraded: HEAT-SOURCE OUTAGE (above survival)
     Degraded: power = PV/PVT + battery, essentials first
     Degraded: water = still distillate + rain + tanks · emergency RO for drinking
     Degraded: comfort = LIQUID TRACK on solar (dehumidify + berth cascade)
     Degraded: moisture + CO2 batteries bridge nights · AC only if power allows
     Survival: SURVIVAL FLOOR
     Survival: refrigeration · nav/comms · drinking water · ventilation floor (mechanical stop)
-    Normal --> Degraded: reactor fault
-    Degraded --> Normal: reactor restored
+    Normal --> Degraded: heat-source fault
+    Degraded --> Normal: heat-source restored
     Degraded --> Survival: prolonged outage / low battery
     Survival --> Degraded: partial restore

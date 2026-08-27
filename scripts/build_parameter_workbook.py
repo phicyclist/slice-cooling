@@ -336,7 +336,6 @@ REGISTER += [
  ("CO2-037","Shared","Rejected","Mg-MOF-74 humid capacity retention","—",16,N,N,"%","rejected","","Water poisons and hydrolyzes the open metal sites","12 §5"),
  ("CO2-038","Shared","Rejected","Moisture-swing AER displaced heat","E",N,5,15,"kWh/day","rejected","","vs 1.6–2.5 for TSA — an X8 rule-1 violation at DP-A","12 §5"),
  # ---- platform integration (doc 30) -----------------------------------------
- ("IN-001","Platform","Heat cascade","Reactor / process-heat source","T",N,900,1100,"°C","platform","","Continuous; makes the low-grade tail free","30 §1"),
  ("IN-002","Platform","Heat cascade","Two-stage HDH humidifier grade","T",N,75,85,"°C","sizing-grade","","Below the potash rung, above the amine rung","30 §2"),
  ("IN-003","Platform","Heat cascade","HDH gained output ratio","GOR",N,2.2,2.8,"—","sizing-grade","","Warm sink pinches the cold end to ~34 °C — lab GOR-4+ does not transfer","30 §3"),
  ("IN-004","Platform","Heat cascade","HDH yield per unit heat","V̇",90,N,N,"L/day·kW","sizing-grade","","Raw-water feed sites only; never pointed at cabin air","30 §3"),
@@ -352,6 +351,12 @@ REGISTER += [
  ("IN-014","Platform","Raw water","Marine intake depth","d",N,5,10,"m","procurement-grade","","For stability and cleanliness, NOT temperature (mixed layer isothermal to 20–40 m)","30 §3"),
  ("IN-015","Platform","Marine","Design heel / roll","θ",N,15,20,"°","requirement","I, H","Flooded-mode fallbacks, staged headers, anti-slosh rules","00 §1"),
  ("IN-016","Platform","Marine","Passive fluid-path heel rating","θ",30,N,N,"°","requirement","","Thermosyphons, wicked heat pipes, trapped siphons, check-valved backups","30 §7"),
+ # The cascade-tap interface — what the comfort systems actually require of any
+ # upstream source. The grades themselves are carried by the component rows named
+ # in each note; these three record them as the PLATFORM interface requirement.
+ ("IN-017","Platform","Interface","Cascade tap — liquid-track sealed still","T",N,60,93,"°C","requirement","D","Interface requirement on any source; grade from LQ-067 / IN-010 (X2)","30, function statement"),
+ ("IN-018","Platform","Interface","Cascade tap — solid-track regeneration","T",N,60,65,"°C","requirement","M2","Interface requirement on any source; grade from SD-024 (F2)","30, function statement"),
+ ("IN-019","Platform","Interface","Cascade tap — potash CO₂ bed where primary","T",130,N,N,"°C","requirement","J-K","Interface requirement, platform-conditional; grade from CO2-024 (X11). Stated as a floor (≥ ~130 °C)","30, function statement"),
  # ---- upgrade paths (doc 31) ------------------------------------------------
  ("UP-001","Upgrade","X12 AHT","Absorption heat transformer COP","COP",N,0.45,0.48,"—","estimate-grade","L","Upgraded heat ÷ driving heat, before losses","31 §2.4"),
  ("UP-002","Upgrade","X12 AHT","Evaporator temperature","T_ev",N,60,65,"°C","estimate-grade","L","The waste tail itself, boiling distillate at ~20–25 kPa","31 §2.2"),
@@ -488,6 +493,9 @@ FINDINGS = [
  ("F5","Solid","Aluminium DCHX in chloride service",
   "Sealed/filtered intake, no dissimilar-metal fittings, coating as barrier layer, materials law imported; X8 closure is the primary mitigation",
   "Corrosion rate PENDING M4","22 §3"),
+ ("F6","Solid","The DCHX sensible-cycling bucket is unverified",
+  "Swung heat capacity per unit water swung is unspecified; if the allowance is optimistic, specific energy and continuous regeneration both move upward and bed-to-bed recovery becomes a hard requirement",
+  "PENDING M3 (M1 gates the coated-area denominator)","doc 40 F6; doc 20 §3–4; doc 22 §1"),
  ("X1","Shared","Once-through ventilation and whole-cabin M-cycle never compose",
   "5.5–11 kg/h absorber duty at DP-A; in recirc topology whole-cabin liquid AC converges to solid-track duty (~10.6 kg/h, ~11 kW) — deferred",
   "settled","00 §4/§6; 10 §2"),
@@ -524,6 +532,9 @@ FINDINGS = [
  ("X12","Upgrade","The brine's activity depression is a temperature lift",
   "A single-stage CaCl₂ absorption heat transformer — sealed still unchanged as generator + condenser — upgrades a 60–65 °C tail to 85–90 °C at COP 0.45–0.48. Ceiling ≲91 °C single-stage",
   "PENDING L — upgrade path only, never load-bearing","31 §2; 40 §2"),
+ ("X14","Shared","Thermal-swing sensible penalty is set by the inert-mass ratio, not by cycle time",
+  "Half-cycle duration cancels; the design levers are inert-mass-to-sorbent ratio and bed-to-bed recovery effectiveness, never cycle speed",
+  "settled","doc 40 X14; doc 20 §3–4; doc 22 §1"),
  ("P17","Shared","CO₂ specification (safety-critical)",
   "<1,000 ppm at all times in all modes; alarm + forced boost at 2,000 ppm; per-room maximum sensing; mechanical minimum stop on the fresh damper",
   "binding requirement","00 §5/§8"),
@@ -612,17 +623,17 @@ CHECKS = [
 ]
 
 DOCS = [
- ("00_platform_basis.md","v1.2","Scope, DP-A, shared physics, airflow–moisture model, CO₂ stack, X8 doctrine, safety register"),
+ ("00_platform_basis.md","v1.3","Scope, DP-A, shared physics, airflow–moisture model, CO₂ stack, X8 doctrine, safety register"),
  ("10_liquid_concept_physics.md","v1.1","Brine principle, mixed-mode baseline, moisture battery, berth cascade, performance envelope"),
- ("11_liquid_architecture_materials.md","v1.1","Two-worlds law, film-cell bank, aerosol control, sealed still, ERV/CO₂ hardware, thermal bus"),
+ ("11_liquid_architecture_materials.md","v1.2","Two-worlds law, film-cell bank, aerosol control, sealed still, ERV/CO₂ hardware, thermal bus"),
  ("12_liquid_numbers_test_plan.md","v1.4","Validated quantities at DP-A, errata trail, sensitivities, tests A–L, rejected CO₂ alternatives"),
- ("20_solid_concept_system.md","v1.1","Architecture, corrected F1 balance, regeneration-vs-purge physics, X8 closed loop, energy verdicts"),
+ ("20_solid_concept_system.md","v1.2","Architecture, corrected F1 balance, regeneration-vs-purge physics, X8 closed loop, energy verdicts"),
  ("21_solid_sorbent_synthesis.md","v1.0","Isotherm-step selection, candidates, aqueous + LAG routes, F4 branch, QC gates"),
- ("22_solid_module_validation.md","v1.1","DCHX design, coating rules, F5 mitigations, bench rig, M1–M4, staged pipeline"),
- ("30_integration_energy_water.md","v1.2","Heat cascade, HDH, source roles, all-electric galley, water ladder, degraded operation"),
+ ("22_solid_module_validation.md","v1.2","DCHX design, coating rules, F5 mitigations, bench rig, M1–M4, staged pipeline"),
+ ("30_integration_energy_water.md","v1.3","Heat cascade, HDH, source roles, all-electric galley, water ladder, degraded operation"),
  ("31_upgrade_paths_sorption_cycles.md","v1.0","X12 AHT, coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer"),
- ("40_findings_register.md","v1.4","F1–F5, X1–X12, spec P17, tasks, make-or-break bench list"),
- ("50_defensive_disclosure_plan.md","v1.2","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
+ ("40_findings_register.md","v1.5","F1–F6, X1–X12, X14, spec P17, tasks, make-or-break bench list"),
+ ("50_defensive_disclosure_plan.md","v1.3","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
  ("executive_summary.md","v1.1","Standalone abstract for examiner-channel deposit"),
 ]
 
@@ -727,7 +738,7 @@ def sheet_cover(wb):
         ("Heat & Water", "Daily heat budget, collector/fuel sizing, water redundancy ladder"),
         ("Upgrade Paths", "X12 lift-ceiling inequality and the MVR pressure ratio, solved live"),
         ("Test Program", "Tests A–L and T/M series with costs, durations, and the live budget sum"),
-        ("Findings", "F1–F5, X1–X12, spec P17 — status and where each lives"),
+        ("Findings", "F1–F6, X1–X12, X14, spec P17 — status and where each lives"),
         ("Safety & Materials", "The binding register and the two-worlds materials law"),
         ("Checks", "Consistency observations raised while compiling this register"),
         ("Sources", "Document set, versions, and scope"),
@@ -1646,13 +1657,13 @@ def sheet_heatwater(wb):
         put(ws, hdr, i, t, "s_hdr")
     r += 1
     for rung, grade, load, src, note in [
-        ("Source", "900–1,100", "Electricity generation", "Omnifuel reactor / process heat",
+        ("Source", "high (continuous)", "Electricity generation", "High-grade process heat",
          "Single point of failure for water AND power simultaneously"),
-        ("1", "130–150", "K₂CO₃ CO₂-bed regeneration (X11)", "Reactor tail",
+        ("1", "130–150", "K₂CO₃ CO₂-bed regeneration (X11)", "Process tail",
          "Only on platforms with a ≥~130 °C tap"),
-        ("2", "75–85", "Two-stage HDH humidifier", "Reactor tail",
+        ("2", "75–85", "Two-stage HDH humidifier", "Process tail",
          "The water engine at saline-feed sites; never pointed at cabin air"),
-        ("3", "85–95", "Amine CO₂ bed + hot-regen still", "Reactor tail · ETC · X12 AHT",
+        ("3", "85–95", "Amine CO₂ bed + hot-regen still", "Process tail · ETC · X12 AHT",
          "The grade an AHT can synthesise from a 60–65 °C tail"),
         ("4", "60–93", "Liquid-track regeneration", "ETC solar 2.5–4.5 m²",
          "The solar comfort island — X2 keeps driving force positive across the whole band"),
@@ -1695,7 +1706,7 @@ def sheet_heatwater(wb):
         put(ws, hdr, i, t, "s_hdr")
     r += 1
     for path, cls, indep, rate, unit, role, note in [
-        ("Reactor-HDH", "raw water + free heat", "— (is the HDH)", "high", "L/day", "primary",
+        ("Process-heat HDH", "raw water + free heat", "— (is the HDH)", "high", "L/day", "primary",
          "GOR 2.2–2.8 at a 29 °C sink; ~90 L/day per kW of heat"),
         ("Resistive-HDH", "raw water + battery electricity", "NO — common mode", "high", "L/day",
          "heat-source backup only", "Shares columns, raw-water loop, and air loop; ~27× RO's energy per litre"),
@@ -1716,7 +1727,7 @@ def sheet_heatwater(wb):
             operator="containsText", formula=[f'NOT(ISERROR(SEARCH("NO",C{r})))'],
             fill=PatternFill("solid", fgColor=BADF), font=Font(color=BADT, bold=True)))
         r += 1
-    put(ws, r, 1, "Common-mode warning: reactor-HDH and resistive-HDH share columns, the raw-water loop, and "
+    put(ws, r, 1, "Common-mode warning: process-heat HDH and resistive-HDH share columns, the raw-water loop, and "
                   "the air loop — resistive backs up heat-source loss only. Real security lives in the "
                   "mechanically independent paths, and the cheapest of those (tankage and rain) is where to "
                   "over-invest. Redundancy outranks efficiency in the field.", "s_note")
@@ -1891,13 +1902,29 @@ def sheet_findings(wb):
     for fid, track, one, cons, status, where in FINDINGS:
         put(ws, r, 1, fid, "s_lbl"); put(ws, r, 2, track); put(ws, r, 3, one)
         put(ws, r, 4, cons); put(ws, r, 5, status); put(ws, r, 6, where)
+        # Match on substring, not prefix: four rows qualify their status rather than
+        # leading with the keyword ("Corrosion rate PENDING M4", "design intent;
+        # PENDING H/G", "settled (safety register 2)", "binding requirement"), and a
+        # prefix test dropped all four through unstyled. Status TEXT is unchanged —
+        # only the derived fill. REQUIRED is tested first: "REQUIRED-PENDING J"
+        # contains both and must read as required, not merely pending.
         if "REQUIRED" in status:
             ws.cell(row=r, column=5).fill = PatternFill("solid", fgColor=BADF)
             ws.cell(row=r, column=5).font = Font(name="Calibri", size=10, bold=True, color=BADT)
-        elif status.startswith("PENDING"):
+        elif "PENDING" in status:
             ws.cell(row=r, column=5).fill = PatternFill("solid", fgColor=WARN)
-        elif status == "settled":
+        elif status.startswith("settled"):
             ws.cell(row=r, column=5).fill = PatternFill("solid", fgColor=OKG)
+        elif "requirement" in status:
+            # Same treatment the Register sheet gives grade "requirement".
+            ws.cell(row=r, column=5).fill = PatternFill("solid", fgColor=OKG)
+            ws.cell(row=r, column=5).font = Font(name="Calibri", size=10, bold=True, color=OKT)
+        else:
+            raise ValueError(
+                f"FINDINGS row {fid}: unrecognised status {status!r}. Expected one "
+                "containing 'REQUIRED', containing 'PENDING', beginning 'settled', or "
+                "containing 'requirement' — an unmatched status renders unstyled and "
+                "reads as a further, undefined state.")
         r += 1
     ws.auto_filter.ref = f"A4:F{r-1}"
     ws.freeze_panes = "C5"

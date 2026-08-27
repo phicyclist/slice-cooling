@@ -1,14 +1,14 @@
 %%{init: {"flowchart": {"nodeSpacing": 25, "rankSpacing": 35}}}%%
 flowchart LR
     subgraph SRC["Energy sources"]
-        REACTOR["Omnifuel reactor / process heat"]
+        HEATSRC["High-grade process heat"]
         PVT["PVT ×2 (~50 °C + elec)"]
         PV["PV panels (elec bulk)"]
         RES["Resistive PTC (surplus/emergency)"]
     end
-    REACTOR -->|electricity| HOUSE["House loads + parasitics<br/>incl. induction galley ~2 kWh_e/day (X9)"]
-    REACTOR -->|high-grade tail| HDH["Two-stage HDH desalinator<br/>(raw-water feed · GOR ~2.2–2.8 ·<br/>~90 L/day per kW heat)"]
-    REACTOR -->|low-grade tail| DES["Solid-track comfort (docs 20–22)<br/>full AC · X8 closed loop"]
+    HEATSRC -->|electricity| HOUSE["House loads + parasitics<br/>incl. induction galley ~2 kWh_e/day (X9)"]
+    HEATSRC -->|high-grade tail| HDH["Two-stage HDH desalinator<br/>(raw-water feed · GOR ~2.2–2.8 ·<br/>~90 L/day per kW heat)"]
+    HEATSRC -->|low-grade tail| DES["Solid-track comfort (docs 20–22)<br/>full AC · X8 closed loop"]
     ETC["Solar thermal"] -->|60–93 °C| LIQ["Liquid-track comfort (docs 10–12)<br/>dehumidify + berth cascade + batteries"]
     PVT -->|"shoulder / HP-lifted"| DES
     PVT -->|electricity| HOUSE

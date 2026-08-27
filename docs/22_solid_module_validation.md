@@ -1,6 +1,6 @@
 # 22 — Solid Track: DCHX Module & Bench Validation
 
-### v1.1 — coated-exchanger design, sizing, rig, and the M1–M4 measurement set
+### v1.2 — coated-exchanger design, sizing, rig, and the M1–M4 measurement set
 
 **Function:** Turn the doc 21 sorbent into a working thermal-swing module, and
 define the bench program that converts sizing-grade assumptions into measured
@@ -24,8 +24,11 @@ stack cannot package.
 
 **Key sizing insight: throughput is governed by cycle time and coated area, not
 sorbent mass.** Two (or more) modules alternate on ~10-minute half-cycles; short
-cycles with generous coated area beat a large slow bed. (Sensible-cycling caveat
-for the plumbing: doc 20 §4.)
+cycles with generous coated area beat a large slow bed. (Sensible-cycling caveat:
+doc 20 §4.) **Qualifier (X14):** the throughput argument holds, but coated area
+is not free — it carries inert mass, and the sensible penalty per unit of water
+swung is independent of cycle time. Coated area therefore trades against
+specific energy, and that trade is OPEN pending geometry (doc 40 F6).
 
 ## 2. Coating
 
@@ -54,7 +57,16 @@ responses, decided on paper:
 
 - **Sealed/filtered intake path** — salt-aerosol filtration ahead of the coated
   face; in X8 closed-loop mode (doc 20 §8) the working path ingests no ambient
-  aerosol at all, which is F5's primary mitigation.
+  aerosol at all, which is F5's primary mitigation. **Specified train (marine
+  and coastal-land intakes):** multi-stage inertial vane separator → coalescing
+  stage → final filter, with a drained salt-water collection sump, sized for the
+  design intake face velocity. This is established marine and offshore intake
+  practice — a specification, not a novel element. **Binding condition:** a
+  filtered intake protects the coated face only if *all* makeup air reaching the
+  conditioned space passed through the train, so the envelope must be held at
+  positive pressure through the filtered inlet; unfiltered infiltration defeats
+  the mitigation. The train's ΔP is inside M1's measurement scope alongside the
+  coated-face ΔP.
 - **No dissimilar-metal fittings** in the air path or fluid loop (extends the §5
   bench rule to the installed module); no brass anywhere near the anodic plate.
 - The sorbent + PVA coating is treated as a **barrier layer whose edge and defect
@@ -207,3 +219,9 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   imported materials law added (§3); ΔP measurement added to M1; salt-air edge
   behavior added to M4; sizing table restated to the self-consistent duty; X8
   valving provisioned at Stage 3.
+- **v1.2** — §1 key-sizing-insight qualified per X14 (coated area is not free — it
+  carries inert mass, and the sensible penalty per unit of water swung is
+  independent of cycle time); §3 intake path specified by equipment class
+  (multi-stage vane separation → coalescing stage → final filter, drained sump)
+  with the positive-pressure envelope condition binding, and the train's ΔP
+  added to M1's scope. No figure changed.

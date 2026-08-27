@@ -1,6 +1,6 @@
 # 30 — Platform Energy & Water Integration
 
-### v1.1 — heat cascade, multi-source strategy, redundancy ladder, degraded operation
+### v1.2 — heat cascade, multi-source strategy, redundancy ladder, degraded operation
 
 **Function:** Place the comfort systems (docs 10–12, 20–22) inside the platform's
 full energy and water architecture — vessel or land site: an omnifuel
@@ -153,9 +153,9 @@ stateDiagram-v2
     Normal: liquid track = solar layer + batteries charged · CO2 < 1,000 everywhere
     Degraded: REACTOR OUTAGE (above survival)
     Degraded: power = PV/PVT + battery, essentials first
-    Degraded: water = still distillate + rain + tanks; emergency RO for drinking
-    Degraded: comfort = LIQUID TRACK on solar (dehumidify + berth cascade);
-    Degraded: moisture + CO2 batteries bridge nights; AC only if power allows
+    Degraded: water = still distillate + rain + tanks · emergency RO for drinking
+    Degraded: comfort = LIQUID TRACK on solar (dehumidify + berth cascade)
+    Degraded: moisture + CO2 batteries bridge nights · AC only if power allows
     Survival: SURVIVAL FLOOR
     Survival: refrigeration · nav/comms · drinking water · ventilation floor (mechanical stop)
     Normal --> Degraded: reactor fault
@@ -209,3 +209,7 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   added to the state machine.
 - **v1.1** — K₂CO₃ CO₂-bed rung (~130–150 °C, X11) added to the cascade (§2);
   outage disposition of the potash bed recorded (§6).
+- **v1.2** — §6 state-diagram labels use the `·` separator throughout, matching the
+  rest of the diagram and bringing the source into agreement with its `mmd_wide`
+  layout override, which had drifted from it in punctuation. No content or claim
+  changed; caught by `scripts/check_release.py`.

@@ -1,0 +1,16 @@
+{
+  "name": "slice-cooling-mermaid-render",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pinned toolchain for the archival Mermaid→PNG render step (doc 50 §3.3/§3.5). Exact versions, not ranges: the rendered PDF set is the self-contained archival artifact, and a floating renderer silently changes figure layout between releases.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "render": "node mmrender.mjs mmd mmpng"
+  },
+  "dependencies": {
+    "@sparticuz/chromium": "149.0.0",
+    "mermaid": "10.9.8",
+    "puppeteer-core": "25.9.0"
+  }
+}

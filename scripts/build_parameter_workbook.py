@@ -30,7 +30,7 @@ from openpyxl.formatting.rule import CellIsRule, FormulaRule
 from openpyxl.workbook.defined_name import DefinedName
 
 REV = "1.1"
-DOCSET = "lineage v1.2 (docs 00 v1.2 · 10 v1.1 · 11 v1.1 · 12 v1.3 · 20 v1.1 · 21 v1.0 · 22 v1.1 · 30 v1.1 · 31 v1.0 · 40 v1.3 · 50 v1.1)"
+DOCSET = "lineage v1.2 (docs 00 v1.2 · 10 v1.1 · 11 v1.1 · 12 v1.3 · 20 v1.1 · 21 v1.0 · 22 v1.1 · 30 v1.2 · 31 v1.0 · 40 v1.3 · 50 v1.2)"
 REPO = "github.com/phicyclist/slice-cooling"
 CONCEPT_DOI = "10.5281/zenodo.21544099"
 VERSION_DOI = "10.5281/zenodo.21544100"
@@ -607,11 +607,11 @@ DOCS = [
  ("20_solid_concept_system.md","v1.1","Architecture, corrected F1 balance, regeneration-vs-purge physics, X8 closed loop, energy verdicts"),
  ("21_solid_sorbent_synthesis.md","v1.0","Isotherm-step selection, candidates, aqueous + LAG routes, F4 branch, QC gates"),
  ("22_solid_module_validation.md","v1.1","DCHX design, coating rules, F5 mitigations, bench rig, M1–M4, staged pipeline"),
- ("30_integration_energy_water.md","v1.1","Heat cascade, HDH, source roles, all-electric galley, water ladder, degraded operation"),
+ ("30_integration_energy_water.md","v1.2","Heat cascade, HDH, source roles, all-electric galley, water ladder, degraded operation"),
  ("31_upgrade_paths_sorption_cycles.md","v1.0","X12 AHT, coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer"),
  ("40_findings_register.md","v1.3","F1–F5, X1–X12, spec P17, tasks, make-or-break bench list"),
- ("50_defensive_disclosure_plan.md","v1.1","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
- ("executive_summary.md","v1.0","Standalone abstract for examiner-channel deposit"),
+ ("50_defensive_disclosure_plan.md","v1.2","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
+ ("executive_summary.md","v1.1","Standalone abstract for examiner-channel deposit"),
 ]
 
 

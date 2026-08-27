@@ -1,6 +1,6 @@
 # 50 — Defensive Disclosure Strategy & Publication Procedure
 
-### v1.1 — making the lineage function as prior art
+### v1.2 — making the lineage function as prior art
 
 **Function:** Turn the v1.0 document lineage into a legally useful, dated,
 examiner-discoverable public record, and set up the repository and archival
@@ -93,8 +93,11 @@ license text fails the whole deposit. Two rules:
 
 Mermaid source in markdown is only a diagram *after* a renderer touches it. For
 the archived record, don't make a future examiner or litigant install tooling:
-render every doc to PDF (the existing matplotlib/reportlab + pandoc-class
-pipeline covers this) into `rendered/`, and include the SVG set. The Zenodo
+render every doc to PDF (`scripts/render_docs.sh`) into `rendered/`, and include
+the SVG set. **Every** document, not just the numbered lineage: the executive
+summary carries diagrams too, and a numbered-only glob shipped its Mermaid blocks
+as raw code fences from v1.0 to v1.1 before `scripts/check_release.py` was written
+to catch exactly that. The Zenodo
 tarball is then fully self-contained — readable with nothing but a PDF viewer.
 This also protects against markdown-flavor drift over decades.
 
@@ -311,6 +314,14 @@ activity appears in this space.
 
 ## 9. Publication-day checklist
 
+Run `python3 scripts/check_release.py` first — it mechanically enforces the
+structural half of this list (document version discipline and footers, PDF and
+register freshness, no raw Mermaid in any PDF, version and DOI agreement across
+README/`CITATION.cff`/`.zenodo.json`, the §3.2 license layout, and the verbatim
+rule on the wide-diagram overrides). It exits non-zero on any failure. The items
+below that need human judgement stay manual.
+
+- [ ] `python3 scripts/check_release.py` passes
 - [ ] ORCID obtained; GitHub repo public with §3.1 structure
 - [ ] `rendered/` PDF set generated and spot-checked (Unicode, diagrams)
 - [ ] `docs/parameter_register.xlsx` regenerated (§3.5); formulas recalculate
@@ -335,6 +346,10 @@ CC-BY-4.0, scripts MIT. No patents sought or held.*
 - **v1.0** — Initial disclosure-strategy document: venue stack, repo formation,
   Zenodo manual + webhook procedures, metadata discipline, snapshot and
   examiner-channel procedures, ongoing version discipline.
+- **v1.2** — §9 now opens with `scripts/check_release.py`, which turns the
+  structural half of the checklist into a gate that exits non-zero; §3.3 records
+  that the renderer covers every document, after the executive summary was found
+  to have shipped un-rendered Mermaid source from v1.0 to v1.1.
 - **v1.1** — §3.5 added: the generated parameter register
   (`docs/parameter_register.xlsx`) recorded as machine-readable enablement, with
   its derived-artifact and no-ungraded-number rules; §3.1 structure block and the

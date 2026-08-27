@@ -7,8 +7,8 @@ license covers what.
 | Scope | Contents | License |
 |---|---|---|
 | **Hardware designs & specifications** | System architectures, sizing, materials tables, synthesis routes, test rigs described in `docs/` | [CERN-OHL-P v2](LICENSES/CERN-OHL-P-2.0.txt) |
-| **Documentation & diagrams** | All markdown documents, the executive summary, rendered PDFs, and the SVG set in `diagrams/` | [CC-BY-4.0](LICENSES/CC-BY-4.0.txt) |
-| **Scripts & code** | Everything in `scripts/` (render pipeline, repo tooling) | [MIT](LICENSES/MIT.txt) |
+| **Documentation, data & diagrams** | All markdown documents, the executive summary, rendered PDFs, the parameter register (`docs/parameter_register.xlsx`), and the SVG set in `diagrams/` | [CC-BY-4.0](LICENSES/CC-BY-4.0.txt) |
+| **Scripts & code** | Everything in `scripts/` (render pipeline, parameter-register generator, repo tooling) | [MIT](LICENSES/MIT.txt) |
 
 The record-level license displayed by Zenodo is CC-BY-4.0 (documentation is the
 bulk of the work), set explicitly in `.zenodo.json`; the tripartite scheme is

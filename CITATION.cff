@@ -7,12 +7,15 @@ authors:
     given-names: "Ramon"
     orcid: "https://orcid.org/0009-0005-3789-6212"
 date-released: "2026-07-25"
-version: "v1.0"
+version: "v1.2.1"
 license: CC-BY-4.0
-doi: "10.5281/zenodo.21544099"   # replace with the CONCEPT DOI after the Zenodo deposit
+doi: "10.5281/zenodo.21544099"   # concept DOI — resolves to the latest version
 repository-code: "https://github.com/phicyclist/slice-cooling"
 keywords:
   - liquid desiccant air conditioning
   - aluminum fumarate MOF
   - defensive publication
   - prior art
+
+# Keep `version` in step with the README version history and the git tag, and the
+# DOI in step with the README badge and .zenodo.json (doc 50 §5).

@@ -16,26 +16,27 @@ raw-water sink ~29 °C** — the continuous-duty maximum for every mode. Milder
 ambients are margin; excursions above DP-A are handled transiently, never by
 sizing.
 
-**Status:** paper designs. Liquid track fully gated by ~$485–755 of bench tests;
+**Status:** paper designs. Liquid track gated by a few hundred dollars of bench tests
+(the ~$485–755 headline is under reconciliation — doc 12 §4 budget note);
 solid track by the T1/T2/M1–M4 program. Nothing built. Every quantitative claim
 carries a confidence grade (doc 00 §9).
 
 ---
 
-## Document lineage (v1.0 — this set supersedes all archived documents)
+## Document lineage (v1.2 — this set supersedes all archived documents)
 
 | File | Contents |
 |---|---|
 | **`00_platform_basis.md`** | **Read first.** Land+marine scope · DP-A · shared physics · the generalized airflow–moisture model · the CO₂ stack (<1,000 ppm spec) · exhaust-recovery doctrine (X8) · safety-critical requirements register |
 | `10_liquid_concept_physics.md` | Liquid track: brine principle, mixed-mode baseline, moisture battery, berth-cascade M-cycle, performance envelope |
 | `11_liquid_architecture_materials.md` | Two-worlds materials law, film-cell bank, aerosol control, sealed still + degradation ladder, ERV & CO₂-battery hardware, thermal bus, raw-water circuit, column annex, operating modes |
-| `12_liquid_numbers_test_plan.md` | Validated quantities at DP-A, the errata trail, sensitivities, tests A–J with the dependency chart, rejected CO₂ alternatives |
+| `12_liquid_numbers_test_plan.md` | Validated quantities at DP-A, the errata trail, sensitivities, tests A–L with the dependency chart, rejected CO₂ alternatives |
 | `20_solid_concept_system.md` | Solid track: architecture, the corrected F1 balance (~9–11 kg/h), regeneration-vs-purge physics (F2), X8 closed working loop, energy-source verdicts |
 | `21_solid_sorbent_synthesis.md` | Isotherm-step selection, candidate table, aqueous + LAG routes, F4 branch, QC gates |
 | `22_solid_module_validation.md` | DCHX design, coating rules, F5 chloride mitigations, bench rig, M1–M4, staged pipeline |
 | `30_integration_energy_water.md` | Heat cascade, HDH, source roles, all-electric galley, water redundancy ladder, degraded operation |
 | `31_upgrade_paths_sorption_cycles.md` | **Boost modes & upgrade paths (additions, never core):** the CaCl₂ absorption heat transformer (X12, primary — 60–65 °C tail → 85–90 °C at COP ~0.45–0.48), coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer pot; gates = tests L/A3 |
-| `40_findings_register.md` | **Read before trusting any sizing figure.** F1–F5, X1–X10, spec P17, tasks, make-or-break bench list |
+| `40_findings_register.md` | **Read before trusting any sizing figure.** F1–F5, X1–X12, spec P17, tasks, make-or-break bench list |
 | `parameter_register.xlsx` | **The quantitative register.** Every published figure with its unit, confidence grade, gating test, derivation and source section, plus live sheets that re-derive the headline numbers from the design point (doc 50 §3.5). Generated, not hand-edited |
 | `diagrams/` | SVG set: mixed-mode air path · CO₂/ventilation trade-off · volume-threshold ladder · exhaust-recovery doctrine · CO₂ stack & battery |
 
@@ -117,6 +118,15 @@ design.
   (v1.1) — **no design figure changed** — plus two recorded open items in doc 40
   (v1.3): the coated-area denominator (gated on M1) and the ε_lat behind the ERV'd
   duty line (doc 12 §2 erratum 10, gated on test E).
+- **v1.2.1** — Release-tooling and metadata pass; no design figure changed.
+  `scripts/check_release.py` added: a mechanical gate for the structural half of the
+  doc 50 §9 checklist (doc 50 → v1.2). The render pipeline now covers **every**
+  document, repairing `executive_summary.pdf`, which had shipped un-rendered Mermaid
+  source since v1.0; `render_docs.sh` gained a dependency preflight and npm versions
+  are pinned so figure layout cannot drift between releases. Doc 30 → v1.2 (state-diagram
+  labels aligned with their layout override, caught by the new gate) and the executive
+  summary → v1.1 (provenance restated to docs 00–50). `CITATION.cff`, `.zenodo.json`,
+  `LICENSE.md` and this file's lineage table brought back into sync.
 
 ---
 

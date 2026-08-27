@@ -1,6 +1,6 @@
 # Executive Summary — Heat-Driven Comfort & Water for Humid Climates
 
-### Two desiccant tracks, one physics, one platform · Land & marine · v1.0
+### v1.1 — Two desiccant tracks, one physics, one platform · Land & marine
 
 **One sentence:** Sun or waste heat in — dry cool air, safe air quality (<1,000 ppm CO₂),
 hot water, and drinking water out, for ~100 m³ occupied spaces (yacht interiors, small
@@ -10,7 +10,7 @@ evaporative device can deliver comfort.
 **Status:** Complete, internally consistent *paper design*, released as an open defensive
 publication (CERN-OHL-P v2 / CC-BY-4.0 / MIT). **Nothing has been built.** Every sizing
 claim is confidence-graded and gated on an explicit, deliberately cheap bench program:
-~$485–755 of tests for the liquid track; a mortar-and-pestle synthesis batch plus the
+a few hundred dollars of tests for the liquid track; a mortar-and-pestle synthesis batch plus the
 M1–M4 coupon program for the solid track.
 
 ---
@@ -119,7 +119,7 @@ flowchart TD
     M -.-> SB
 ```
 
-The entire quantitative case is gated by bench-top spend: **~$485–755** decides the liquid
+The entire quantitative case is gated by bench-top spend: **a few hundred dollars** decides the liquid
 track end-to-end; the solid track's single most consequential measurement is **M2** —
 effective working capacity at 60–65 °C against a *representative humid purge* (a dry-purge
 test would merely reproduce the literature and decide nothing).
@@ -135,5 +135,15 @@ What stands between paper and proof is a few hundred dollars of deliberately seq
 bench tests.
 
 ---
-*Prepared from repository docs 00–40 (lineage v1.0). Open defensive publication —
-hardware CERN-OHL-P v2, text CC-BY-4.0, scripts MIT. No patents sought or held.*
+*Prepared from repository docs 00–50 (lineage v1.2), whose figures are collected with
+their confidence grades and gating tests in `docs/parameter_register.xlsx`. Open
+defensive publication — hardware CERN-OHL-P v2, text CC-BY-4.0, scripts MIT. No patents
+sought or held. Unbuilt paper design — see LICENSE.*
+
+*Version history*
+- **v1.0** — Initial standalone abstract for the examiner channel (doc 50 §7),
+  prepared from the v1.0 lineage (docs 00–40).
+- **v1.1** — Brought up to the v1.2 lineage: provenance line now covers docs 00–50
+  (adding doc 31's upgrade paths and doc 50's disclosure procedure) and points at the
+  parameter register; the bench-budget headline de-specified pending the doc 12 §4
+  reconciliation. No technical claim changed.

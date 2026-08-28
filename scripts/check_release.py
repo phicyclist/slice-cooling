@@ -128,6 +128,46 @@ def check_no_mermaid_in_pdfs():
         ok("no PDF contains raw Mermaid source")
 
 
+def check_pdf_pagination():
+    """Catch a silently broken render: a PDF collapsed onto one page, or one that
+    lost its page-number footers.
+
+    Both were produced on 2026-08-27 by a wkhtmltopdf built against unpatched Qt,
+    which ignored --footer-* and failed to paginate — every document in the set
+    became a single A4 page with the remaining content clipped off-canvas. The
+    whole broken set passed every other check in this file, which is why this one
+    exists. Page numbering now comes from style.css's @page @bottom-center box."""
+    if not (shutil.which("pdftotext") and shutil.which("pdfinfo")):
+        warn("poppler-utils not installed — skipped the PDF pagination check")
+        return
+    bad = []
+    for pdf in sorted((ROOT / "rendered").glob("*.pdf")):
+        try:
+            info = subprocess.run(["pdfinfo", str(pdf)], capture_output=True,
+                                  text=True, timeout=60).stdout
+            txt = subprocess.run(["pdftotext", str(pdf), "-"], capture_output=True,
+                                 text=True, timeout=60).stdout
+        except Exception as e:                      # noqa: BLE001 - report, never abort
+            warn(f"could not read {pdf.name}: {e}")
+            continue
+        m = re.search(r"^Pages:\s+(\d+)", info, re.M)
+        if not m:
+            bad.append(f"{pdf.name} (no readable page count)")
+            continue
+        pages = int(m.group(1))
+        feet = len(re.findall(r"^\s*\d+/\d+\s*$", txt, re.M))
+        if pages == 1 and len(txt) > 6000:
+            bad.append(f"{pdf.name} (1 page holding {len(txt)} chars — collapsed render)")
+        elif feet == 0 and pages > 1:
+            bad.append(f"{pdf.name} ({pages} pages, no page-number footers)")
+    if bad:
+        fail("PDF pagination check failed: " + "; ".join(bad)
+             + " — re-render with the pinned engine (doc 50 §3.3)")
+    else:
+        ok(f"all {len(list((ROOT / 'rendered').glob('*.pdf')))} PDFs paginate "
+           "and carry page-number footers")
+
+
 # ------------------------------------------------------------------ metadata --
 def _readme_latest_version(readme):
     vs = re.findall(r"^- \*\*(v\d+\.\d+(?:\.\d+)?)\*\*", readme, re.M)
@@ -232,6 +272,7 @@ def main():
 
     for fn in (check_doc_structure, check_version_history_matches_subtitle,
                check_rendered_set, check_register, check_no_mermaid_in_pdfs,
+               check_pdf_pagination,
                check_metadata_sync, check_license_layout, check_wide_overrides):
         try:
             fn()

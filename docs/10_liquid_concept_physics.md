@@ -165,12 +165,12 @@ Detailed air-path diagram: `diagrams/dpa-mixed-mode-airpath.svg`.
 CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
 
 *Version history*
+- **v1.0** — New lineage from archived core-01: restated at DP-A (sole point);
+  mixed-mode baseline (X6) and ERV (X7) integrated; berth cascade adopted and
+  whole-cabin AC deferred (X1/X5); moisture battery resized; land/marine sink
+  generalization per doc 00.
 - **v1.1** — Clarifying pass from the parameter register (doc 50 §3.5), no design
   figure changed: the §3 air-side W/K figure now names the flow it is taken on, since
   doc 12 §1 quotes the same quantity on the fresh stream alone and the two differ ~2.5×;
   the ε_lat inconsistency behind the 17.4 g/kg ERV figure recorded as an open item
   against test E (doc 12 §2 erratum 10).
-- **v1.0** — New lineage from archived core-01: restated at DP-A (sole point);
-  mixed-mode baseline (X6) and ERV (X7) integrated; berth cascade adopted and
-  whole-cabin AC deferred (X1/X5); moisture battery resized; land/marine sink
-  generalization per doc 00.

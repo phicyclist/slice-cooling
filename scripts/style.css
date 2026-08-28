@@ -1,17 +1,39 @@
-@page { size: A4; margin: 22mm 18mm; }
-body { font-family: "DejaVu Sans", sans-serif; font-size: 9.5pt; line-height: 1.45; color: #1a1a1a; }
-h1 { font-size: 17pt; border-bottom: 2px solid #333; padding-bottom: 4px; }
-h2 { font-size: 13pt; margin-top: 1.4em; border-bottom: 1px solid #999; padding-bottom: 2px;}
-h3 { font-size: 11pt; margin-top: 1.2em; }
-h4 { font-size: 10pt; }
-table { border-collapse: collapse; width: 100%; font-size: 8pt; margin: 0.8em 0; page-break-inside: auto; }
+/* Type ladder and page margins target a rendered DENSITY, not nominal values.
+   Until v1.4 the pipeline used wkhtmltopdf, whose WebKit silently down-scaled
+   everything by roughly a quarter and ignored @page margins entirely; the old
+   values (9.5pt body, 22mm/18mm) were tuned against that output and were never
+   meant to be read literally. WeasyPrint honours both, so rendering the old
+   numbers gave a 67-page set against the archived 44. This ladder reproduces
+   the archived appearance at ~49 pages using round, maintainable values.
+   Changing any of it reflows every PDF in every past and future deposit —
+   re-render and compare page counts before you do (doc 50 §3.3). */
+@page {
+  size: A4;
+  margin: 11mm 10mm;
+  /* Page numbering lives here, not in a CLI flag. An engine that does not
+     support it fails visibly at render time rather than silently dropping the
+     footer, which is how an unpatched-Qt wkhtmltopdf shipped a footerless,
+     single-page set past every release check on 2026-08-27 (doc 50 §3.3). */
+  @bottom-center {
+    content: counter(page) "/" counter(pages);
+    font-family: "DejaVu Sans", sans-serif;
+    font-size: 6pt;
+    color: #555;
+  }
+}
+body { font-family: "DejaVu Sans", sans-serif; font-size: 8pt; line-height: 1.45; color: #1a1a1a; }
+h1 { font-size: 14pt; border-bottom: 2px solid #333; padding-bottom: 4px; }
+h2 { font-size: 11pt; margin-top: 1.4em; border-bottom: 1px solid #999; padding-bottom: 2px;}
+h3 { font-size: 9pt; margin-top: 1.2em; }
+h4 { font-size: 8pt; }
+table { border-collapse: collapse; width: 100%; font-size: 7pt; margin: 0.8em 0; page-break-inside: auto; }
 th, td { border: 1px solid #888; padding: 3px 5px; text-align: left; vertical-align: top; word-wrap: break-word; }
 th { background: #eee; }
-code { font-family: "DejaVu Sans Mono", monospace; font-size: 8pt; background: #f4f4f4; padding: 0 2px; }
-pre { background: #f7f7f7; border: 1px solid #ccc; padding: 6px 8px; font-size: 7.5pt; white-space: pre-wrap; word-wrap: break-word; }
-pre code { background: none; padding: 0; font-size: 7.5pt; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 7pt; background: #f4f4f4; padding: 0 2px; }
+pre { background: #f7f7f7; border: 1px solid #ccc; padding: 6px 8px; font-size: 6.5pt; white-space: pre-wrap; word-wrap: break-word; }
+pre code { background: none; padding: 0; font-size: 6.5pt; }
 pre.mermaid { border: 1.5px dashed #556; background: #f2f4f8; }
-pre.mermaid::before { content: "Diagram — Mermaid source (rendered figures: diagrams/ SVG set in this repository)"; display: block; font-family: "DejaVu Sans", sans-serif; font-weight: bold; font-size: 8pt; color: #334; margin-bottom: 5px; }
+pre.mermaid::before { content: "Diagram — Mermaid source (rendered figures: diagrams/ SVG set in this repository)"; display: block; font-family: "DejaVu Sans", sans-serif; font-weight: bold; font-size: 7pt; color: #334; margin-bottom: 5px; }
 blockquote { border-left: 3px solid #999; margin-left: 0; padding-left: 10px; color: #333; }
 hr { border: none; border-top: 1px solid #aaa; }
 a { color: #1a4a8a; text-decoration: none; }

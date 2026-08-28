@@ -1,6 +1,6 @@
 # 40 — Findings Register, Risks & Task List
 
-### v1.5 — the honest state of the program, both tracks
+### v1.6 — the honest state of the program, both tracks
 
 **Function:** The consolidated register of every finding that materially changed
 the numbers or the architecture — solid-track F1–F6 and cross-track X1–X12, X14 — plus
@@ -157,6 +157,17 @@ publication gate, so the gate as implemented enforces staleness, not agreement �
 the reconciliation itself remains a human judgement item under doc 50 §9. Fixing
 it is its own change, not part of this lineage pass.
 
+**Tooling task (closed in v1.4) — the release gate could not see a broken
+render.** Until v1.4 `scripts/check_release.py` verified that `rendered/` was
+complete, newer than its sources, and free of raw Mermaid — but never that a PDF
+paginated or carried page numbers. On 2026-08-27 an unpatched-Qt `wkhtmltopdf`
+rendered all twelve documents as single pages with everything past page 1 clipped
+off-canvas, and the whole set passed. It was caught by eye, not by the gate, and
+would otherwise have gone into the Zenodo deposit. Closed by
+`check_pdf_pagination()` plus an engine pin that makes `render_docs.sh` refuse to
+run unpinned (doc 50 §3.3). Recorded here because the near-miss is part of the
+correction trail: the gate's coverage is itself a thing that needs auditing.
+
 ## 4. Make-or-break bench questions (consolidated)
 
 - [ ] Real CaCl₂ aw vs wt% and T — 40 wt% @ 33 °C ≤ 55% ERH (A)
@@ -233,16 +244,16 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   upgrade-path family added to the deferred notes with tests L/A3 pointers
   and the prime-mover heat-pump rejection; X-range extended in the function
   statement.
-- **v1.4** — Dependency-chart label follows doc 12 v1.4 in dropping the retired
-  aggregate cost headline; four verification findings added to §4 (CO₂-battery
-  duty basis, the X2 crossover, the cross-track latent-gains basis, and the
-  contactor rating/velocity/approach triangle).
 - **v1.3** — First parameter-register reconciliation pass (doc 50 §3.5): two open
   items added to the make-or-break list — the doc 22 coated-area denominator
   (gated on M1) and the ε_lat inconsistency behind the ERV'd duty line (gated on
   test E, doc 12 §2 erratum 10) — and §5 records the register as the standing
   mechanism for catching basis drift. No finding ID renumbered; no design figure
   changed.
+- **v1.4** — Dependency-chart label follows doc 12 v1.4 in dropping the retired
+  aggregate cost headline; four verification findings added to §4 (CO₂-battery
+  duty basis, the X2 crossover, the cross-track latent-gains basis, and the
+  contactor rating/velocity/approach triangle).
 - **v1.5** — **F6** recorded (the DCHX sensible-cycling bucket is unverified;
   magnitude OPEN, gated on M3 and on M1's coated-area denominator) and **X14**
   recorded (thermal-swing sensible penalty is set by the inert-mass ratio, not by
@@ -251,4 +262,8 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   deliberate and is part of the queue's audit trail. Dew-point IEC / M-cycle
   equivalence pointer added; F/X ranges extended in the function statement. §3
   gains the `check_register()` task. No finding ID renumbered; no design figure
+  changed.
+- **v1.6** — §3 records the render-gate near-miss closed in v1.4: the release
+  gate had no pagination or footer check, and a fully broken twelve-document PDF
+  set passed every structural check. No finding ID renumbered; no design figure
   changed.

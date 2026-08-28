@@ -212,9 +212,6 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
 - **v1.2** — Upgrade-path tests L (AHT hot-film absorption, X12) and A3
   (crystallizer jar extension) added to §4 as platform-conditional entries
   outside the baseline gating budget; doc 31 watch items added to §6.
-- **v1.4** — Aggregate cost headline retired from the §4 title (it did not
-  decompose from the table and dates badly in a prior-art record); per-test
-  estimates retained and explicitly scoped as 2026 order-of-magnitude figures.
 - **v1.3** — Clarifying pass from the parameter register (doc 50 §3.5), no design
   figure changed: §1's absorber-flow row restated as one quantity in two units
   (~123 m³/h ≈ 147 kg/h) rather than a range, and the COP behind the 0.92 kW peak
@@ -222,3 +219,6 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   behind the ERV'd duty line, left standing and gated on test E; §4 gains a budget
   note recording that the ~$485–755 headline no longer decomposes from the table
   beneath it.
+- **v1.4** — Aggregate cost headline retired from the §4 title (it did not
+  decompose from the table and dates badly in a prior-art record); per-test
+  estimates retained and explicitly scoped as 2026 order-of-magnitude figures.

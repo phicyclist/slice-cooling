@@ -1,3 +1,6 @@
+# Diagram width cap is 540 CSS px, proportioned to style.css's 8pt type ladder.
+# It was 680 under wkhtmltopdf, which down-scaled the whole page ~25%; at true
+# scale 680px overruns the text block and pushes figures onto their own page.
 import re, sys
 from PIL import Image
 p = sys.argv[1]; h = open(p).read()
@@ -11,6 +14,6 @@ def fix(m):
         return ('<div style="page-break-before:always;page-break-after:always;'
                 'text-align:center;">'
                 f'<img src="{src}" class="mermaid-img" style="height:840px;width:auto;" alt=""/></div>')
-    return f'<img src="{src}" class="mermaid-img" style="width:{min(w // 2, 680)}px;max-width:100%;" alt=""/>'
+    return f'<img src="{src}" class="mermaid-img" style="width:{min(w // 2, 540)}px;max-width:100%;" alt=""/>'
 h = re.sub(r'<img src="(mmpng/[^"]+)"[^>]*/?>', fix, h)
 open(p, 'w').write(h)

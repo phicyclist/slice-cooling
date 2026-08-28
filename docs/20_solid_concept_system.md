@@ -272,6 +272,10 @@ off-the-shelf benchmark and electrical backup.
 CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
 
 *Version history*
+- **v1.0** — New lineage from archived 01: self-consistent §5 balance adopted
+  (duty 9–11 kg/h, regen 7.5–9 kW, parasitic 0.6–1.0 kW); X8 closed working loop
+  as design intent with the CO₂ correction; DP-A sole; land/marine per doc 00;
+  ten-minute-cycling caveat recorded.
 - **v1.1** — Clarifying pass from the parameter register (doc 50 §3.5), no design
   figure changed: cabin steady-state RH corrected from ~40% to ~46% (9.1 g/kg at
   25 °C — arithmetic label only; still inside the 40–55% band and the headroom
@@ -279,10 +283,6 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   water, which were previously conflated; §3's recoverable-fraction sentence
   restated against the corrected F1 duty; §6 records the purge humidity its RH
   column was actually computed at.
-- **v1.0** — New lineage from archived 01: self-consistent §5 balance adopted
-  (duty 9–11 kg/h, regen 7.5–9 kW, parasitic 0.6–1.0 kW); X8 closed working loop
-  as design intent with the CO₂ correction; DP-A sole; land/marine per doc 00;
-  ten-minute-cycling caveat recorded.
 - **v1.2** — §3 sensible-cycling bucket marked pending against **F6**; §4 caveat
   scope-corrected to the full swung inventory per X14, with the magnitude left
   OPEN. Waste-heat energy-source row genericised (process tail). No figure

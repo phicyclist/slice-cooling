@@ -632,9 +632,9 @@ DOCS = [
  ("22_solid_module_validation.md","v1.2","DCHX design, coating rules, F5 mitigations, bench rig, M1–M4, staged pipeline"),
  ("30_integration_energy_water.md","v1.3","Heat cascade, HDH, source roles, all-electric galley, water ladder, degraded operation"),
  ("31_upgrade_paths_sorption_cycles.md","v1.0","X12 AHT, coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer"),
- ("40_findings_register.md","v1.5","F1–F6, X1–X12, X14, spec P17, tasks, make-or-break bench list"),
- ("50_defensive_disclosure_plan.md","v1.3","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
- ("executive_summary.md","v1.1","Standalone abstract for examiner-channel deposit"),
+ ("40_findings_register.md","v1.6","F1–F6, X1–X12, X14, spec P17, tasks, make-or-break bench list"),
+ ("50_defensive_disclosure_plan.md","v1.4","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
+ ("executive_summary.md","v1.2","Standalone abstract for examiner-channel deposit; carries the concept DOI and repo URL"),
 ]
 
 

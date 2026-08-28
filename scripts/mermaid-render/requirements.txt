@@ -1,0 +1,10 @@
+# Python half of the pinned render toolchain. The npm half is package.json.
+# The rendered PDF set is the archival artifact (doc 50 §3.3), so both halves are
+# pinned exactly: layout is version-sensitive, and until v1.4 nothing pinned the
+# PDF engine at all. That gap let an unpatched-Qt wkhtmltopdf produce a
+# collapsed, footerless set that passed every release check.
+#
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+#
+weasyprint==69.0
+pillow==12.3.0

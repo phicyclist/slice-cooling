@@ -23,7 +23,7 @@ carries a confidence grade (doc 00 §9).
 
 ---
 
-## Document lineage (v1.3 — this set supersedes all archived documents)
+## Document lineage (v1.4 — this set supersedes all archived documents)
 
 | File | Contents |
 |---|---|
@@ -150,7 +150,28 @@ design.
   positive-pressure envelope condition, and doc 11 (v1.2) separates that
   intake-side duty from the outlet-side aerosol chain. Doc 00 (v1.3) records the
   dew-point IEC / M-cycle terminology equivalence, both forms retained. The
-  parameter register was regenerated. **No design figure changed.** Versions
+  parameter register was regenerated. **No design figure changed.**
+- **v1.4** — Render-pipeline and release-gate repair; **no document claim
+  changed**. The HTML→PDF stage moves from `wkhtmltopdf` — archived upstream in
+  2022, and dependent on a patched Qt 4.8.7 no current distribution can ship — to
+  a pinned **WeasyPrint**. An unpatched-Qt build had rendered all twelve
+  documents as single pages with everything past page 1 clipped off-canvas, and
+  **every check in `scripts/check_release.py` passed that set**; it was caught by
+  eye. `check_pdf_pagination()` now closes that hole, `render_docs.sh` refuses to
+  run against an unpinned engine, and `requirements.txt` pins the Python half of
+  the toolchain as `package.json` already pinned the npm half. `style.css` was
+  re-derived to reproduce the archived page appearance (44 → 49 pages), the old
+  nominal values having been tuned against wkhtmltopdf's ~25% down-scaling. The
+  executive summary (v1.2) gains the concept DOI and repository URL it had never
+  carried — doc 50 §7 deposits it precisely to point searchers at the full
+  record. Doc 50 (v1.4) records the engine pin and replaces the webhook
+  expectation with the reserve-first manual deposit procedure; doc 40 (v1.6)
+  records the gate near-miss. Housekeeping in the same pass: the
+  `*Version history*` blocks in docs 10, 12, 20, 22, 40 and 50 are sorted into
+  ascending version order — entry text is unchanged and nothing is removed, only
+  the listing order corrected — and the OpenTimestamps proof for the v1.3 archive
+  is committed under `timestamps/` per doc 50 §6.3, with its SHA-256 recorded so
+  verification is self-contained. Versions
   v1.2, v1.2.1 and v1.2.2 were development increments that were never separately
   tagged or archived; their content is first deposited as part of this release,
   which is why the version history above carries entries the Zenodo version list

@@ -210,15 +210,15 @@ flowchart TB
 CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
 
 *Version history*
+- **v1.0** — New lineage from archived 03: F5 chloride-exposure section and
+  imported materials law added (§3); ΔP measurement added to M1; salt-air edge
+  behavior added to M4; sizing table restated to the self-consistent duty; X8
+  valving provisioned at Stage 3.
 - **v1.1** — Clarifying pass from the parameter register (doc 50 §3.5), no design
   figure changed: §4 records the open coated-area denominator — the §4 sizing table
   implies ~0.3 kg/m² where §2 specifies 0.18 kg/m² planform — flagged against M1
   rather than reconciled on paper, with the conservative reading named; the comfort
   headroom phrasing follows doc 20 v1.1's corrected 46% RH cabin state.
-- **v1.0** — New lineage from archived 03: F5 chloride-exposure section and
-  imported materials law added (§3); ΔP measurement added to M1; salt-air edge
-  behavior added to M4; sizing table restated to the self-consistent duty; X8
-  valving provisioned at Stage 3.
 - **v1.2** — §1 key-sizing-insight qualified per X14 (coated area is not free — it
   carries inert mass, and the sensible penalty per unit of water swung is
   independent of cycle time); §3 intake path specified by equipment class

@@ -1,6 +1,6 @@
 # Executive Summary — Heat-Driven Comfort & Water for Humid Climates
 
-### v1.1 — Two desiccant tracks, one physics, one platform · Land & marine
+### v1.2 — Two desiccant tracks, one physics, one platform · Land & marine
 
 **One sentence:** Sun or waste heat in — dry cool air, safe air quality (<1,000 ppm CO₂),
 hot water, and drinking water out, for ~100 m³ occupied spaces (yacht interiors, small
@@ -135,10 +135,17 @@ What stands between paper and proof is a few hundred dollars of deliberately seq
 bench tests.
 
 ---
-*Prepared from repository docs 00–50 (lineage v1.2), whose figures are collected with
-their confidence grades and gating tests in `docs/parameter_register.xlsx`. Open
-defensive publication — hardware CERN-OHL-P v2, text CC-BY-4.0, scripts MIT. No patents
-sought or held. Unbuilt paper design — see LICENSE.*
+*Prepared from repository docs 00–50 (lineage v1.4), whose figures are collected with
+their confidence grades and gating tests in `docs/parameter_register.xlsx`.*
+
+***Full enabling record:*** *the complete document set, diagrams and parameter register
+are archived at* ***[doi:10.5281/zenodo.21544099](https://doi.org/10.5281/zenodo.21544099)***
+*(concept DOI — always resolves to the current version), and developed openly at*
+*[github.com/phicyclist/slice-cooling](https://github.com/phicyclist/slice-cooling).
+This summary is an abstract; it is not itself enabling. Cite the DOI.*
+
+*Open defensive publication — hardware CERN-OHL-P v2, text CC-BY-4.0, scripts MIT. No
+patents sought or held. Unbuilt paper design — see LICENSE.*
 
 *Version history*
 - **v1.0** — Initial standalone abstract for the examiner channel (doc 50 §7),
@@ -147,3 +154,9 @@ sought or held. Unbuilt paper design — see LICENSE.*
   (adding doc 31's upgrade paths and doc 50's disclosure procedure) and points at the
   parameter register; the bench-budget headline de-specified pending the doc 12 §4
   reconciliation. No technical claim changed.
+- **v1.2** — Footer gains the **concept DOI and repository URL**, which the document
+  previously carried nowhere: doc 50 §7 deposits this file to the examiner channel
+  precisely so it points searchers at the full enabling record, and it could not do
+  that job. Provenance line corrected from lineage v1.2 to v1.4 — it had gone stale
+  through v1.3, since this file was outside that release's bump set. No technical
+  claim changed.

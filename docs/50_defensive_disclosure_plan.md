@@ -1,6 +1,6 @@
 # 50 — Defensive Disclosure Strategy & Publication Procedure
 
-### v1.3 — making the lineage function as prior art
+### v1.4 — making the lineage function as prior art
 
 **Function:** Turn the v1.0 document lineage into a legally useful, dated,
 examiner-discoverable public record, and set up the repository and archival
@@ -100,6 +100,21 @@ as raw code fences from v1.0 to v1.1 before `scripts/check_release.py` was writt
 to catch exactly that. The Zenodo
 tarball is then fully self-contained — readable with nothing but a PDF viewer.
 This also protects against markdown-flavor drift over decades.
+
+**The engine is pinned, and the pin is load-bearing.** From v1.4 the HTML→PDF
+stage is **WeasyPrint**, pinned in `scripts/mermaid-render/requirements.txt`
+alongside the npm renderer's `package.json`. Its predecessor, `wkhtmltopdf`, was
+archived upstream in 2022 and depends on a patched Qt 4.8.7 that no current
+distribution can ship; builds against unpatched Qt silently ignore the footer
+flags and fail to paginate. On 2026-08-27 such a build rendered the entire set as
+twelve single-page PDFs with every page after the first clipped off-canvas — and
+**every structural check in `check_release.py` passed it**. `check_pdf_pagination()`
+was added in the same release to close that hole, and `render_docs.sh` now refuses
+to run against an unpinned engine. The v1.4 set is therefore a deliberate one-time
+re-layout against the v1.0.1 and v1.3 deposits: the type ladder and margins in
+`style.css` were re-derived to reproduce the archived appearance (44 → 49 pages),
+because the old nominal values had been tuned against wkhtmltopdf's ~25%
+down-scaling and were never meant literally. No document content changed.
 
 ### 3.4 The disclosure statement (add to README, verbatim-class)
 
@@ -283,8 +298,11 @@ The abstract and keywords are the search surface. Discipline:
    persistent SWHID. Repeat after major releases (it also crawls GitHub
    periodically on its own).
 2. **Internet Archive:** https://web.archive.org/save/ → snapshot (a) the repo
-   root, (b) the release page, (c) the Zenodo record page. Three URLs, two
-   minutes.
+   root, (b) the **tag tree** page (`/tree/vX.Y`), (c) the Zenodo record page.
+   Three URLs, two minutes. There is deliberately no GitHub *release* page to
+   snapshot — see §9. Verify afterwards via
+   `archive.org/wayback/available?url=...` rather than trusting the save form,
+   which can appear to succeed without archiving anything.
 3. **OpenTimestamps (optional):** `ots stamp v1.0.tar.gz` → commit the `.ots`
    proof file to the repo in the next release. Free, and converts "trust
    Zenodo's clock" into "trust the Bitcoin blockchain's clock" for anyone who
@@ -324,6 +342,26 @@ activity appears in this space.
 
 ## 9. Publication-day checklist
 
+**Deposit procedure — reserve-first, manual.** Zenodo mints a version DOI
+automatically on publish; the concept DOI never changes. The GitHub integration
+cannot pre-reserve one — Zenodo's own guidance is that pre-reservation "is not
+possible… before using GitHub integration", and directs you to upload manually
+instead. Reserve-first is used here because the README's disclosure notice must
+carry the version DOI of the very record being deposited, and a tarball generated
+*from* a tag can never contain a DOI minted *after* it. The webhook remains
+enabled but dormant: it fires on **release creation**, so creating a GitHub
+Release would bypass the reservation and mint a second, unreserved version.
+Snapshot the tag tree page instead of a release page (§6.2).
+
+1. Record → **New version** → DOI field → answer **No** → **Get a DOI now!**
+   Do not delete the draft afterwards; the reservation is lost with it.
+2. Bake the reserved version DOI into the README notice. Concept DOI unchanged.
+3. Render, regenerate the parameter register, run `check_release.py`.
+4. Commit → merge → `git tag -a` → push branch and tag. **No GitHub Release.**
+5. Upload the rendered PDF set plus the tag tarball, set the version field,
+   publish. `.zenodo.json` is read by the GitHub integration only — a manual
+   deposit is filled in by hand, so verify the version field yourself.
+
 Run `python3 scripts/check_release.py` first — it mechanically enforces the
 structural half of this list (document version discipline and footers, PDF and
 register freshness, no raw Mermaid in any PDF, version and DOI agreement across
@@ -339,12 +377,11 @@ below that need human judgement stay manual.
 - [ ] `LICENSE.md` scope map + three texts in `LICENSES/`
 - [ ] `.zenodo.json` + `CITATION.cff` committed
 - [ ] Disclosure statement in README (date + DOI placeholders)
-- [ ] `git tag -a v1.0` pushed
-- [ ] Zenodo manual record published; concept + version DOIs recorded
-- [ ] README updated with DOI badge → commit → (optionally) v1.0.1 tag so the
-      in-repo README carries its own DOI
-- [ ] Software Heritage save + 3× Wayback snapshots
-- [ ] GitHub↔Zenodo webhook enabled for future releases
+- [ ] Version DOI **reserved before the tag** (see the deposit procedure below)
+- [ ] `git tag -a vX.Y` pushed — **tag only, never a GitHub Release**
+- [ ] Zenodo new version published; version DOI recorded, concept DOI unchanged
+- [ ] Software Heritage save + 3× Wayback snapshots, each verified via the
+      availability API
 - [ ] TDCommons deposit of the executive summary (recommended)
 - [ ] `ots stamp` on the release tarball (optional)
 
@@ -356,18 +393,24 @@ CC-BY-4.0, scripts MIT. No patents sought or held.*
 - **v1.0** — Initial disclosure-strategy document: venue stack, repo formation,
   Zenodo manual + webhook procedures, metadata discipline, snapshot and
   examiner-channel procedures, ongoing version discipline.
-- **v1.2** — §9 now opens with `scripts/check_release.py`, which turns the
-  structural half of the checklist into a gate that exits non-zero; §3.3 records
-  that the renderer covers every document, after the executive summary was found
-  to have shipped un-rendered Mermaid source from v1.0 to v1.1.
 - **v1.1** — §3.5 added: the generated parameter register
   (`docs/parameter_register.xlsx`) recorded as machine-readable enablement, with
   its derived-artifact and no-ungraded-number rules; §3.1 structure block and the
   §9 checklist updated to carry it; §8 gains the release-time reconciliation rule
   (a figure the register cannot reproduce is resolved before the tag — clarifying
   edit or erratum, never silently); former §3.5 renumbered to §3.6.
+- **v1.2** — §9 now opens with `scripts/check_release.py`, which turns the
+  structural half of the checklist into a gate that exits non-zero; §3.3 records
+  that the renderer covers every document, after the executive summary was found
+  to have shipped un-rendered Mermaid source from v1.0 to v1.1.
 - **v1.3** — §3.4 gains the scope note bounding the declaration to the desiccant
   comfort, water, and air-quality subject matter this lineage develops; upstream
   energy sources are referenced only generically, as interface requirements. The
   note is descriptive of intent and is **not a retraction** — earlier deposits
   stand as published. The same sentence is carried in `LICENSE.md`'s scope map.
+- **v1.4** — §3.3 records the render-engine change to a pinned WeasyPrint, after
+  an unpatched-Qt `wkhtmltopdf` produced a collapsed, footerless set that passed
+  every structural check; §6.2 snapshots the tag tree rather than a release page
+  and requires verifying captures via the availability API; §9 replaces the
+  webhook expectation with the reserve-first manual deposit procedure, which the
+  GitHub integration cannot support. No disclosure claim changed.

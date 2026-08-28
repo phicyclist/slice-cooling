@@ -1,6 +1,6 @@
 # Executive Summary — Heat-Driven Comfort & Water for Humid Climates
 
-### v1.2 — Two desiccant tracks, one physics, one platform · Land & marine
+### v1.3 — Two desiccant tracks, one physics, one platform · Land & marine
 
 **One sentence:** Sun or waste heat in — dry cool air, safe air quality (<1,000 ppm CO₂),
 hot water, and drinking water out, for ~100 m³ occupied spaces (yacht interiors, small
@@ -144,6 +144,13 @@ are archived at* ***[doi:10.5281/zenodo.21544099](https://doi.org/10.5281/zenodo
 *[github.com/phicyclist/slice-cooling](https://github.com/phicyclist/slice-cooling).
 This summary is an abstract; it is not itself enabling. Cite the DOI.*
 
+***CPC classification*** *(verified against the 2026.08 scheme; full titles in doc 50 §5):*
+*F24F 3/14 · F24F 3/1411 · F24F 3/1417 · F24F 3/1429 · F24F 3/147 · F24F 12/00 ·
+F24F 5/0035 · B01D 53/14 · B01D 53/04 · B01D 53/26 · B01D 53/261 · B01D 53/28 ·
+B01D 53/62 · B01D 53/1475 · C02F 1/04 · C02F 2103/08 · B63J 1/00 · B63J 2/02 ·
+B63J 2/04. Not F24F 3/1423 — the solid track is a coated stationary exchanger,
+not a rotary wheel.*
+
 *Open defensive publication — hardware CERN-OHL-P v2, text CC-BY-4.0, scripts MIT. No
 patents sought or held. Unbuilt paper design — see LICENSE.*
 
@@ -160,3 +167,6 @@ patents sought or held. Unbuilt paper design — see LICENSE.*
   that job. Provenance line corrected from lineage v1.2 to v1.4 — it had gone stale
   through v1.3, since this file was outside that release's bump set. No technical
   claim changed.
+- **v1.3** — Carries the verified CPC classification codes. This file is the
+  examiner-channel deposit (doc 50 §7), and examiners search classification
+  before keywords; it previously carried none. No technical claim changed.

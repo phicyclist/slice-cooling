@@ -1,6 +1,6 @@
 # 50 — Defensive Disclosure Strategy & Publication Procedure
 
-### v1.4 — making the lineage function as prior art
+### v1.5 — making the lineage function as prior art
 
 **Function:** Turn the v1.0 document lineage into a legally useful, dated,
 examiner-discoverable public record, and set up the repository and archival
@@ -279,14 +279,45 @@ The abstract and keywords are the search surface. Discipline:
 - Name the specific materials by every alias: aluminum fumarate / AlFu /
   Basolite A520 / MIL-53(Al)-FA; CaCl₂ / calcium chloride brine; Lewatit VP OC
   1065-class solid amine.
-- Consider listing plausible **CPC classification codes** in the description
-  (e.g., F24F 3/14 and F24F 3/1417 for desiccant air conditioning, F24F 5/0035
-  for evaporative cooling, B01D 53/26 and 53/28 for sorbent drying/CO₂,
-  C02F 1/04-class for thermal desalination, B63J for shipboard systems).
-  Examiners search by classification; putting the codes in the text makes the
-  record surface in classification-plus-keyword queries. Verify the exact codes
-  against the current CPC scheme before publishing rather than trusting this
-  list.
+- **CPC classification codes — verified and deployed (v1.5).** Examiners search
+  by classification first and keywords second, so a record carrying no codes is
+  invisible to the query that matters most. The set below was checked symbol by
+  symbol against the CPC scheme as published in **2026.08**; titles are quoted
+  verbatim. Re-verify before any future deposit — the scheme is revised
+  continuously, and a stale code is worse than none.
+
+  | CPC | Title (verbatim) | Covers here |
+  |---|---|---|
+  | `F24F 3/14` | by humidification; by dehumidification | parent, both tracks |
+  | `F24F 3/1411` | by absorbing or adsorbing water, e.g. using an hygroscopic desiccant | both tracks |
+  | `F24F 3/1417` | with liquid hygroscopic desiccants | liquid track (docs 10–12) |
+  | `F24F 3/1429` | alternatively operating a heat exchanger in an absorbing/adsorbing mode and a heat exchanger in a regeneration mode | **solid track two-bed DCHX swing (docs 20–22)** |
+  | `F24F 3/147` | with both heat and humidity transfer between supplied and exhausted air | ERV latent recovery (X7) |
+  | `F24F 12/00` | Use of energy recovery systems in air conditioning, ventilation or screening | X7, X8 |
+  | `F24F 5/0035` | using evaporation | M-cycle / dew-point IEC |
+  | `B01D 53/14` | by absorption | CaCl₂ contactor |
+  | `B01D 53/04` | with stationary adsorbents | coated fixed bed (not a wheel) |
+  | `B01D 53/26` | Drying gases or vapours | both tracks |
+  | `B01D 53/261` | by adsorption | solid track |
+  | `B01D 53/28` | Selection of materials for use as drying agents | CaCl₂; aluminium fumarate |
+  | `B01D 53/62` | Carbon oxides | CO₂ battery (X10, X11, P17) |
+  | `B01D 53/1475` | Removing carbon dioxide | absorption-route CO₂ |
+  | `C02F 1/04` | by distillation or evaporation | sealed still; HDH |
+  | `C02F 2103/08` | Seawater, e.g. for desalination | marine feed (note the `2` prefix) |
+  | `B63J 1/00` | Arrangements of installations for producing fresh water, e.g. by evaporation and condensation of sea water | shipboard water |
+  | `B63J 2/02` | Ventilation; Air-conditioning | shipboard comfort |
+  | `B63J 2/04` | of living spaces | shipboard comfort |
+
+  **Deliberately excluded:** `F24F 3/1423` (*with a moving bed of solid
+  desiccants, e.g. a rotary wheel supporting solid desiccants*). The solid track
+  is a **coated stationary exchanger**, not a wheel. Claiming a code the work
+  does not practise files the record against the wrong art and is worse than
+  omitting it — the earlier draft of this list reached for it as generic
+  "desiccant air conditioning" cover.
+
+  Carry the codes in the Zenodo description, the README, and the executive
+  summary (the examiner-channel artifact, §7) — not only here, where an examiner
+  will never look.
 - Zenodo records are harvested by OpenAIRE, DataCite, and indexed by Google
   Scholar/Dataset Search — the metadata quality above is what determines
   whether that indexing does anything.
@@ -414,3 +445,10 @@ CC-BY-4.0, scripts MIT. No patents sought or held.*
   and requires verifying captures via the availability API; §9 replaces the
   webhook expectation with the reserve-first manual deposit procedure, which the
   GitHub integration cannot support. No disclosure claim changed.
+- **v1.5** — §5's CPC classification advice, drafted in v1.0 and never acted on,
+  is replaced by a verified code table (checked against CPC 2026.08, titles
+  quoted verbatim) and deployed to the README, `.zenodo.json` and the executive
+  summary. `F24F 3/1423` is explicitly excluded: the solid track is a coated
+  stationary exchanger, not a rotary wheel. Examiner discoverability is the
+  weakest of the four properties in §1, and until now the record carried no
+  classification codes at all.

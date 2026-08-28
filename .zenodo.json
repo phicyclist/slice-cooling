@@ -3,7 +3,7 @@
   "upload_type": "publication",
   "publication_type": "technicalnote",
   "license": "cc-by-4.0",
-  "version": "v1.4",
+  "version": "v1.5",
   "creators": [
     {
       "name": "Pla, Ramon",
@@ -32,9 +32,28 @@
     "marine HVAC",
     "enthalpy recovery ventilator",
     "defensive publication",
-    "prior art"
+    "prior art",
+    "CPC F24F 3/14",
+    "CPC F24F 3/1411",
+    "CPC F24F 3/1417",
+    "CPC F24F 3/1429",
+    "CPC F24F 3/147",
+    "CPC F24F 12/00",
+    "CPC F24F 5/0035",
+    "CPC B01D 53/14",
+    "CPC B01D 53/04",
+    "CPC B01D 53/26",
+    "CPC B01D 53/261",
+    "CPC B01D 53/28",
+    "CPC B01D 53/62",
+    "CPC B01D 53/1475",
+    "CPC C02F 1/04",
+    "CPC C02F 2103/08",
+    "CPC B63J 1/00",
+    "CPC B63J 2/02",
+    "CPC B63J 2/04"
   ],
-  "notes": "Defensive publication. No patents sought or held. Hardware: CERN-OHL-P v2; documentation: CC-BY-4.0; scripts: MIT.",
+  "notes": "Defensive publication. No patents sought or held. Hardware: CERN-OHL-P v2; documentation: CC-BY-4.0; scripts: MIT. CPC classification (verified 2026.08): F24F 3/14, F24F 3/1411, F24F 3/1417, F24F 3/1429, F24F 3/147, F24F 12/00, F24F 5/0035, B01D 53/14, B01D 53/04, B01D 53/26, B01D 53/261, B01D 53/28, B01D 53/62, B01D 53/1475, C02F 1/04, C02F 2103/08, B63J 1/00, B63J 2/02, B63J 2/04. Not F24F 3/1423 (rotary wheel) — the solid track is a coated stationary exchanger.",
   "related_identifiers": [
     {
       "identifier": "https://github.com/phicyclist/slice-cooling",

@@ -23,7 +23,7 @@ carries a confidence grade (doc 00 §9).
 
 ---
 
-## Document lineage (v1.4 — this set supersedes all archived documents)
+## Document lineage (v1.5 — this set supersedes all archived documents)
 
 | File | Contents |
 |---|---|
@@ -88,6 +88,17 @@ required-PENDING test J).
 5. Solid-track hardware only after M2 delivers effective Δq and the T8 silica
    benchmark quote is in hand; run the doc 00 §4 model with your own loads before
    committing full T2 scope; provision X8 valving from the start.
+
+## Classification (CPC)
+
+For examiners and classification-plus-keyword search. Verified against the CPC
+scheme as published **2026.08**; see doc 50 §5 for each code's verbatim title and
+what it covers here.
+
+`F24F 3/14 · F24F 3/1411 · F24F 3/1417 · F24F 3/1429 · F24F 3/147 · F24F 12/00 · F24F 5/0035 · B01D 53/14 · B01D 53/04 · B01D 53/26 · B01D 53/261 · B01D 53/28 · B01D 53/62 · B01D 53/1475 · C02F 1/04 · C02F 2103/08 · B63J 1/00 · B63J 2/02 · B63J 2/04`
+
+Not `F24F 3/1423` (moving bed / rotary wheel) — the solid track is a **coated
+stationary exchanger**, not a wheel.
 
 ## Licensing & disclosure
 
@@ -191,3 +202,13 @@ design.
 
 Licensing: hardware CERN-OHL-P v2 · documentation & diagrams CC-BY-4.0 ·
 scripts MIT — see `LICENSE.md` for the scope map.
+- **v1.5** — Discoverability and on-ramp pass; **no design figure changed**. Doc
+  50 §1 rates *examiner discoverability* the weakest of the four properties that
+  make a defensive publication work, and §5 had drafted CPC codes in v1.0 that
+  were never deployed — the record carried none. They are now verified symbol by
+  symbol against CPC 2026.08 and carried in this README, `.zenodo.json` and the
+  executive summary (v1.3, the examiner-channel artifact). `F24F 3/1423` is
+  deliberately excluded: it covers rotary-wheel desiccants, and claiming it would
+  file this work against art it does not practise. Doc 00 (v1.4) §9 gains the
+  notation, symbol and identifier key — F/X/P, tests A–L, T/M — which the lineage
+  used throughout but defined nowhere.

@@ -1,6 +1,6 @@
 # 00 — Platform Basis: Scope, Design Point, Shared Physics & Doctrines
 
-### v1.3 — foundation document for both tracks
+### v1.4 — foundation document for both tracks
 
 **Function:** Everything both tracks share: deployment scope, the governing design
 point, the shared psychrometric argument, the generalized airflow–moisture model,
@@ -9,6 +9,9 @@ safety-critical requirements register. Track documents (10–12 liquid, 20–22 
 30 integration) reference this document rather than restating it.
 
 ---
+
+> **New to this lineage?** §9 carries the notation, the symbol table, and the
+> key to the `F` / `X` / `P` / test identifiers used throughout every document.
 
 ## 1. Scope — land and marine
 
@@ -218,12 +221,68 @@ Any build omitting these departs from this design:
    guaranteed; 43 wt% storage cap (doc 11 §4).
 7. Two-worlds materials rule on every brine/raw-water-wetted component (doc 11 §1).
 
-## 9. Conventions
+## 9. Conventions, notation, and the ID key
 
 Confidence grades on every quantitative claim: **measured** · **procurement-grade**
 · **sizing-grade** · **PENDING <test/task>**. DP-A on every number. Diagrams:
 Mermaid inside documents; the SVG architecture set lives in `diagrams/`.
 Psychrometric chains as state tables. Surgical edits with version bumps.
+
+### 9.1 Identifier scheme
+
+Every identifier in this lineage is **stable and never renumbered** — a reader
+returning to `X8` years later must find the same finding. Gaps are deliberate and
+are part of the audit trail: numbers are assigned in the order items enter the
+queue, so a missing number means "drafted, not yet published", never "withdrawn".
+
+| Prefix | Meaning | Lives in |
+|---|---|---|
+| `F1`–`F6` | Solid-track findings | doc 40 §1 |
+| `X1`–`X14` | Cross-track findings — the ones that changed both tracks | doc 40 §2 |
+| `P1`–`P20` | Patches from the archived predecessors, applied in place | throughout |
+| `P17` | The CO₂ specification (safety-critical) | doc 00 §5, §8 |
+| `A`–`L` | Liquid-track bench tests (`A2`, `A3`, `J-K` are variants) | doc 12 §4 |
+| `T1`–`T9` | Solid-track sorbent/synthesis tasks | doc 21, doc 22 |
+| `M1`–`M4` | Solid-track module measurements | doc 22 §6 |
+| `CHK-nnn` | Consistency observations raised while re-deriving figures | register `Checks` sheet |
+| `LQ-`, `SD-`, `CO2-`, `IN-`, `UP-` | Parameter-register row IDs (liquid, solid, CO₂, integration, upgrade) | `parameter_register.xlsx` |
+
+### 9.2 Symbols
+
+| Symbol | Quantity | Unit |
+|---|---|---|
+| ω | Humidity ratio (absolute humidity) | g water / kg dry air |
+| Δq | Sorbent working capacity per swing | g water / g sorbent |
+| a_w | Water activity of a brine — the equilibrium RH it holds | — |
+| ε | Recovery effectiveness (`ε_lat` = latent) | — |
+| NTU | Number of transfer units (contactor sizing) | — |
+| ΔP | Pressure drop across a face or train | Pa |
+| T_dp | Dew-point temperature | °C |
+| GOR | Gained output ratio — distillate per unit heat | — |
+| COP | Coefficient of performance | — |
+| ERH | Equilibrium relative humidity over a brine | % |
+
+### 9.3 Abbreviations
+
+**Architecture.** DP-A, the sole design point (§2) · **DCHX**, desiccant-coated
+heat exchanger (the solid track's module) · **LDAC**, liquid-desiccant air
+conditioning · **ERV**, enthalpy recovery ventilator · **DCV**, demand-controlled
+ventilation · **VC-AC**, vapour-compression air conditioning · **AHT**, absorption
+heat transformer (X12) · **MVR**, mechanical vapour recompression · **HDH**,
+humidification–dehumidification desalination · **RO**, reverse osmosis.
+
+**Cycles.** **IEC**, indirect evaporative cooling; the *dew-point IEC* stage is
+the same cycle as the **M-cycle** / Maisotsenko cycle — see §3 · **TSA**, thermal
+swing adsorption (the CO₂ beds, X10/X11).
+
+**Materials.** **AlFu**, aluminium fumarate (MIL-53(Al)-FA, Basolite A520) ·
+**MOF**, metal–organic framework · **CaCl₂**, the liquid track's brine.
+
+**Heat sources.** **ETC**, evacuated-tube collector · **PVT**, photovoltaic–thermal
+panel · **PTC**, positive-temperature-coefficient (resistive) heater.
+
+**Assays.** **PXRD**, powder X-ray diffraction · **DVS**, dynamic vapour sorption
+· **TDS**, total dissolved solids.
 
 ---
 *Part of an open defensive-publication release: hardware CERN-OHL-P v2, text
@@ -249,3 +308,9 @@ LICENSE for the safety disclaimer.*
   cycle* / *M-cycle*, both forms retained so the disclosure depends on neither an
   eponym nor a trademark. Prime-mover reference in the X11 heat-grade ladder (§5)
   genericised to waste-heat platforms. No figure changed.
+- **v1.4** — §9 expanded into a full conventions section: the identifier scheme
+  (F/X/P, tests A–L, T/M, CHK, register row prefixes) with the never-renumbered
+  and deliberate-gap rules stated explicitly, a symbol table, and an abbreviation
+  key. A pointer to it is added above §1. Nothing is renamed and no figure
+  changed — the notation was already in use throughout the lineage, but nowhere
+  defined in one place.

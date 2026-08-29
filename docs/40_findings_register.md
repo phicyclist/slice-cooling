@@ -1,6 +1,6 @@
 # 40 — Findings Register, Risks & Task List
 
-### v1.6 — the honest state of the program, both tracks
+### v1.7 — the honest state of the program, both tracks
 
 **Function:** The consolidated register of every finding that materially changed
 the numbers or the architecture — solid-track F1–F6 and cross-track X1–X12, X14 — plus
@@ -131,7 +131,9 @@ flowchart TB
 ```
 
 **Ranking:** liquid A/B/E/J and solid T1/T9 all run in parallel at trivial cost;
-test I is the liquid gate; T2 gates every solid downstream size. Shared: test H
+test I is the liquid gate; T2 gates every solid downstream size; the **T8**
+silica-wheel benchmark quote (doc 21 §2) is solicited in parallel at zero cost —
+solid-track hardware waits on it as well as on M2. Shared: test H
 and the solid M-cycle validation are one experiment; the wet/dry-bulb
 instrumentation stack (doc 22 §7) serves both. **T7 (documentation pass) is
 closed by this lineage.** Deferred: CAU-23/CAU-10-H, the CO₂-sorbent watch register (doc 12 §6 — MOF-808-AA primary; tetraamine-Mg₂(dobpdc), superseding the diamine class), two-core
@@ -267,3 +269,8 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   gate had no pagination or footer check, and a fully broken twelve-document PDF
   set passed every structural check. No finding ID renumbered; no design figure
   changed.
+- **v1.7** — §3's ranking paragraph now names **T8** in prose. It previously
+  appeared in this document only inside the §3 dependency chart, which renders
+  as an image — so text search over the archived PDF could not find it, and a
+  reader grepping for the benchmark task landed nowhere. Prose is the searchable
+  layer; charts are not. No task changed.

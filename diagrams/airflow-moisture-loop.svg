@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1170" height="560" viewBox="0 0 1170 560" font-family="DejaVu Sans, Verdana, sans-serif">
+<title>The generalized airflow-moisture model - why a hand chain fails</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#46525e"/></marker><marker id="arrd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a94a0"/></marker></defs>
+<rect x="0" y="0" width="1170" height="560" fill="#ffffff"/>
+<text x="30" y="30" font-size="17" fill="#26303a" text-anchor="start" font-weight="bold">The generalized airflow–moisture model (doc 00 §4) — why a hand chain fails</text>
+
+<!-- given -->
+<rect x="30" y="70" width="250" height="130" rx="7" fill="#ffffff" stroke="#46525e" stroke-width="1.5"/>
+<text x="155" y="94" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">Given</text>
+<text x="45" y="116" font-size="11" fill="#26303a" text-anchor="start">· ambient DP-A (T_in, ω_amb 24.2 g/kg)</text>
+<text x="45" y="134" font-size="11" fill="#26303a" text-anchor="start">· cabin Q_sens and latent gains</text>
+<text x="45" y="152" font-size="11" fill="#26303a" text-anchor="start">· sorbent back-end ω_sup</text>
+<text x="55" y="168" font-size="11" fill="#5a646e" text-anchor="start">(AlFu ~8 g/kg; brine per doc 12)</text>
+<text x="45" y="186" font-size="11" fill="#26303a" text-anchor="start">· M-cycle effectiveness ε_dp ≈ 0.7</text>
+<path d="M280,135 L340,135" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- the loop -->
+<rect x="344" y="52" width="460" height="290" rx="7" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.5"/>
+<text x="574" y="76" font-size="12" fill="#3a5f85" text-anchor="middle" font-weight="bold">the loop — solved simultaneously, never as a chain</text>
+
+<rect x="374" y="96" width="180" height="56" rx="7" fill="#ffffff" stroke="#46525e" stroke-width="1.5"/>
+<text x="464" y="118" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">② M-cycle supply T_sup</text>
+<text x="464" y="136" font-size="11" fill="#5a646e" text-anchor="middle">from ε_dp and T_dp(ω_work)</text>
+
+<rect x="594" y="96" width="180" height="56" rx="7" fill="#ffffff" stroke="#46525e" stroke-width="1.5"/>
+<text x="684" y="118" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">③ supply flow S</text>
+<text x="684" y="136" font-size="11" fill="#5a646e" text-anchor="middle">Q_sens / c_p·(T_cab − T_sup)</text>
+
+<rect x="484" y="240" width="180" height="56" rx="7" fill="#ffffff" stroke="#46525e" stroke-width="1.5"/>
+<text x="574" y="262" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">① cabin state ω_cab</text>
+<text x="574" y="280" font-size="11" fill="#5a646e" text-anchor="middle">ω_sup + latent gains / S</text>
+
+<path d="M554,124 L594,124" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M684,152 L604,240" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M484,268 C420,250 420,190 452,152" fill="none" stroke="#8a94a0" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrd)"/>
+<text x="398" y="212" font-size="11" fill="#5a646e" text-anchor="middle" font-style="italic">① sets the</text>
+<text x="398" y="226" font-size="11" fill="#5a646e" text-anchor="middle" font-style="italic">working-air</text>
+<text x="398" y="240" font-size="11" fill="#5a646e" text-anchor="middle" font-style="italic">state ② needs</text>
+<text x="574" y="322" font-size="11" fill="#3a5f85" text-anchor="middle" font-style="italic">a hand chain enters this circle once and stops — the fixed point is the answer</text>
+
+<!-- downstream -->
+<path d="M774,124 L844,124" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="848" y="96" width="140" height="56" rx="7" fill="#ffffff" stroke="#46525e" stroke-width="1.5"/>
+<text x="918" y="118" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">④ Q_wet</text>
+<text x="918" y="136" font-size="11" fill="#5a646e" text-anchor="middle">S·c_p·(T_in − T_sup)</text>
+
+<path d="M918,152 L918,190" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="848" y="194" width="140" height="56" rx="7" fill="#ffffff" stroke="#46525e" stroke-width="1.5"/>
+<text x="918" y="216" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">⑤ working-air M</text>
+<text x="918" y="234" font-size="11" fill="#5a646e" text-anchor="middle">Q_wet / Δh_work</text>
+
+<path d="M918,250 L918,288" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M664,278 L848,304" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="830" y="292" width="220" height="50" rx="7" fill="#e9f6ee" stroke="#2e7d4f" stroke-width="1.5"/>
+<text x="940" y="313" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">⑥ sorbent duty</text>
+<text x="940" y="331" font-size="11" fill="#5a646e" text-anchor="middle">(S−M)(ω_cab−ω_sup) + M(ω_amb−ω_sup)</text>
+
+<!-- outputs -->
+<path d="M940,342 L940,384" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="344" y="388" width="800" height="118" rx="7" fill="#ffffff" stroke="#46525e" stroke-width="1.5"/>
+<text x="744" y="412" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">Load-bearing outputs at DP-A</text>
+<text x="744" y="434" font-size="11" fill="#26303a" text-anchor="middle">solid track, full AC: ~9–11 kg/h (doc 20 §5) · liquid track, mixed mode: 0.88 kg/h (doc 12 §1)</text>
+<text x="744" y="456" font-size="11" fill="#26303a" text-anchor="middle" font-weight="bold">X1 — once-through ventilation and whole-cabin M-cycle cooling never compose:</text>
+<text x="744" y="472" font-size="11" fill="#26303a" text-anchor="middle">drying 370–750 m³/h of ambient supply costs 5.5–11 kg/h</text>
+<text x="744" y="494" font-size="11" fill="#5a646e" text-anchor="middle" font-style="italic">a full transient model (task T2) supersedes this steady state; it does not replace it</text>
+
+<text x="30" y="544" font-size="11" fill="#5a646e" text-anchor="start">Restates doc 00 §4; the arrows are dependencies, not a running order. No number in this figure is new.</text>
+</svg>

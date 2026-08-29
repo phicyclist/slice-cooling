@@ -23,7 +23,7 @@ carries a confidence grade (doc 00 §9).
 
 ---
 
-## Document lineage (v1.5 — this set supersedes all archived documents)
+## Document lineage (v1.6 — this set supersedes all archived documents)
 
 | File | Contents |
 |---|---|
@@ -37,8 +37,11 @@ carries a confidence grade (doc 00 §9).
 | `30_integration_energy_water.md` | Heat cascade, HDH, source roles, all-electric galley, water redundancy ladder, degraded operation |
 | `31_upgrade_paths_sorption_cycles.md` | **Boost modes & upgrade paths (additions, never core):** the CaCl₂ absorption heat transformer (X12, primary — 60–65 °C tail → 85–90 °C at COP ~0.45–0.48), coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer pot; gates = tests L/A3 |
 | `40_findings_register.md` | **Read before trusting any sizing figure.** F1–F6, X1–X12, X14, spec P17, tasks, make-or-break bench list |
+| `41_bench_bill_of_materials.md` | **What to buy to run the program.** The procurement layer of the doc 12 §4 and doc 21–22 test programs, ordered cheapest-decisive-first and specified by class and acceptance-critical parameter, never by part number. No *system* BOM — that geometry is open (F6/F3) |
+| `50_defensive_disclosure_plan.md` | Why and how this record is published: the four properties prior art must satisfy, the venue stack, the reserve-first Zenodo procedure, verified CPC codes, snapshot and version discipline |
+| `executive_summary.md` | Standalone abstract for the examiner channel (doc 50 §7) — carries the concept DOI and the CPC codes; deposit this, not the full set |
 | `parameter_register.xlsx` | **The quantitative register.** Every published figure with its unit, confidence grade, gating test, derivation and source section, plus live sheets that re-derive the headline numbers from the design point (doc 50 §3.5). Generated, not hand-edited |
-| `diagrams/` | SVG set: mixed-mode air path · CO₂/ventilation trade-off · volume-threshold ladder · exhaust-recovery doctrine · CO₂ stack & battery |
+| `diagrams/` | SVG set: mixed-mode air path · CO₂/ventilation trade-off · volume-threshold ladder · exhaust-recovery doctrine · CO₂ stack & battery · dew-point floor · airflow–moisture loop |
 
 Archived predecessors (superseded, retained for the record): the two original
 track READMEs, `core-01..03`, `01..05`, and `06_cross_track_resolutions.md` —
@@ -81,7 +84,8 @@ required-PENDING test J).
 1. Read docs 00 → 10/20 → 40; accept the dew-point-floor argument and the DP-A
    basis.
 2. Run tests **A** ($30), **B** ($5), **E** (~$80–150), **J** (~$150–300) in
-   parallel, plus solid **T1** (mill-zero) and **T9** (commercial A520 lot).
+   parallel, plus solid **T1** (mill-zero) and **T9** (commercial A520 lot) —
+   what to buy for each, to what spec, is doc 41.
 3. Build the film cell; run test **I** (irrigation rate first) — the liquid gate.
 4. Liquid bank build in mixed-mode with the interlock, ERV, and CO₂ bed → tests
    D/G → Phase-2 berth cascade (test H, shared with the solid track).
@@ -212,3 +216,32 @@ scripts MIT — see `LICENSE.md` for the scope map.
   file this work against art it does not practise. Doc 00 (v1.4) §9 gains the
   notation, symbol and identifier key — F/X/P, tests A–L, T/M — which the lineage
   used throughout but defined nowhere.
+- **v1.6** — Approachability and hardening pass; **no design figure, DP-A number
+  or finding statement changed**. `41_bench_bill_of_materials.md` (v1.0) joins
+  the lineage: the procurement layer of the doc 12 §4 and doc 21–22 test
+  programs, ordered cheapest-decisive-first and specified by *class and
+  acceptance-critical parameter*, never by part number — a SKU is the
+  fastest-rotting thing in a record meant to be read in decades, and naming one
+  would imply a validation that has not happened. It records that **no system
+  BOM exists or should yet exist** (geometry open per F6/F3, gated on M1/M2/M3),
+  and now carries the T8 benchmark solicitation, which doc 40 (v1.7) also names
+  in prose — it previously lived only inside a dependency chart, where PDF text
+  search cannot see it. Doc 00 (v1.5) gains the two figures the entry document
+  never had: the dew-point floor with the X2 split (§3), and the
+  simultaneous-solve dependency loop (§4), with standalone SVG versions of both
+  joining `diagrams/`. Rendering and gate hardening: the
+  stylesheet gains paged-media fragmentation rules after doc 50 §3.1's
+  repository tree split across a page break and read as complete — a bordered
+  block's closing edge is indistinguishable from the end of content;
+  `imgfix.py` now caps figure *height* as well as width (a 1040–1600 px figure
+  previously overflowed the text block silently); `check_release.py` gains
+  `check_docs_manifest()`, which immediately caught three version drifts in the
+  workbook manifest — the third occurrence in three releases of a drift
+  previously caught only by memory — and `check_version_history_order()`,
+  asserting every version history lists ascending. Doc 50 (v1.6): §3.1 covers
+  doc 41; §4.3's `.zenodo.json` skeleton gains the `version` field the gate
+  requires; §6's snapshot steps become real subsections §6.1–§6.3 so
+  cross-references resolve, with the stamp-the-Zenodo-file rule recorded. The
+  executive summary (v1.4) stops naming a lineage version in its provenance
+  line, which had gone stale twice in three releases; the version DOI already
+  pins the exact set. Reconstruction path step 2 points at doc 41.

@@ -623,7 +623,7 @@ CHECKS = [
 ]
 
 DOCS = [
- ("00_platform_basis.md","v1.4","Scope, DP-A, shared physics, airflow–moisture model, CO₂ stack, X8 doctrine, safety register"),
+ ("00_platform_basis.md","v1.5","Scope, DP-A, shared physics, airflow–moisture model, CO₂ stack, X8 doctrine, safety register"),
  ("10_liquid_concept_physics.md","v1.1","Brine principle, mixed-mode baseline, moisture battery, berth cascade, performance envelope"),
  ("11_liquid_architecture_materials.md","v1.2","Two-worlds law, film-cell bank, aerosol control, sealed still, ERV/CO₂ hardware, thermal bus"),
  ("12_liquid_numbers_test_plan.md","v1.4","Validated quantities at DP-A, errata trail, sensitivities, tests A–L, rejected CO₂ alternatives"),
@@ -632,9 +632,10 @@ DOCS = [
  ("22_solid_module_validation.md","v1.2","DCHX design, coating rules, F5 mitigations, bench rig, M1–M4, staged pipeline"),
  ("30_integration_energy_water.md","v1.3","Heat cascade, HDH, source roles, all-electric galley, water ladder, degraded operation"),
  ("31_upgrade_paths_sorption_cycles.md","v1.0","X12 AHT, coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer"),
- ("40_findings_register.md","v1.6","F1–F6, X1–X12, X14, spec P17, tasks, make-or-break bench list"),
- ("50_defensive_disclosure_plan.md","v1.5","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
- ("executive_summary.md","v1.3","Standalone abstract for examiner-channel deposit; carries the concept DOI and repo URL"),
+ ("40_findings_register.md","v1.7","F1–F6, X1–X12, X14, spec P17, tasks, make-or-break bench list"),
+ ("41_bench_bill_of_materials.md","v1.0","Bench procurement list: class-and-spec, cheapest-decisive-first; no system BOM (F6/F3 open)"),
+ ("50_defensive_disclosure_plan.md","v1.6","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
+ ("executive_summary.md","v1.4","Standalone abstract for examiner-channel deposit; carries the concept DOI and repo URL"),
 ]
 
 

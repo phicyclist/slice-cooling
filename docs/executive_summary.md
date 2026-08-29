@@ -1,6 +1,6 @@
 # Executive Summary — Heat-Driven Comfort & Water for Humid Climates
 
-### v1.3 — Two desiccant tracks, one physics, one platform · Land & marine
+### v1.4 — Two desiccant tracks, one physics, one platform · Land & marine
 
 **One sentence:** Sun or waste heat in — dry cool air, safe air quality (<1,000 ppm CO₂),
 hot water, and drinking water out, for ~100 m³ occupied spaces (yacht interiors, small
@@ -135,7 +135,7 @@ What stands between paper and proof is a few hundred dollars of deliberately seq
 bench tests.
 
 ---
-*Prepared from repository docs 00–50 (lineage v1.4), whose figures are collected with
+*Prepared from the repository document set 00–50, whose figures are collected with
 their confidence grades and gating tests in `docs/parameter_register.xlsx`.*
 
 ***Full enabling record:*** *the complete document set, diagrams and parameter register
@@ -170,3 +170,9 @@ patents sought or held. Unbuilt paper design — see LICENSE.*
 - **v1.3** — Carries the verified CPC classification codes. This file is the
   examiner-channel deposit (doc 50 §7), and examiners search classification
   before keywords; it previously carried none. No technical claim changed.
+- **v1.4** — Provenance line no longer names a lineage version. It had gone stale
+  twice in three releases (v1.2 → v1.3 → v1.4) because this file sits outside most
+  bump sets and nothing checks a document's claim about the lineage's version. The
+  version DOI already pins the exact set this summary accompanied, so naming it in
+  prose adds a maintenance burden and a staleness risk while adding no
+  information. No technical claim changed.

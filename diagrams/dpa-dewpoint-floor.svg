@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1170" height="660" viewBox="0 0 1170 660" font-family="DejaVu Sans, Verdana, sans-serif">
+<title>The dew-point floor at DP-A - and the one route through it</title>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#46525e"/></marker><marker id="arrd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a94a0"/></marker></defs>
+<rect x="0" y="0" width="1170" height="660" fill="#ffffff"/>
+<text x="30" y="30" font-size="17" fill="#26303a" text-anchor="start" font-weight="bold">The dew-point floor at DP-A — and the one route through it (doc 00 §3)</text>
+
+<!-- ambient -->
+<rect x="435" y="52" width="300" height="64" rx="7" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.5"/>
+<text x="585" y="74" font-size="13" fill="#26303a" text-anchor="middle" font-weight="bold">Ambient at DP-A</text>
+<text x="585" y="92" font-size="12" fill="#26303a" text-anchor="middle">32 °C · 80% RH · ω 24.2 g/kg</text>
+<text x="585" y="108" font-size="12" fill="#26303a" text-anchor="middle">dew point 28.1 °C</text>
+
+<!-- question -->
+<text x="585" y="140" font-size="12" fill="#5a646e" text-anchor="middle" font-style="italic">how can water leave the air?</text>
+
+<!-- branch arrows -->
+<path d="M505,120 L215,168" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M585,150 L585,168" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M665,120 L955,168" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="330" y="136" font-size="11" fill="#5a646e" text-anchor="middle">cool it below the dew point</text>
+<text x="838" y="136" font-size="11" fill="#5a646e" text-anchor="middle">sorb it</text>
+<text x="597" y="164" font-size="11" fill="#5a646e" text-anchor="start">evaporate</text>
+
+<!-- left: condenser (fails) -->
+<rect x="60" y="172" width="310" height="96" rx="7" fill="#ffffff" stroke="#b03a3a" stroke-width="1.5"/>
+<text x="215" y="194" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">Sink-cooled condenser</text>
+<text x="215" y="212" font-size="11" fill="#26303a" text-anchor="middle">needs a surface below 28.1 °C —</text>
+<text x="215" y="228" font-size="11" fill="#26303a" text-anchor="middle">every ambient sink sits at or above it</text>
+<text x="215" y="244" font-size="11" fill="#5a646e" text-anchor="middle">(raw water ~29 °C · outside air)</text>
+<text x="215" y="261" font-size="11" fill="#b03a3a" text-anchor="middle" font-weight="bold">≈ zero water harvested</text>
+
+<!-- middle: evaporative (fails as primary) -->
+<rect x="430" y="172" width="310" height="96" rx="7" fill="#ffffff" stroke="#b07a1e" stroke-width="1.5"/>
+<text x="585" y="194" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">Evaporative stage / M-cycle</text>
+<text x="585" y="212" font-size="11" fill="#26303a" text-anchor="middle">cannot reach below the dew point</text>
+<text x="585" y="234" font-size="11" fill="#b07a1e" text-anchor="middle" font-weight="bold">potent only on pre-dried air —</text>
+<text x="585" y="250" font-size="11" fill="#b07a1e" text-anchor="middle" font-weight="bold">a multiplier, never the primary</text>
+
+<!-- right: desiccant (passes) -->
+<rect x="800" y="172" width="310" height="96" rx="7" fill="#e9f6ee" stroke="#2e7d4f" stroke-width="1.5"/>
+<text x="955" y="194" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">Desiccant</text>
+<text x="955" y="212" font-size="11" fill="#26303a" text-anchor="middle">surface vapour pressure set by</text>
+<text x="955" y="228" font-size="11" fill="#26303a" text-anchor="middle">loading / concentration, not by a cold sink</text>
+<text x="955" y="250" font-size="11" fill="#2e7d4f" text-anchor="middle" font-weight="bold">breaks the floor</text>
+
+<!-- hard problem strip -->
+<path d="M955,268 L955,306" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="765" y="310" width="380" height="58" rx="7" fill="#ffffff" stroke="#46525e" stroke-width="1.5"/>
+<text x="955" y="332" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">Capture is the easy half.</text>
+<text x="955" y="350" font-size="11" fill="#26303a" text-anchor="middle">The hard problem is regeneration against</text>
+<text x="955" y="364" font-size="11" fill="#26303a" text-anchor="middle">near-saturated surroundings — never capture.</text>
+
+<!-- X2 split -->
+<path d="M955,368 L955,404" fill="none" stroke="#46525e" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="805" y="408" width="300" height="40" rx="7" fill="#ffffff" stroke="#46525e" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="955" y="433" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">regeneration physics differ structurally — X2</text>
+
+<path d="M880,448 L420,496" fill="none" stroke="#3a5f85" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M985,448 L985,496" fill="none" stroke="#7a4fa3" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="580" y="462" font-size="11" fill="#3a5f85" text-anchor="middle">CaCl₂ brine · sealed still · no purge stream</text>
+<text x="1160" y="474" font-size="11" fill="#7a4fa3" text-anchor="end">AlFu MOF · coated bed ·</text>
+<text x="1160" y="488" font-size="11" fill="#7a4fa3" text-anchor="end">condensing purge ~25 g/kg</text>
+
+<!-- liquid outcome -->
+<rect x="170" y="500" width="440" height="110" rx="7" fill="#eef4fa" stroke="#3a5f85" stroke-width="1.5"/>
+<text x="390" y="524" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">Liquid track (docs 10–12)</text>
+<text x="390" y="544" font-size="11" fill="#26303a" text-anchor="middle">driving force (hot-pool Pv vs ~4–5 kPa sink-cooled condenser)</text>
+<text x="390" y="560" font-size="11" fill="#26303a" text-anchor="middle">stays positive at any pool above ~40 °C — only rate degrades</text>
+<text x="390" y="586" font-size="12" fill="#3a5f85" text-anchor="middle" font-weight="bold">the solar-grade layer</text>
+
+<!-- solid outcome -->
+<rect x="765" y="500" width="380" height="110" rx="7" fill="#f5eefb" stroke="#7a4fa3" stroke-width="1.5"/>
+<text x="955" y="524" font-size="12" fill="#26303a" text-anchor="middle" font-weight="bold">Solid track (docs 20–22)</text>
+<text x="955" y="544" font-size="11" fill="#26303a" text-anchor="middle">desorbs into the condensing purge —</text>
+<text x="955" y="560" font-size="11" fill="#26303a" text-anchor="middle">zero-driving-force wall below ~50 °C (F2)</text>
+<text x="955" y="586" font-size="12" fill="#7a4fa3" text-anchor="middle" font-weight="bold">the high-duty waste-heat layer</text>
+
+<text x="30" y="644" font-size="11" fill="#5a646e" text-anchor="start">Restates doc 00 §3; no number in this figure is new. Raw-water leverage: cooler sink water deepens every floor, ~0.5–0.7 g/kg per °C on the brine side.</text>
+</svg>

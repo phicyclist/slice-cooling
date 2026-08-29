@@ -1,6 +1,6 @@
 # 00 — Platform Basis: Scope, Design Point, Shared Physics & Doctrines
 
-### v1.4 — foundation document for both tracks
+### v1.5 — foundation document for both tracks
 
 **Function:** Everything both tracks share: deployment scope, the governing design
 point, the shared psychrometric argument, the generalized airflow–moisture model,
@@ -80,6 +80,25 @@ grade; the solid bed desorbs into a condensing purge (~25 g/kg) and hits a
 zero-driving-force wall below ~50 °C (F2). Consequence: **the liquid track is the
 solar-grade layer; the solid track is the high-duty waste-heat layer.**
 
+**Figure 3.1 — the dew-point floor, and the one route through it.** No number in
+this figure is new; it restates the argument above so it can be checked at a
+glance.
+
+```mermaid
+flowchart TB
+    AMB["Ambient at DP-A<br/>32 °C · 80% RH · ω 24.2 g/kg<br/>dew point 28.1 °C"]
+    AMB --> Q{"How can water<br/>leave the air?"}
+    Q -->|"cool it below the dew point"| C1["Sink-cooled condenser<br/>needs a surface below 28.1 °C"]
+    C1 --> C2["Every ambient sink sits at or above it:<br/>raw water ~29 °C · outside air<br/><b>≈ zero water harvested</b>"]
+    Q -->|"evaporate"| E1["Evaporative stage / M-cycle<br/>cannot reach below the dew point"]
+    E1 --> E2["<b>Potent only on pre-dried air</b><br/>a multiplier, never the primary"]
+    Q -->|"sorb it"| D1["Desiccant<br/>surface vapour pressure set by<br/>loading, not by a cold sink"]
+    D1 --> D2["<b>Breaks the floor.</b> Capture is the easy half —<br/>the hard problem is <b>regeneration<br/>against near-saturated surroundings</b>"]
+    D2 --> X2{"Regeneration physics differ<br/>structurally — finding X2"}
+    X2 -->|"CaCl₂ brine · sealed still · no purge stream"| LIQ["Driving force stays positive at any<br/>pool above ~40 °C; only rate degrades<br/><b>→ the solar-grade layer (docs 10–12)</b>"]
+    X2 -->|"AlFu MOF · coated bed · condensing purge ~25 g/kg"| SOL["Zero driving force below ~50 °C — F2<br/><b>→ the waste-heat layer (docs 20–22)</b>"]
+```
+
 Raw-water leverage (both tracks): cooler sink water deepens every floor —
 ~0.5–0.7 g/kg per °C on the brine side; land installs with cool groundwater get
 this for free.
@@ -96,6 +115,29 @@ matrix). Unknowns solved simultaneously:
 4. Q_wet = S · c_p · (T_in − T_sup)
 5. M = Q_wet / Δh_work, Δh_work = h_sat(T_exh) − h(working-air entry state)
 6. Sorbent duty = (S − M)(ω_cab − ω_sup) + M(ω_amb − ω_sup)
+
+**Figure 4.1 — the six equations close on each other.** The arrows are
+dependencies, not a running order: S appears in ① and is defined by ③, which
+needs T_sup from ②, which needs the working-air state that ① sets. That circularity
+is the reason a hand chain gives the wrong answer and a simultaneous solve is
+required.
+
+```mermaid
+flowchart TB
+    G["<b>Given:</b> ambient DP-A · cabin Q_sens and latent gains<br/>sorbent back-end ω_sup · M-cycle ε_dp ≈ 0.7"]
+    G --> E2
+    subgraph LOOP["The loop — why a hand chain gives the wrong answer"]
+        direction LR
+        E2["② T_sup<br/><i>M-cycle supply</i>"] --> E3["③ S<br/><i>supply flow</i>"]
+        E3 --> E1["① ω_cab<br/><i>cabin state</i>"]
+        E1 -. "sets the working-air state ② needs" .-> E2
+    end
+    E3 --> E4["④ Q_wet"]
+    E4 --> E5["⑤ M<br/><i>working-air mass</i>"]
+    E1 --> E6["⑥ sorbent duty"]
+    E5 --> E6
+    E6 --> OUT["<b>At DP-A:</b> solid track full AC <b>~9–11 kg/h</b><br/>liquid mixed mode <b>0.88 kg/h</b><br/><b>X1</b> — once-through ventilation and whole-cabin<br/>M-cycle never compose"]
+```
 
 Load-bearing outputs at DP-A: solid track full-AC duty **~9–11 kg/h** (doc 20 §5);
 liquid mixed-mode duty **0.88 kg/h** (doc 12 §1); and **finding X1** — once-through
@@ -247,6 +289,10 @@ queue, so a missing number means "drafted, not yet published", never "withdrawn"
 | `CHK-nnn` | Consistency observations raised while re-deriving figures | register `Checks` sheet |
 | `LQ-`, `SD-`, `CO2-`, `IN-`, `UP-` | Parameter-register row IDs (liquid, solid, CO₂, integration, upgrade) | `parameter_register.xlsx` |
 
+The procurement layer for every test above — what to buy, in what order, to what
+spec — is doc 41. It adds no experiment and decides nothing; where it and a track
+document disagree, the track document wins.
+
 ### 9.2 Symbols
 
 | Symbol | Quantity | Unit |
@@ -314,3 +360,8 @@ LICENSE for the safety disclaimer.*
   key. A pointer to it is added above §1. Nothing is renamed and no figure
   changed — the notation was already in use throughout the lineage, but nowhere
   defined in one place.
+- **v1.5** — Two figures added to the document every reader is told to open
+  first, which until now carried none: §3 gains the dew-point-floor argument and
+  the X2 regeneration split; §4 gains the dependency graph showing why the six
+  balance equations must be solved simultaneously rather than as a hand chain.
+  Both restate existing text — **no new number, and no figure changed**.

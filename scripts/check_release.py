@@ -168,6 +168,62 @@ def check_pdf_pagination():
            "and carry page-number footers")
 
 
+def check_docs_manifest():
+    """The workbook generator pins a version per document in its DOCS list, and
+    nothing compared it to the documents themselves.
+
+    It drifted in v1.3 and again in v1.4 — caught both times only by remembering,
+    which is not a control. A stale manifest ships a register whose cover sheet
+    misstates which version of each document it was built from."""
+    gen = ROOT / "scripts" / "build_parameter_workbook.py"
+    if not gen.exists():
+        warn("build_parameter_workbook.py missing — skipped the DOCS manifest check")
+        return
+    src = gen.read_text(encoding="utf-8")
+    m = re.search(r"^DOCS = \[(.*?)^\]", src, re.S | re.M)
+    if not m:
+        warn("could not locate the DOCS list in build_parameter_workbook.py")
+        return
+    listed = dict(re.findall(r'\("([^"]+\.md)","(v[\d.]+)"', m.group(1)))
+    bad = []
+    for d in docs():
+        sub = re.search(r"^### (v\d+\.\d+)", d.read_text(encoding="utf-8"), re.M)
+        if not sub:
+            continue
+        if d.name not in listed:
+            bad.append(f"{d.name} missing from DOCS")
+        elif listed[d.name] != sub.group(1):
+            bad.append(f"{d.name}: DOCS says {listed[d.name]}, document says {sub.group(1)}")
+    for name in listed:
+        if not (ROOT / "docs" / name).exists():
+            bad.append(f"{name} in DOCS but not in docs/")
+    if bad:
+        fail("workbook DOCS manifest out of step: " + "; ".join(bad)
+             + " — update DOCS in build_parameter_workbook.py and rebuild")
+    else:
+        ok(f"workbook DOCS manifest matches all {len(listed)} document versions")
+
+
+def check_version_history_order():
+    """Every *Version history* block must list ascending. Six documents had
+    drifted out of order by v1.4 (two of them shipped that way in v1.3); the
+    hand-fix held only until the next appended bullet, because nothing checked.
+    The bullets are already machine-parseable — no frontmatter or new metadata
+    convention is needed to enforce this."""
+    for d in docs():
+        txt = d.read_text(encoding="utf-8")
+        if "*Version history*" not in txt:
+            continue
+        block = txt.split("*Version history*", 1)[1]
+        vers = re.findall(r"^- \*\*v(\d+(?:\.\d+)*)\*\*", block, re.M)
+        keys = [tuple(int(x) for x in v.split(".")) for v in vers]
+        if keys != sorted(keys):
+            fail(f"{d.name}: version history out of order: "
+                 + " ".join("v" + v for v in vers))
+    if not any("version history out of order" in f for f in FAIL):
+        ok("every version history lists in ascending order")
+
+
 # ------------------------------------------------------------------ metadata --
 def _readme_latest_version(readme):
     vs = re.findall(r"^- \*\*(v\d+\.\d+(?:\.\d+)?)\*\*", readme, re.M)
@@ -272,7 +328,7 @@ def main():
 
     for fn in (check_doc_structure, check_version_history_matches_subtitle,
                check_rendered_set, check_register, check_no_mermaid_in_pdfs,
-               check_pdf_pagination,
+               check_pdf_pagination, check_docs_manifest, check_version_history_order,
                check_metadata_sync, check_license_layout, check_wide_overrides):
         try:
             fn()

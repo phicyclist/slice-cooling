@@ -1,6 +1,6 @@
 # 50 — Defensive Disclosure Strategy & Publication Procedure
 
-### v1.5 — making the lineage function as prior art
+### v1.6 — making the lineage function as prior art
 
 **Function:** Turn the v1.0 document lineage into a legally useful, dated,
 examiner-discoverable public record, and set up the repository and archival
@@ -57,7 +57,7 @@ and worth the fee only if you learn of active patenting in this space.
 slice-cooling/          # pick a descriptive, searchable name
 ├── README.md                        # existing, + DOI badge + disclosure statement (§3.4)
 ├── docs/
-│   ├── 00_platform_basis.md … 40_findings_register.md
+│   ├── 00_platform_basis.md … 41_bench_bill_of_materials.md
 │   ├── 50_defensive_disclosure_plan.md
 │   └── parameter_register.xlsx      # the quantitative register (§3.5)
 ├── diagrams/                        # the SVG set
@@ -248,6 +248,7 @@ related-identifier links fully repair).
   "upload_type": "publication",
   "publication_type": "technicalnote",
   "license": "cc-by-4.0",
+  "version": "v1.0",
   "creators": [{ "name": "<Surname, Given>", "orcid": "0000-0000-0000-0000" }],
   "keywords": [
     "liquid desiccant air conditioning", "LDAC", "calcium chloride brine",
@@ -266,6 +267,11 @@ related-identifier links fully repair).
   ]
 }
 ```
+
+The `version` field is **required**: `check_release.py` fails the release when it
+disagrees with the README's newest version-history entry and `CITATION.cff`.
+JSON carries no comments, so the requirement lives here rather than in the
+skeleton — a pasted `//` note would make the file unparseable.
 
 ## 5. Metadata for examiner discoverability
 
@@ -324,20 +330,28 @@ The abstract and keywords are the search surface. Discipline:
 
 ## 6. Third-party snapshot procedure (day of publication)
 
-1. **Software Heritage:** https://archive.softwareheritage.org/save/ → "Save
-   Code Now" → paste the GitHub URL. Archives the full git history under a
-   persistent SWHID. Repeat after major releases (it also crawls GitHub
-   periodically on its own).
-2. **Internet Archive:** https://web.archive.org/save/ → snapshot (a) the repo
-   root, (b) the **tag tree** page (`/tree/vX.Y`), (c) the Zenodo record page.
-   Three URLs, two minutes. There is deliberately no GitHub *release* page to
-   snapshot — see §9. Verify afterwards via
-   `archive.org/wayback/available?url=...` rather than trusting the save form,
-   which can appear to succeed without archiving anything.
-3. **OpenTimestamps (optional):** `ots stamp v1.0.tar.gz` → commit the `.ots`
-   proof file to the repo in the next release. Free, and converts "trust
-   Zenodo's clock" into "trust the Bitcoin blockchain's clock" for anyone who
-   demands cryptographic proof.
+### 6.1 Software Heritage
+
+https://archive.softwareheritage.org/save/ → "Save Code Now" → paste the GitHub
+URL. Archives the full git history under a persistent SWHID. Repeat after major
+releases (it also crawls GitHub periodically on its own).
+
+### 6.2 Internet Archive
+
+https://web.archive.org/save/ → snapshot (a) the repo root, (b) the **tag tree**
+page (`/tree/vX.Y`), (c) the Zenodo record page. Three URLs, two minutes. There
+is deliberately no GitHub *release* page to snapshot — see §9. Verify afterwards
+via `archive.org/wayback/available?url=...` rather than trusting the save form,
+which can appear to succeed without archiving anything.
+
+### 6.3 OpenTimestamps (optional)
+
+`ots stamp <release-file>` → commit the `.ots` proof file to the repo in the next
+release, under `timestamps/`, with the SHA-256 recorded beside it. Stamp the
+**file uploaded to Zenodo**, never a GitHub-generated tarball — generated
+archives are not byte-stable, and the proof covers exact bytes. Free, and
+converts "trust Zenodo's clock" into "trust the Bitcoin blockchain's clock" for
+anyone who demands cryptographic proof.
 
 ## 7. Optional examiner-channel deposit
 
@@ -452,3 +466,11 @@ CC-BY-4.0, scripts MIT. No patents sought or held.*
   stationary exchanger, not a rotary wheel. Examiner discoverability is the
   weakest of the four properties in §1, and until now the record carried no
   classification codes at all.
+- **v1.6** — §3.1 structure block extended to cover doc 41, the bench bill of
+  materials; §4.3's `.zenodo.json` skeleton gains the `version` field that
+  `check_release.py` requires, which the template omitted — anyone following it
+  verbatim produced a file that failed the repo's own gate; §6's three snapshot
+  steps promoted from list items to subsections §6.1–§6.3 so cross-references to
+  them resolve, with §6.3 additionally recording the stamp-the-Zenodo-file rule
+  and the `timestamps/` convention. No snapshot or deposit procedure changed in
+  substance.

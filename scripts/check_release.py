@@ -224,6 +224,175 @@ def check_version_history_order():
         ok("every version history lists in ascending order")
 
 
+def check_register_reproducible():
+    """Layer 1: the committed register must be byte-identical to a fresh rebuild.
+
+    check_register() above compares mtimes only, so a bare rebuild turned it
+    green whether or not the content was right, and a hand-edit stayed invisible
+    (doc 40 §3 recorded this after v1.3). The generator now emits deterministic
+    bytes — pinned dcterms stamps, normalized zip entries — so this is an exact
+    sha256 comparison: a mismatch means the committed file is hand-edited, stale,
+    or built from a different generator. No timestamp false alarms are possible."""
+    import hashlib, subprocess, tempfile
+    gen = ROOT / "scripts" / "build_parameter_workbook.py"
+    reg = ROOT / "docs" / "parameter_register.xlsx"
+    if not (gen.exists() and reg.exists()):
+        warn("generator or register missing — skipped the reproducibility check")
+        return
+    with tempfile.TemporaryDirectory() as td:
+        tmp = Path(td) / "rebuild.xlsx"
+        r = subprocess.run([sys.executable, str(gen), str(tmp)],
+                           capture_output=True, text=True, timeout=300)
+        if r.returncode != 0:
+            fail(f"generator failed during reproducibility rebuild: {r.stderr.strip()[:200]}")
+            return
+        h_new = hashlib.sha256(tmp.read_bytes()).hexdigest()
+        h_old = hashlib.sha256(reg.read_bytes()).hexdigest()
+        if h_new == h_old:
+            ok("parameter register is byte-identical to a fresh rebuild (sha256)")
+            return
+        # diagnose: which members differ
+        import zipfile
+        try:
+            za, zb = zipfile.ZipFile(reg), zipfile.ZipFile(tmp)
+            names = sorted(set(za.namelist()) | set(zb.namelist()))
+            bad = [n for n in names
+                   if n not in za.namelist() or n not in zb.namelist()
+                   or za.read(n) != zb.read(n)]
+            detail = (", ".join(bad[:5]) + ("…" if len(bad) > 5 else "")
+                      if bad else "container-level: trailing bytes or zip structure")
+        except Exception:                           # noqa: BLE001
+            detail = "unreadable"
+        fail("parameter register differs from a fresh rebuild — hand-edited or "
+             f"stale (differing members: {detail}). Regenerate with "
+             "scripts/build_parameter_workbook.py; never edit the xlsx directly")
+
+
+def _generator_list_ids(src, name):
+    """First element of each tuple in a top-level `NAME = [...]` / `NAME += [...]`."""
+    import ast
+    ids = []
+    for node in ast.parse(src).body:
+        target = None
+        if isinstance(node, ast.Assign) and len(node.targets) == 1:
+            target = getattr(node.targets[0], "id", None)
+        elif isinstance(node, ast.AugAssign):
+            target = getattr(node.target, "id", None)
+        if target != name or not isinstance(node.value, ast.List):
+            continue
+        for el in node.value.elts:
+            if isinstance(el, ast.Tuple) and el.elts:
+                first = el.elts[0]
+                if isinstance(first, ast.Constant) and isinstance(first.value, str):
+                    ids.append(first.value)
+    return ids
+
+
+def check_register_ids():
+    """Layer 2: the generator's FINDINGS and TESTS must carry exactly the IDs the
+    documents publish. IDs are structured tokens, so this is deterministic —
+    unlike the numeric reconciliation, which stays a doc 50 §8/§9 human item.
+    Catches 'F6/X14 recorded in doc 40 but missing from the register' and the
+    reverse. Reserved gaps (X13) simply appear in neither set."""
+    gen = ROOT / "scripts" / "build_parameter_workbook.py"
+    if not gen.exists():
+        warn("build_parameter_workbook.py missing — skipped the ID check")
+        return
+    src = gen.read_text(encoding="utf-8")
+
+    d40 = (ROOT / "docs" / "40_findings_register.md").read_text(encoding="utf-8")
+    doc_f = set(re.findall(r"^### (F\d+) — ", d40, re.M))
+    doc_x = set(re.findall(r"^\| \*\*(X\d+)\*\* \|", d40, re.M))
+    doc_findings = doc_f | doc_x | ({"P17"} if "Specification P17" in d40 else set())
+    gen_findings = set(_generator_list_ids(src, "FINDINGS"))
+
+    d12 = (ROOT / "docs" / "12_liquid_numbers_test_plan.md").read_text(encoding="utf-8")
+    sec4 = d12.split("## 4.", 1)[1].split("\n## ", 1)[0]
+    doc_tests = set(re.findall(r"^\| \*{0,2}([A-L](?:\d|-K)?)\b", sec4, re.M))
+    gen_tests = {i for i in _generator_list_ids(src, "TESTS") if re.fullmatch(r"[A-L](\d|-K)?", i)}
+
+    bad = []
+    for label, doc, g in (("finding", doc_findings, gen_findings),
+                          ("liquid test", doc_tests, gen_tests)):
+        for i in sorted(doc - g):
+            bad.append(f"{label} {i} in the documents but not the register")
+        for i in sorted(g - doc):
+            bad.append(f"{label} {i} in the register but not the documents")
+    if bad:
+        fail("register/document ID mismatch: " + "; ".join(bad)
+             + " — update the generator lists and rebuild")
+    else:
+        ok(f"register IDs match the documents ({len(gen_findings)} findings, "
+           f"{len(gen_tests)} liquid tests)")
+
+
+def check_register_values():
+    """Layer 3 (WARN-only): flag register rows whose numeric value does not
+    appear in the text of their cited source section.
+
+    Semantics are deliberately asymmetric. A non-match means INSPECT — the row
+    may be restated in different units, a derived figure, or genuinely wrong; a
+    human decides which (doc 50 §8). A match is weak evidence only, never
+    verification — small integers match trivially. This check can therefore
+    under-flag but cannot produce a false 'verified'. It feeds the doc 50 §9
+    reconciliation pass; it does not replace it."""
+    import ast
+    gen = ROOT / "scripts" / "build_parameter_workbook.py"
+    if not gen.exists():
+        return
+    src = gen.read_text(encoding="utf-8")
+    rows = []
+    for node in ast.parse(src).body:
+        target = None
+        if isinstance(node, ast.Assign) and len(node.targets) == 1:
+            target = getattr(node.targets[0], "id", None)
+        elif isinstance(node, ast.AugAssign):
+            target = getattr(node.target, "id", None)
+        if target == "REGISTER" and isinstance(node.value, ast.List):
+            code = compile(ast.Expression(node.value), "<register>", "eval")
+            rows += eval(code, {"N": None, "__builtins__": {}})   # noqa: S307 - literals + N only
+
+    bynum = {}
+    for d in docs():
+        m = re.match(r"(\d\d)_", d.name)
+        if m:
+            bynum[m.group(1)] = d.read_text(encoding="utf-8")
+
+    def section_text(docno, sec):
+        txt = bynum.get(docno)
+        if txt is None:
+            return None
+        base = sec.split(".")[0]
+        m = re.search(rf"^## {base}\..*?(?=^## |\Z)", txt, re.M | re.S)
+        return m.group(0) if m else txt
+
+    flagged = []
+    for row in rows:
+        rid, vals, source = row[0], [v for v in row[5:8] if isinstance(v, (int, float))], row[12]
+        if not vals:
+            continue
+        refs = re.findall(r"(\d\d) §([\d.]+)", source)
+        if not refs:
+            continue
+        texts = [section_text(no, sec) for no, sec in refs]
+        texts = [x.replace(",", "") for x in texts if x]
+        if not texts:
+            continue
+        def present(v):
+            s = f"{v:g}"
+            return any(re.search(rf"(?<![\d.]){re.escape(s)}(?![\d])", x) for x in texts)
+        missing = [v for v in vals if not present(v)]
+        if missing:
+            flagged.append(f"{rid} ({', '.join(f'{v:g}' for v in missing)} vs {source})")
+    if flagged:
+        warn(f"register values needing inspection — {len(flagged)} row(s) whose "
+             "number was not found verbatim in the cited section (restatement, "
+             "derived figure, or drift — human call per doc 50 §8): "
+             + "; ".join(flagged[:8]) + ("; …" if len(flagged) > 8 else ""))
+    else:
+        ok("every numeric register value appears verbatim in its cited section")
+
+
 # ------------------------------------------------------------------ metadata --
 def _readme_latest_version(readme):
     vs = re.findall(r"^- \*\*(v\d+\.\d+(?:\.\d+)?)\*\*", readme, re.M)
@@ -329,6 +498,7 @@ def main():
     for fn in (check_doc_structure, check_version_history_matches_subtitle,
                check_rendered_set, check_register, check_no_mermaid_in_pdfs,
                check_pdf_pagination, check_docs_manifest, check_version_history_order,
+               check_register_reproducible, check_register_ids, check_register_values,
                check_metadata_sync, check_license_layout, check_wide_overrides):
         try:
             fn()

@@ -1,6 +1,6 @@
 # 50 — Defensive Disclosure Strategy & Publication Procedure
 
-### v1.6 — making the lineage function as prior art
+### v1.7 — making the lineage function as prior art
 
 **Function:** Turn the v1.0 document lineage into a legally useful, dated,
 examiner-discoverable public record, and set up the repository and archival
@@ -408,11 +408,16 @@ Snapshot the tag tree page instead of a release page (§6.2).
    deposit is filled in by hand, so verify the version field yourself.
 
 Run `python3 scripts/check_release.py` first — it mechanically enforces the
-structural half of this list (document version discipline and footers, PDF and
-register freshness, no raw Mermaid in any PDF, version and DOI agreement across
+structural half of this list (document version discipline, footers and
+version-history ordering, PDF completeness, freshness, pagination and footers,
+no raw Mermaid in any PDF, register **byte-reproducibility** against a fresh
+rebuild plus finding/test **ID agreement** with the documents, the workbook
+version manifest, version and DOI agreement across
 README/`CITATION.cff`/`.zenodo.json`, the §3.2 license layout, and the verbatim
-rule on the wide-diagram overrides). It exits non-zero on any failure. The items
-below that need human judgement stay manual.
+rule on the wide-diagram overrides). It also emits a **warn-only inspection
+queue** of register values not found verbatim in their cited sections — input to
+the §8 reconciliation, not a substitute for it. It exits non-zero on any
+failure. The items below that need human judgement stay manual.
 
 - [ ] `python3 scripts/check_release.py` passes
 - [ ] ORCID obtained; GitHub repo public with §3.1 structure
@@ -474,3 +479,9 @@ CC-BY-4.0, scripts MIT. No patents sought or held.*
   them resolve, with §6.3 additionally recording the stamp-the-Zenodo-file rule
   and the `timestamps/` convention. No snapshot or deposit procedure changed in
   substance.
+- **v1.7** — §9's gate description updated for the register-integrity checks:
+  the parameter register is now byte-reproducible from its generator and the
+  gate rebuilds and compares it, set-compares finding/test IDs against the
+  documents, and flags — as warnings feeding the §8 reconciliation, never as
+  verification — numeric values not found verbatim in their cited sections.
+  The §8 human reconciliation itself is unchanged.

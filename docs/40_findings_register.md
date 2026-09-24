@@ -1,6 +1,6 @@
 # 40 — Findings Register, Risks & Task List
 
-### v1.7 — the honest state of the program, both tracks
+### v1.8 — the honest state of the program, both tracks
 
 **Function:** The consolidated register of every finding that materially changed
 the numbers or the architecture — solid-track F1–F6 and cross-track X1–X12, X14 — plus
@@ -155,9 +155,16 @@ times only: it fails when any `docs/*.md` is newer than
 register's *contents* against the documents. A bare regeneration therefore turns
 it green whether or not the register still reproduces what the documents say. Doc
 50 §3.5/§8 makes release-time reconciliation of the register's `Checks` sheet a
-publication gate, so the gate as implemented enforces staleness, not agreement —
-the reconciliation itself remains a human judgement item under doc 50 §9. Fixing
-it is its own change, not part of this lineage pass.
+publication gate, so the gate as implemented enforced staleness, not agreement.
+**Closed in v1.7**, in the three layers determinism actually supports: the
+generator now emits byte-reproducible output and the gate rebuilds and compares
+sha256 (a mismatch means hand-edited or stale, with no timestamp false alarms);
+finding and test IDs are set-compared between the documents and the generator;
+and numeric values are checked against their cited source sections as a
+**warn-only inspection queue** — a non-match means a human looks, never that the
+row is wrong, and a match is weak evidence, never verification. The numeric
+reconciliation itself remains the doc 50 §9 human judgement item; the gate now
+feeds it instead of ignoring it.
 
 **Tooling task (closed in v1.4) — the release gate could not see a broken
 render.** Until v1.4 `scripts/check_release.py` verified that `rendered/` was
@@ -274,3 +281,8 @@ CC-BY-4.0. No patents sought or held. Unbuilt paper design — see LICENSE.*
   as an image — so text search over the archived PDF could not find it, and a
   reader grepping for the benchmark task landed nowhere. Prose is the searchable
   layer; charts are not. No task changed.
+- **v1.8** — §3's `check_register()` task entry closed: the release gate now
+  rebuilds the register and compares bytes, set-compares finding/test IDs against
+  the documents, and emits a warn-only inspection queue for numeric values not
+  found in their cited sections. No finding ID renumbered; no design figure
+  changed.

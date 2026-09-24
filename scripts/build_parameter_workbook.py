@@ -22,6 +22,8 @@ Conventions (engineering-register practice):
 MIT licensed, per the repository scope map (LICENSE.md).
 """
 import sys
+import datetime
+import pathlib
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side, NamedStyle
 from openpyxl.utils import get_column_letter
@@ -632,9 +634,9 @@ DOCS = [
  ("22_solid_module_validation.md","v1.2","DCHX design, coating rules, F5 mitigations, bench rig, M1–M4, staged pipeline"),
  ("30_integration_energy_water.md","v1.3","Heat cascade, HDH, source roles, all-electric galley, water ladder, degraded operation"),
  ("31_upgrade_paths_sorption_cycles.md","v1.0","X12 AHT, coupled VC heat pump, still MVR, closed AlFu chiller, static crystallizer"),
- ("40_findings_register.md","v1.7","F1–F6, X1–X12, X14, spec P17, tasks, make-or-break bench list"),
+ ("40_findings_register.md","v1.8","F1–F6, X1–X12, X14, spec P17, tasks, make-or-break bench list"),
  ("41_bench_bill_of_materials.md","v1.0","Bench procurement list: class-and-spec, cheapest-decisive-first; no system BOM (F6/F3 open)"),
- ("50_defensive_disclosure_plan.md","v1.6","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
+ ("50_defensive_disclosure_plan.md","v1.7","Venue stack, repo formation, Zenodo procedure, metadata, version discipline"),
  ("executive_summary.md","v1.4","Standalone abstract for examiner-channel deposit; carries the concept DOI and repo URL"),
 ]
 
@@ -2054,6 +2056,31 @@ def sheet_sources(wb):
 
 
 # ================================================================== MAIN =====
+def _normalize_zip(path):
+    """Rewrite the xlsx with fixed zip entry dates and sorted members, so
+    repeated builds from identical source are byte-identical (sha256-comparable
+    by check_release.py). Member CONTENT is untouched."""
+    import zipfile, io
+    src = zipfile.ZipFile(path, "r")
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as dst:
+        for name in sorted(src.namelist()):
+            data = src.read(name)
+            if name == "docProps/core.xml":
+                # openpyxl stamps dcterms:modified with now() at save time,
+                # ignoring the pinned property — rewrite it to the epoch here.
+                import re as _re
+                data = _re.sub(
+                    rb"(<dcterms:modified[^>]*>)[^<]*(</dcterms:modified>)",
+                    rb"\g<1>2026-01-01T00:00:00Z\g<2>", data)
+            info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o600 << 16
+            dst.writestr(info, data)
+    src.close()
+    pathlib.Path(path).write_bytes(buf.getvalue())
+
+
 def main(out):
     wb = Workbook()
     wb.remove(wb.active)
@@ -2082,6 +2109,15 @@ def main(out):
         "Every quantitative claim in the slice-cooling document lineage, with confidence grades, "
         "gating tests, sources, and live re-derivations. Paper design — nothing built.")
     wb.properties.keywords = "liquid desiccant; aluminium fumarate; DP-A; defensive publication; prior art"
+    # Deterministic output: the register must be a pure function of this script so
+    # check_release.py can rebuild it and compare hashes — a mismatch then means
+    # the committed file is hand-edited or stale, with no timestamp false alarms.
+    # The real dates live in git history and the Zenodo record, not in file
+    # metadata. Two time sources are pinned: the dcterms stamps here, and the zip
+    # entry headers in _normalize_zip() after save.
+    _epoch = datetime.datetime(2026, 1, 1)
+    wb.properties.created = _epoch
+    wb.properties.modified = _epoch
     wb.calculation.fullCalcOnLoad = True
 
     for ws in wb.worksheets:
@@ -2091,6 +2127,7 @@ def main(out):
         ws.page_setup.fitToWidth = 1
         ws.sheet_properties.pageSetUpPr.fitToPage = True
     wb.save(out)
+    _normalize_zip(out)
     print(f"wrote {out}  ({len(wb.worksheets)} sheets, {len(REGISTER)} register rows, "
           f"{len(TESTS)} tests, {len(FINDINGS)} findings)")
 

@@ -23,7 +23,7 @@ carries a confidence grade (doc 00 §9).
 
 ---
 
-## Document lineage (v1.6 — this set supersedes all archived documents)
+## Document lineage (v1.7 — this set supersedes all archived documents)
 
 | File | Contents |
 |---|---|
@@ -245,3 +245,17 @@ scripts MIT — see `LICENSE.md` for the scope map.
   executive summary (v1.4) stops naming a lineage version in its provenance
   line, which had gone stale twice in three releases; the version DOI already
   pins the exact set. Reconstruction path step 2 points at doc 41.
+- **v1.7** — Register integrity; **no design figure changed**. The parameter
+  workbook generator now emits **byte-reproducible** output (pinned document
+  stamps, normalized zip entries — the real dates live in git history and the
+  Zenodo record), and `check_release.py` exploits it in the three layers
+  determinism actually supports: a sha256 comparison against a fresh rebuild, so
+  a hand-edited or stale `parameter_register.xlsx` fails loudly instead of
+  passing on mtime; a set comparison of finding and test IDs between the
+  documents and the generator, closing the recorded doc 40 §3 blindness
+  ("rebuilt, but F6/X14 missing" was invisible); and a **warn-only inspection
+  queue** of register values not found verbatim in their cited source sections —
+  deliberately asymmetric, a non-match means a human looks (doc 50 §8), a match
+  is weak evidence and never verification. Its first run flagged 15 rows for
+  the next reconciliation pass. Doc 40 → v1.8 (task closed), doc 50 → v1.7
+  (gate description).

@@ -200,7 +200,7 @@ design.
 > the authors for any subject matter disclosed herein, and the authors intend
 > this dated public record to preclude the patenting of the disclosed subject
 > matter by any party. First published: 2026-07-25. Archived with DOI:
-> [10.5281/zenodo.22134961](https://doi.org/10.5281/zenodo.22134961) (version DOI, 
+> [10.5281/zenodo.22945825](https://doi.org/10.5281/zenodo.22945825) (version DOI, 
 > this exact record) · concept DOI 
 > [10.5281/zenodo.21544099](https://doi.org/10.5281/zenodo.21544099) (all versions).
 
